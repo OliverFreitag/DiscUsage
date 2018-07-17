@@ -8,14 +8,15 @@ namespace DiscUsage.DiscSpace
 {
     public class DiscSpace
     {
-        private InfoCache cache;
+        public InfoCache cache;
        
         public List<DiscSpace> Children = new List<DiscSpace>();
         public DiscSpace Parent;
 
-        public DiscSpace(InfoCache cache)
+        public DiscSpace(InfoCache cache, DiscSpace parent)
         {
             this.cache = cache;
+            this.Parent = parent;
         }
 
         public Int64 Length => cache.Length;
