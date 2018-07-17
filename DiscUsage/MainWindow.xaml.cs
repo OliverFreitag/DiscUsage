@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DiscUsage.DiscSpace;
+using DiscUsage.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,25 @@ namespace DiscUsage
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private DiscCache discCache = new DiscCache();
+        private DiscSpaceManager discSpaceManager = new DiscSpaceManager();
+        private DiscSpaceViewModel viewModel = new DiscSpaceViewModel();
+
+        private void DiscSpaceControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            discCache.Created += discSpaceManager.Added;
+            discCache.Loaded += discSpaceManager.Load;
+
+            discSpaceManager.Loaded += DiscSpaceManager_Loaded;
+            discCache.Load(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
+        }
+
+        private void DiscSpaceManager_Loaded(DiscSpace.DiscSpace space)
+        {
+            viewModel.Add(discSpaceManager.Root.Children);
+            DiscSpaceControl.DataContext = viewModel;
         }
     }
 }

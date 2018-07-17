@@ -11,6 +11,8 @@ namespace DiscUsage.DiscSpace
     public class DiscSpaceManager
     {
         public event DiscSpaceDelegate Created;
+        public event DiscSpaceDelegate Loaded;
+
         public DiscSpace Root;
         private Dictionary<InfoCache, DiscSpace> mapping = new Dictionary<InfoCache, DiscSpace>();
         public Int64 MinimalLimit = 1024 * 1024;
@@ -20,9 +22,14 @@ namespace DiscUsage.DiscSpace
             Added(info, false);
         }
 
-        public void Added(InfoCache info, bool forceCreation=false)
+        public void Load(InfoCache info)
         {
-            if (info.Length<MinimalLimit && !forceCreation)
+            Loaded?.Invoke(Map(info));
+        }
+
+        public void Added(InfoCache info, bool forceCreation = false)
+        {
+            if (info.Length < MinimalLimit && !forceCreation)
             {
                 return;
             }
@@ -30,30 +37,33 @@ namespace DiscUsage.DiscSpace
             {
                 return;
             }
-            DiscSpace parentSpace=null;
-            if (info.Parent!=null)
+            DiscSpace parentSpace = null;
+            if (info.Parent != null)
             {
                 parentSpace = Map(info.Parent);
-                if (parentSpace==null)
+                if (parentSpace == null)
                 {
-                    Added(info.Parent,true);
+                    Added(info.Parent, true);
                     parentSpace = Map(info.Parent);
                 }
             }
             var space = new DiscSpace(info, parentSpace);
             mapping[info] = space;
-            if (parentSpace!=null)
+            if (parentSpace != null)
             {
                 parentSpace.Children.Add(space);
             }
-
+            if (space.Parent == null)
+            {
+                Root = space;
+            }
             Created?.Invoke(space);
         }
 
         public Dictionary<InfoCache, DiscSpace> Mapping => mapping;
         public DiscSpace Map(InfoCache info)
         {
-            if (!mapping.ContainsKey(info))
+            if (info == null||!mapping.ContainsKey(info))
             {
                 return null;
             }

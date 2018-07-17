@@ -13,6 +13,7 @@ namespace DiscUsage
         public List<DirectoryCache> drivesCache = new List<DirectoryCache>();
 
         public event DiscCacheDelegate Created;
+        public event DiscCacheDelegate Loaded;
 
         public DiscCache()
         {
@@ -37,6 +38,7 @@ namespace DiscUsage
                 var directoryCache=Load(null,drive.RootDirectory);
                 drivesCache.Add(directoryCache);
             }
+            
         }
 
         private DirectoryCache Load(InfoCache parent,DirectoryInfo directory)
@@ -56,6 +58,10 @@ namespace DiscUsage
                 var fileCache = Load(file,directoryCache);
                 directoryCache.files.Add(fileCache);
                 Created?.Invoke(fileCache);
+            }
+            if (parent == null)
+            {
+                Loaded?.Invoke(null);
             }
             return directoryCache;
         }
