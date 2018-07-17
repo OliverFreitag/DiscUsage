@@ -1,0 +1,107 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.41111</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{38DEAEDB-92F6-4BF9-A1CB-A85E130A3AEA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>TimeZoneConverter.My.MyApplication</StartupObject>
+    <RootNamespace>TimeZoneConverter</RootNamespace>
+    <AssemblyName>TimeZoneConverter</AssemblyName>
+    <MyType>WindowsForms</MyType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>TimeZoneConverter.xml</DocumentationFile>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <RunFxCop>false</RunFxCop>
+    <FxCopRules>-Microsoft.Globalization#CA1302;-Microsoft.Globalization#CA1303</FxCopRules>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>TimeZoneConverter.xml</DocumentationFile>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <RunFxCop>false</RunFxCop>
+    <FxCopRules>-Microsoft.Globalization#CA1302;-Microsoft.Globalization#CA1303</FxCopRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="TimeZones.vb" />
+    <Compile Include="TZConv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TZConv.Designer.vb">
+      <DependentUpon>TZConv.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\MyApplication.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MyApplication.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\MyResources.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\MySettings.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MySettings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="My Project\MyEvents.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TZConv.resx">
+      <DependentUpon>TZConv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\MyResources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyResources.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>    
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application1.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\MyApplication.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>MyApplication.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\MySettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>MySettings.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
+</Project>

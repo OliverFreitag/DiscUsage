@@ -1,0 +1,1767 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="FrontButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="FrontButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 6.75pt, style=Bold</value>
+  </data>
+  <data name="FrontButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="FrontButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 23</value>
+  </data>
+  <data name="FrontButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="FrontButton.Text">
+    <value xml:space="preserve">&lt;&lt;</value>
+  </data>
+  <data name="&gt;&gt;FrontButton.Name">
+    <value xml:space="preserve">FrontButton</value>
+  </data>
+  <data name="&gt;&gt;FrontButton.Type">
+    <value xml:space="preserve">System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FrontButton.Parent">
+    <value xml:space="preserve">TableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;FrontButton.ZOrder">
+    <value xml:space="preserve">0</value>
+  </data>
+  <data name="BackButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="BackButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 6.75pt, style=Bold</value>
+  </data>
+  <data name="BackButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>273, 3</value>
+  </data>
+  <data name="BackButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 23</value>
+  </data>
+  <data name="BackButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="BackButton.Text">
+    <value xml:space="preserve">&gt;&gt;</value>
+  </data>
+  <data name="&gt;&gt;BackButton.Name">
+    <value xml:space="preserve">BackButton</value>
+  </data>
+  <data name="&gt;&gt;BackButton.Type">
+    <value xml:space="preserve">System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BackButton.Parent">
+    <value xml:space="preserve">TableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;BackButton.ZOrder">
+    <value xml:space="preserve">1</value>
+  </data>
+  <data name="HeaderLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="HeaderLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="HeaderLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9.75pt, style=Bold</value>
+  </data>
+  <data name="HeaderLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 5</value>
+  </data>
+  <data name="HeaderLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 18</value>
+  </data>
+  <data name="HeaderLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="HeaderLabel.Text">
+    <value xml:space="preserve">الشهر</value>
+  </data>
+  <data name="HeaderLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;HeaderLabel.Name">
+    <value xml:space="preserve">HeaderLabel</value>
+  </data>
+  <data name="&gt;&gt;HeaderLabel.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HeaderLabel.Parent">
+    <value xml:space="preserve">TableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;HeaderLabel.ZOrder">
+    <value xml:space="preserve">2</value>
+  </data>
+  <data name="TableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="TableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="TableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 29</value>
+  </data>
+  <data name="TableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel2.Name">
+    <value xml:space="preserve">TableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel2.Type">
+    <value xml:space="preserve">System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel2.Parent">
+    <value xml:space="preserve">HeaderPanel</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel2.ZOrder">
+    <value xml:space="preserve">0</value>
+  </data>
+  <data name="HeaderPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="HeaderPanel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 6.75pt, style=Bold</value>
+  </data>
+  <data name="HeaderPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="HeaderPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 29</value>
+  </data>
+  <data name="HeaderPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;HeaderPanel.Name">
+    <value xml:space="preserve">HeaderPanel</value>
+  </data>
+  <data name="&gt;&gt;HeaderPanel.Type">
+    <value xml:space="preserve">System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HeaderPanel.Parent">
+    <value xml:space="preserve">$this</value>
+  </data>
+  <data name="&gt;&gt;HeaderPanel.ZOrder">
+    <value xml:space="preserve">2</value>
+  </data>
+  <data name="FooterLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="FooterLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 6.75pt, style=Bold</value>
+  </data>
+  <data name="FooterLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="FooterLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 12</value>
+  </data>
+  <data name="FooterLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="FooterLabel.Text">
+    <value xml:space="preserve">اليوم:</value>
+  </data>
+  <data name="&gt;&gt;FooterLabel.Name">
+    <value xml:space="preserve">FooterLabel</value>
+  </data>
+  <data name="&gt;&gt;FooterLabel.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FooterLabel.Parent">
+    <value xml:space="preserve">FooterPanel</value>
+  </data>
+  <data name="&gt;&gt;FooterLabel.ZOrder">
+    <value xml:space="preserve">0</value>
+  </data>
+  <data name="FooterPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="FooterPanel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt, style=Bold</value>
+  </data>
+  <data name="FooterPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 167</value>
+  </data>
+  <data name="FooterPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 20</value>
+  </data>
+  <data name="FooterPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;FooterPanel.Name">
+    <value xml:space="preserve">FooterPanel</value>
+  </data>
+  <data name="&gt;&gt;FooterPanel.Type">
+    <value xml:space="preserve">System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FooterPanel.Parent">
+    <value xml:space="preserve">$this</value>
+  </data>
+  <data name="&gt;&gt;FooterPanel.ZOrder">
+    <value xml:space="preserve">1</value>
+  </data>
+  <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tableLayoutPanel1.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
+    <value>Single</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="Daylabel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Daylabel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Daylabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
+  <data name="Daylabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="Daylabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="Daylabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Daylabel1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Daylabel1.Name">
+    <value xml:space="preserve">Daylabel1</value>
+  </data>
+  <data name="&gt;&gt;Daylabel1.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Daylabel1.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;Daylabel1.ZOrder">
+    <value xml:space="preserve">0</value>
+  </data>
+  <data name="Daylabel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Daylabel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Daylabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
+  <data name="Daylabel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>44, 2</value>
+  </data>
+  <data name="Daylabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="Daylabel2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Daylabel2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Daylabel2.Name">
+    <value xml:space="preserve">Daylabel2</value>
+  </data>
+  <data name="&gt;&gt;Daylabel2.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Daylabel2.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;Daylabel2.ZOrder">
+    <value xml:space="preserve">1</value>
+  </data>
+  <data name="Daylabel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Daylabel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Daylabel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
+  <data name="Daylabel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 2</value>
+  </data>
+  <data name="Daylabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="Daylabel3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Daylabel3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Daylabel3.Name">
+    <value xml:space="preserve">Daylabel3</value>
+  </data>
+  <data name="&gt;&gt;Daylabel3.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Daylabel3.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;Daylabel3.ZOrder">
+    <value xml:space="preserve">2</value>
+  </data>
+  <data name="Daylabel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Daylabel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Daylabel4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
+  <data name="Daylabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 2</value>
+  </data>
+  <data name="Daylabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="Daylabel4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Daylabel4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Daylabel4.Name">
+    <value xml:space="preserve">Daylabel4</value>
+  </data>
+  <data name="&gt;&gt;Daylabel4.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Daylabel4.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;Daylabel4.ZOrder">
+    <value xml:space="preserve">3</value>
+  </data>
+  <data name="Daylabel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Daylabel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Daylabel5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
+  <data name="Daylabel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 2</value>
+  </data>
+  <data name="Daylabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="Daylabel5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Daylabel5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Daylabel5.Name">
+    <value xml:space="preserve">Daylabel5</value>
+  </data>
+  <data name="&gt;&gt;Daylabel5.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Daylabel5.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;Daylabel5.ZOrder">
+    <value xml:space="preserve">4</value>
+  </data>
+  <data name="Daylabel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Daylabel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Daylabel6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
+  <data name="Daylabel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 2</value>
+  </data>
+  <data name="Daylabel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="Daylabel6.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="Daylabel6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Daylabel6.Name">
+    <value xml:space="preserve">Daylabel6</value>
+  </data>
+  <data name="&gt;&gt;Daylabel6.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Daylabel6.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;Daylabel6.ZOrder">
+    <value xml:space="preserve">5</value>
+  </data>
+  <data name="Daylabel7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Daylabel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="Daylabel7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
+  <data name="Daylabel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 2</value>
+  </data>
+  <data name="Daylabel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="Daylabel7.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="Daylabel7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;Daylabel7.Name">
+    <value xml:space="preserve">Daylabel7</value>
+  </data>
+  <data name="&gt;&gt;Daylabel7.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Daylabel7.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;Daylabel7.ZOrder">
+    <value xml:space="preserve">6</value>
+  </data>
+  <data name="DayNo1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="DayNo1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="DayNo1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo1.Name">
+    <value xml:space="preserve">DayNo1</value>
+  </data>
+  <data name="&gt;&gt;DayNo1.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo1.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo1.ZOrder">
+    <value xml:space="preserve">7</value>
+  </data>
+  <data name="DayNo2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="DayNo2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo2.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="DayNo2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo2.Name">
+    <value xml:space="preserve">DayNo2</value>
+  </data>
+  <data name="&gt;&gt;DayNo2.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo2.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo2.ZOrder">
+    <value xml:space="preserve">8</value>
+  </data>
+  <data name="DayNo3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 20</value>
+  </data>
+  <data name="DayNo3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo3.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="DayNo3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo3.Name">
+    <value xml:space="preserve">DayNo3</value>
+  </data>
+  <data name="&gt;&gt;DayNo3.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo3.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo3.ZOrder">
+    <value xml:space="preserve">9</value>
+  </data>
+  <data name="DayNo4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="DayNo4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo4.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="DayNo4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo4.Name">
+    <value xml:space="preserve">DayNo4</value>
+  </data>
+  <data name="&gt;&gt;DayNo4.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo4.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo4.ZOrder">
+    <value xml:space="preserve">10</value>
+  </data>
+  <data name="DayNo5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 20</value>
+  </data>
+  <data name="DayNo5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo5.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="DayNo5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo5.Name">
+    <value xml:space="preserve">DayNo5</value>
+  </data>
+  <data name="&gt;&gt;DayNo5.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo5.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo5.ZOrder">
+    <value xml:space="preserve">11</value>
+  </data>
+  <data name="DayNo6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 20</value>
+  </data>
+  <data name="DayNo6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo6.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="DayNo6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo6.Name">
+    <value xml:space="preserve">DayNo6</value>
+  </data>
+  <data name="&gt;&gt;DayNo6.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo6.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo6.ZOrder">
+    <value xml:space="preserve">12</value>
+  </data>
+  <data name="DayNo7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 20</value>
+  </data>
+  <data name="DayNo7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 17</value>
+  </data>
+  <data name="DayNo7.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="DayNo7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo7.Name">
+    <value xml:space="preserve">DayNo7</value>
+  </data>
+  <data name="&gt;&gt;DayNo7.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo7.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo7.ZOrder">
+    <value xml:space="preserve">13</value>
+  </data>
+  <data name="DayNo8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 44</value>
+  </data>
+  <data name="DayNo8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo8.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="DayNo8.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo8.Name">
+    <value xml:space="preserve">DayNo8</value>
+  </data>
+  <data name="&gt;&gt;DayNo8.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo8.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo8.ZOrder">
+    <value xml:space="preserve">14</value>
+  </data>
+  <data name="DayNo9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 44</value>
+  </data>
+  <data name="DayNo9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo9.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="DayNo9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo9.Name">
+    <value xml:space="preserve">DayNo9</value>
+  </data>
+  <data name="&gt;&gt;DayNo9.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo9.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo9.ZOrder">
+    <value xml:space="preserve">15</value>
+  </data>
+  <data name="DayNo10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 44</value>
+  </data>
+  <data name="DayNo10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo10.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="DayNo10.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo10.Name">
+    <value xml:space="preserve">DayNo10</value>
+  </data>
+  <data name="&gt;&gt;DayNo10.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo10.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo10.ZOrder">
+    <value xml:space="preserve">16</value>
+  </data>
+  <data name="DayNo11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 44</value>
+  </data>
+  <data name="DayNo11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo11.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="DayNo11.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo11.Name">
+    <value xml:space="preserve">DayNo11</value>
+  </data>
+  <data name="&gt;&gt;DayNo11.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo11.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo11.ZOrder">
+    <value xml:space="preserve">17</value>
+  </data>
+  <data name="DayNo12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 44</value>
+  </data>
+  <data name="DayNo12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo12.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="DayNo12.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo12.Name">
+    <value xml:space="preserve">DayNo12</value>
+  </data>
+  <data name="&gt;&gt;DayNo12.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo12.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo12.ZOrder">
+    <value xml:space="preserve">18</value>
+  </data>
+  <data name="DayNo13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 44</value>
+  </data>
+  <data name="DayNo13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo13.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="DayNo13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo13.Name">
+    <value xml:space="preserve">DayNo13</value>
+  </data>
+  <data name="&gt;&gt;DayNo13.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo13.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo13.ZOrder">
+    <value xml:space="preserve">19</value>
+  </data>
+  <data name="DayNo14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 44</value>
+  </data>
+  <data name="DayNo14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 17</value>
+  </data>
+  <data name="DayNo14.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="DayNo14.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo14.Name">
+    <value xml:space="preserve">DayNo14</value>
+  </data>
+  <data name="&gt;&gt;DayNo14.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo14.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo14.ZOrder">
+    <value xml:space="preserve">20</value>
+  </data>
+  <data name="DayNo15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo15.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 68</value>
+  </data>
+  <data name="DayNo15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo15.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="DayNo15.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo15.Name">
+    <value xml:space="preserve">DayNo15</value>
+  </data>
+  <data name="&gt;&gt;DayNo15.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo15.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo15.ZOrder">
+    <value xml:space="preserve">21</value>
+  </data>
+  <data name="DayNo16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 68</value>
+  </data>
+  <data name="DayNo16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo16.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="DayNo16.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo16.Name">
+    <value xml:space="preserve">DayNo16</value>
+  </data>
+  <data name="&gt;&gt;DayNo16.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo16.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo16.ZOrder">
+    <value xml:space="preserve">22</value>
+  </data>
+  <data name="DayNo17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo17.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 68</value>
+  </data>
+  <data name="DayNo17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo17.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="DayNo17.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo17.Name">
+    <value xml:space="preserve">DayNo17</value>
+  </data>
+  <data name="&gt;&gt;DayNo17.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo17.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo17.ZOrder">
+    <value xml:space="preserve">23</value>
+  </data>
+  <data name="DayNo18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo18.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 68</value>
+  </data>
+  <data name="DayNo18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo18.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="DayNo18.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo18.Name">
+    <value xml:space="preserve">DayNo18</value>
+  </data>
+  <data name="&gt;&gt;DayNo18.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo18.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo18.ZOrder">
+    <value xml:space="preserve">24</value>
+  </data>
+  <data name="DayNo19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo19.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo19.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 68</value>
+  </data>
+  <data name="DayNo19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo19.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="DayNo19.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo19.Name">
+    <value xml:space="preserve">DayNo19</value>
+  </data>
+  <data name="&gt;&gt;DayNo19.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo19.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo19.ZOrder">
+    <value xml:space="preserve">25</value>
+  </data>
+  <data name="DayNo20.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo20.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 68</value>
+  </data>
+  <data name="DayNo20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo20.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="DayNo20.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo20.Name">
+    <value xml:space="preserve">DayNo20</value>
+  </data>
+  <data name="&gt;&gt;DayNo20.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo20.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo20.ZOrder">
+    <value xml:space="preserve">26</value>
+  </data>
+  <data name="DayNo21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo21.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 68</value>
+  </data>
+  <data name="DayNo21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 17</value>
+  </data>
+  <data name="DayNo21.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="DayNo21.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo21.Name">
+    <value xml:space="preserve">DayNo21</value>
+  </data>
+  <data name="&gt;&gt;DayNo21.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo21.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo21.ZOrder">
+    <value xml:space="preserve">27</value>
+  </data>
+  <data name="DayNo22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo22.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 92</value>
+  </data>
+  <data name="DayNo22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo22.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="DayNo22.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo22.Name">
+    <value xml:space="preserve">DayNo22</value>
+  </data>
+  <data name="&gt;&gt;DayNo22.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo22.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo22.ZOrder">
+    <value xml:space="preserve">28</value>
+  </data>
+  <data name="DayNo23.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo23.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 92</value>
+  </data>
+  <data name="DayNo23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo23.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="DayNo23.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo23.Name">
+    <value xml:space="preserve">DayNo23</value>
+  </data>
+  <data name="&gt;&gt;DayNo23.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo23.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo23.ZOrder">
+    <value xml:space="preserve">29</value>
+  </data>
+  <data name="DayNo24.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo24.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo24.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 92</value>
+  </data>
+  <data name="DayNo24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo24.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="DayNo24.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo24.Name">
+    <value xml:space="preserve">DayNo24</value>
+  </data>
+  <data name="&gt;&gt;DayNo24.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo24.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo24.ZOrder">
+    <value xml:space="preserve">30</value>
+  </data>
+  <data name="DayNo25.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo25.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo25.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 92</value>
+  </data>
+  <data name="DayNo25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo25.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="DayNo25.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo25.Name">
+    <value xml:space="preserve">DayNo25</value>
+  </data>
+  <data name="&gt;&gt;DayNo25.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo25.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo25.ZOrder">
+    <value xml:space="preserve">31</value>
+  </data>
+  <data name="DayNo26.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo26.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo26.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 92</value>
+  </data>
+  <data name="DayNo26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo26.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="DayNo26.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo26.Name">
+    <value xml:space="preserve">DayNo26</value>
+  </data>
+  <data name="&gt;&gt;DayNo26.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo26.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo26.ZOrder">
+    <value xml:space="preserve">32</value>
+  </data>
+  <data name="DayNo27.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo27.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo27.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 92</value>
+  </data>
+  <data name="DayNo27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="DayNo27.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="DayNo27.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo27.Name">
+    <value xml:space="preserve">DayNo27</value>
+  </data>
+  <data name="&gt;&gt;DayNo27.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo27.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo27.ZOrder">
+    <value xml:space="preserve">33</value>
+  </data>
+  <data name="DayNo28.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo28.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo28.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 92</value>
+  </data>
+  <data name="DayNo28.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 17</value>
+  </data>
+  <data name="DayNo28.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="DayNo28.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo28.Name">
+    <value xml:space="preserve">DayNo28</value>
+  </data>
+  <data name="&gt;&gt;DayNo28.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo28.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo28.ZOrder">
+    <value xml:space="preserve">34</value>
+  </data>
+  <data name="DayNo29.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo29.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo29.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 116</value>
+  </data>
+  <data name="DayNo29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 18</value>
+  </data>
+  <data name="DayNo29.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="DayNo29.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo29.Name">
+    <value xml:space="preserve">DayNo29</value>
+  </data>
+  <data name="&gt;&gt;DayNo29.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo29.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo29.ZOrder">
+    <value xml:space="preserve">35</value>
+  </data>
+  <data name="DayNo30.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo30.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo30.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo30.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 116</value>
+  </data>
+  <data name="DayNo30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 18</value>
+  </data>
+  <data name="DayNo30.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="DayNo30.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo30.Name">
+    <value xml:space="preserve">DayNo30</value>
+  </data>
+  <data name="&gt;&gt;DayNo30.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo30.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo30.ZOrder">
+    <value xml:space="preserve">36</value>
+  </data>
+  <data name="DayNo31.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo31.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo31.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 116</value>
+  </data>
+  <data name="DayNo31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 18</value>
+  </data>
+  <data name="DayNo31.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="DayNo31.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo31.Name">
+    <value xml:space="preserve">DayNo31</value>
+  </data>
+  <data name="&gt;&gt;DayNo31.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo31.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo31.ZOrder">
+    <value xml:space="preserve">37</value>
+  </data>
+  <data name="DayNo32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo32.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo32.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 116</value>
+  </data>
+  <data name="DayNo32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 18</value>
+  </data>
+  <data name="DayNo32.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="DayNo32.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo32.Name">
+    <value xml:space="preserve">DayNo32</value>
+  </data>
+  <data name="&gt;&gt;DayNo32.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo32.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo32.ZOrder">
+    <value xml:space="preserve">38</value>
+  </data>
+  <data name="DayNo33.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo33.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo33.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 116</value>
+  </data>
+  <data name="DayNo33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 18</value>
+  </data>
+  <data name="DayNo33.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="DayNo33.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo33.Name">
+    <value xml:space="preserve">DayNo33</value>
+  </data>
+  <data name="&gt;&gt;DayNo33.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo33.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo33.ZOrder">
+    <value xml:space="preserve">39</value>
+  </data>
+  <data name="DayNo34.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo34.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo34.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 116</value>
+  </data>
+  <data name="DayNo34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 18</value>
+  </data>
+  <data name="DayNo34.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="DayNo34.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo34.Name">
+    <value xml:space="preserve">DayNo34</value>
+  </data>
+  <data name="&gt;&gt;DayNo34.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo34.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo34.ZOrder">
+    <value xml:space="preserve">40</value>
+  </data>
+  <data name="DayNo35.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DayNo35.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DayNo35.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="DayNo35.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 116</value>
+  </data>
+  <data name="DayNo35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 18</value>
+  </data>
+  <data name="DayNo35.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="DayNo35.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;DayNo35.Name">
+    <value xml:space="preserve">DayNo35</value>
+  </data>
+  <data name="&gt;&gt;DayNo35.Type">
+    <value xml:space="preserve">System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DayNo35.Parent">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DayNo35.ZOrder">
+    <value xml:space="preserve">41</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 6.75pt, style=Bold</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 29</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 138</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name">
+    <value xml:space="preserve">tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type">
+    <value xml:space="preserve">System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent">
+    <value xml:space="preserve">$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder">
+    <value xml:space="preserve">0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 187</value>
+  </data>
+  <data name="&gt;&gt;$this.Name">
+    <value xml:space="preserve">UmAlQuraControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type">
+    <value xml:space="preserve">System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

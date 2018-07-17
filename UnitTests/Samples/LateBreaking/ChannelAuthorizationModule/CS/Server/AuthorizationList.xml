@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<remotingAuthorization>
+  <allow users="Administrators" />
+  <allow users="Power Users" />
+  <deny users="Guests" />
+</remotingAuthorization>

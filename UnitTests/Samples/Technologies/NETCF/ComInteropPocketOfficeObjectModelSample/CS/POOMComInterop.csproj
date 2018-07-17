@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == ''	">Debug</Configuration>
+    <Platform Condition=" '$(Platform)'	== '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50215</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{392E8269-F37F-4AFF-A4EF-2F56B051C6D0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>
+    </StartupObject>
+    <RootNamespace>POOMComInterop</RootNamespace>
+    <AssemblyName>POOMComInterop</AssemblyName>
+    <DeployDirSuffix>$(AssemblyName)</DeployDirSuffix>
+    <WarningLevel>4</WarningLevel>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>3C41C503-53EF-4c2a-8DD4-A8217CAD115E</PlatformID>
+    <FormFactorID>POCKET_PC_2003_PORTRAIT</FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <HintPath>..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="PocketOutlook, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>.\PocketOutlook.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.Xml.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneParser.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.Csharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

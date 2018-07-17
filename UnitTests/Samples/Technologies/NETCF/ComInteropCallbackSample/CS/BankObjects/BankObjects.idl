@@ -1,0 +1,63 @@
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+    uuid(B140E6B6-20A0-46f5-8942-5EF7B6BC3647),
+	dual,
+	nonextensible,
+	helpstring("IAccountCallback Interface"),
+	pointer_default(unique)
+]
+interface IAccountCallback : IDispatch
+{
+    [id(1)] HRESULT BalanceChanged([in]int newBalance);
+};
+
+[
+	object,
+	uuid(E1D08CB7-CE32-4B52-931C-4FFC52D48BC4),
+	dual,
+	nonextensible,
+	helpstring("IAccount Interface"),
+	pointer_default(unique)
+]
+interface IAccount : IDispatch
+{
+    [id(1)] HRESULT Initialize([in] int initialBalance, [in] IAccountCallback *callbackInterface);
+    [id(2)] HRESULT Deposit([in] int amount);
+    [id(3)] HRESULT Withdraw([in] int amount);
+};
+
+[
+	uuid(AB8F5705-B500-4010-A12C-49100427C198),
+	version(1.0),
+	helpstring("BankObjects 1.0 Type Library")
+]
+library BankObjectsLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(B45E7F99-F50E-4F77-8FEC-F3906082FE0C),
+		helpstring("Account Class")
+	]
+	coclass Account
+	{
+		[default] interface IAccount;
+	};
+};

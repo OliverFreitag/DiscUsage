@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'BankObjects'
+		'BankObjects.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == ''	">Debug</Configuration>
+    <Platform Condition=" '$(Platform)'	== '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.41117</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5FBF69DF-7979-4E1B-A9DE-C25DEEAF409F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>
+    </StartupObject>
+    <RootNamespace>BankClient</RootNamespace>
+    <AssemblyName>BankClient</AssemblyName>
+    <DeployDirSuffix>$(AssemblyName)</DeployDirSuffix>
+    <WarningLevel>4</WarningLevel>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>3C41C503-53EF-4c2a-8DD4-A8217CAD115E</PlatformID>
+    <DeployDeviceID>AE1FD546-ECB8-4553-B0AA-53E129544859</DeployDeviceID>
+    <FormFactorID>POCKET_PC_2003_PORTRAIT</FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.BankObjectsLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Interop.BankObjectsLib.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio 8\SDK\v2.0\CompactFramework\WindowsCE\System.Xml.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

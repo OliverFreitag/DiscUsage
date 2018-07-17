@@ -1,0 +1,15 @@
+Microsoft (R) .NET Build Engine version 1.2.30522.0
+[Microsoft .Net Framework, Version 1.2.30415.0]        
+Copyright (C) 2004 Microsoft Corporation. All rights reserved.
+
+Project "objectpoolingvb"
+
+   Target "Demo" in project "objectpoolingvb.proj"
+      MSBUILD : error MSB0000: The "MsBuild" task was not found.
+   Done building target "Demo" in project "objectpoolingvb.proj" -- FAILED.
+
+   Target "Reg" skipped. Previously built unsuccessfully.
+   Target "Demo" skipped. Previously built unsuccessfully.
+Done building project "objectpoolingvb" -- FAILED.
+
+Build completed in 00:00:00.3592209 time.
