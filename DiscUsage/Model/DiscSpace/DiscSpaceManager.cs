@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscUsage.DiscSpace
+namespace DiscUsage.Model
 {
     public delegate void DiscSpaceDelegate(DiscSpace space);
 

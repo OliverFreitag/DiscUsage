@@ -1,4 +1,4 @@
-﻿using DiscUsage.DiscSpace;
+﻿using DiscUsage.Model;
 using DiscUsage.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -40,7 +40,7 @@ namespace DiscUsage
             discCache.Load(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
         }
 
-        private void DiscSpaceManager_Loaded(DiscSpace.DiscSpace space)
+        private void DiscSpaceManager_Loaded(DiscSpace space)
         {
             viewModel.Add(discSpaceManager.Root.Children);
             DiscSpaceControl.DataContext = viewModel;

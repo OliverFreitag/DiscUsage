@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using DiscUsage.Model;
 
 namespace DiscUsage.ViewModel
 {
@@ -13,19 +14,20 @@ namespace DiscUsage.ViewModel
         {
         }
 
-        public ObservableCollection<DiscSpace.DiscSpace> DiscSpaces
+        public ObservableCollection<DiscSpace> DiscSpaces
         {
             get;
             set;
         }
 
-        public void Add(List<DiscSpace.DiscSpace> spaces)
+        public void Add(List<DiscSpace> spaces)
         {
-            var spacesCollection = new ObservableCollection<DiscSpace.DiscSpace>();
+            var spacesCollection = new ObservableCollection<DiscSpace>();
             foreach(var space in spaces)
             {
                 spacesCollection.Add(space);
             }
+            DiscSpaces = spacesCollection;
         }
     }
 }

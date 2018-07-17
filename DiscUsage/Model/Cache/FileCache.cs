@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace DiscUsage
+namespace DiscUsage.Model
 {
     public class FileCache : InfoCache
     {
@@ -30,5 +30,7 @@ namespace DiscUsage
         }
 
         public bool IsRoot => false;
+
+        public int Count => 1;
     }
 }

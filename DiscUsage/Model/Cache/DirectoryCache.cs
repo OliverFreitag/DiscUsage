@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace DiscUsage
+namespace DiscUsage.Model
 {
     public class DirectoryCache : InfoCache
     {
@@ -33,5 +33,7 @@ namespace DiscUsage
         }
 
         public bool IsRoot => directoryInfo.Parent == null;
+
+        public int Count => directories.Count + files.Count;
     }
 }

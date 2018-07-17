@@ -3,7 +3,7 @@ using DiscUsage;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
-using DiscUsage.DiscSpace;
+using DiscUsage.Model;
 
 namespace UnitTests
 {
@@ -16,7 +16,7 @@ namespace UnitTests
         public void TestAdded()
         {
             var discCache = new DiscCache();
-            var discSpace = new DiscUsage.DiscSpace.DiscSpaceManager();
+            var discSpace = new DiscSpaceManager();
             discCache.Created += discSpace.Added;
             discCache.Load(testDir);
             Assert.AreEqual(discCache.drivesCache.Count, 1);
@@ -32,7 +32,7 @@ namespace UnitTests
         {
             CreatedDiscSpaces.Clear();
             var discCache = new DiscCache();
-            var discSpace = new DiscUsage.DiscSpace.DiscSpaceManager();
+            var discSpace = new DiscSpaceManager();
             discSpaceManager = discSpace;
             discCache.Created += discSpace.Added;
             discSpace.Created += DiscSpace_Created;

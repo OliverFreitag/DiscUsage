@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscUsage.DiscSpace
+namespace DiscUsage.Model
 {
     public class DiscSpace
     {
@@ -20,5 +20,7 @@ namespace DiscUsage.DiscSpace
         }
 
         public Int64 Length => cache.Length;
+        public String Name => cache.Name;
+        public int Count => cache.Count;
     }
 }
