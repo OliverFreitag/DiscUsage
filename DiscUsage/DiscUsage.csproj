@@ -84,6 +84,7 @@
     <Compile Include="ViewModel\DiscSpaceCanvasViewModel.cs" />
     <Compile Include="ViewModel\DiscSpaceRectangle.cs" />
     <Compile Include="ViewModel\DiscSpaceViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\TestCommand.cs" />
     <Compile Include="Views\DiscSpaceCanvasView.xaml.cs">
       <DependentUpon>DiscSpaceCanvasView.xaml</DependentUpon>
