@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace DiscUsage.ViewModel
 {
@@ -22,7 +23,7 @@ namespace DiscUsage.ViewModel
         public double Height => (space.Parent.Level % 2 == 1) ? Size : 300;
         public double Radius => 5;
 
-        public System.Windows.Media.Brush FillColor { get; set; }
+        public Brush FillColor => Brushes.Blue;
 
         private double Size => (double)space.Length / (double)space.Parent.Length * (double)300.0*0.9;
         private double Position => (double)space.LengthOfAllPreviousChildren / (double)space.Parent.Length* (double)300.0;

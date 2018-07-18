@@ -20,16 +20,11 @@ namespace DiscUsage.ViewModel
         public void Add(List<DiscSpace> spaces)
         {
             var spacesCollection = new ObservableCollection<DiscSpaceRectangle>();
-            var x = 0;
          
             foreach (var space in spaces)
             {
-                var discSpaceRectangle = new DiscSpaceRectangle(space)
-                {
-                    FillColor = Brushes.Green
-                };
+                var discSpaceRectangle = new DiscSpaceRectangle(space);
                 spacesCollection.Add(discSpaceRectangle);
-                x += 50;
             }
             DiscSpaceRectangles = spacesCollection;
         }

@@ -25,30 +25,9 @@ namespace DiscUsage.Model
 
         public List<DiscSpace> OrderedChildren => Children.OrderByDescending( x=> x.Length).ToList();
 
-        public int Level
-        {
-            get
-            {
-                if (Parent == null)
-                {
-                    return 0;
-                }
-                return Parent.Level;
-            }
-        }
-
-        public int IndexInParentOrderedCollection
-        {
-            get
-            {
-                if (Parent == null)
-                {
-                    return 0;
-                }
-                return Parent.OrderedChildren.IndexOf(this);
-            }
-        }
-
+        public int Level => (Parent == null) ? 0 : Parent.Level;
+        public int IndexInParentOrderedCollection => (Parent == null) ? 0 : Parent.OrderedChildren.IndexOf(this);
+            
         public long LengthOfAllPreviousChildren =>  Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection<IndexInParentOrderedCollection)
             .Sum(x => x.Length);
 
