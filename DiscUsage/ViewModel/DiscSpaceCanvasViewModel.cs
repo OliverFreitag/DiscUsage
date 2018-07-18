@@ -26,10 +26,6 @@ namespace DiscUsage.ViewModel
             {
                 var discSpaceRectangle = new DiscSpaceRectangle(space)
                 {
-                    X = 10+x,
-                    Y = 10+x,
-                    Width = 10,
-                    Height = 5,
                     FillColor = Brushes.Green
                 };
                 spacesCollection.Add(discSpaceRectangle);

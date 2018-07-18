@@ -24,5 +24,33 @@ namespace DiscUsage.Model
         public int Count => cache.Count;
 
         public List<DiscSpace> OrderedChildren => Children.OrderByDescending( x=> x.Length).ToList();
+
+        public int Level
+        {
+            get
+            {
+                if (Parent == null)
+                {
+                    return 0;
+                }
+                return Parent.Level;
+            }
+        }
+
+        public int IndexInParentOrderedCollection
+        {
+            get
+            {
+                if (Parent == null)
+                {
+                    return 0;
+                }
+                return Parent.OrderedChildren.IndexOf(this);
+            }
+        }
+
+        public long LengthOfAllPreviousChildren =>  Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection<IndexInParentOrderedCollection)
+            .Sum(x => x.Length);
+
     }
 }

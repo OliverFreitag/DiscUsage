@@ -9,13 +9,23 @@ namespace DiscUsage.ViewModel
 {
     public class DiscSpaceRectangle
     {
+        DiscSpace space;
         public DiscSpaceRectangle(DiscSpace space)
         {
+            this.space = space;
         }
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double Width { get; set; }
-        public double Height { get; set; }
+
+        public double X => (space.Parent.Level % 2 == 0) ? Position : 0;
+        public double Y => (space.Parent.Level % 2 == 1) ? Position : 0;
+
+        public double Width => (space.Parent.Level % 2 == 0) ? Size : 300;
+        public double Height => (space.Parent.Level % 2 == 1) ? Size : 300;
+        public double Radius => 5;
+
         public System.Windows.Media.Brush FillColor { get; set; }
+
+        private double Size => (double)space.Length / (double)space.Parent.Length * (double)300.0*0.9;
+        private double Position => (double)space.LengthOfAllPreviousChildren / (double)space.Parent.Length* (double)300.0;
+
     }
 }

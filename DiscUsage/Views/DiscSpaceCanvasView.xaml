@@ -17,7 +17,7 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Rectangle Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding FillColor}">
+                <Rectangle Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding FillColor}" RadiusX="{Binding Radius}" RadiusY="{Binding Radius}">
                     <Rectangle.RenderTransform>
                         <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
                     </Rectangle.RenderTransform>
