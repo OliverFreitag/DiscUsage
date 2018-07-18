@@ -10,23 +10,30 @@ namespace DiscUsage.ViewModel
 {
     public class DiscSpaceRectangle
     {
-        DiscSpace space;
+        private List<Brush> brushes = new List<Brush> { Brushes.Gray, Brushes.Blue, Brushes.Red, Brushes.Green, Brushes.Orange, Brushes.LightBlue, Brushes.Yellow, Brushes.LightGray };
+        public DiscSpace space;
+        private double CanvasWidth=300;
+        private double CanvasHeight = 300;
+
         public DiscSpaceRectangle(DiscSpace space)
         {
             this.space = space;
         }
 
-        public double X => (space.Parent.Level % 2 == 0) ? Position : 0;
-        public double Y => (space.Parent.Level % 2 == 1) ? Position : 0;
+        public double X => (Parent == null) ? 0 : (space.Level % 2 == 1) ? Position + Parent.X: Parent.X;
+        public double Y => (Parent == null) ? 0 : (space.Level % 2 == 0) ? Position + Parent.Y: Parent.Y;
 
-        public double Width => (space.Parent.Level % 2 == 0) ? Size : 300;
-        public double Height => (space.Parent.Level % 2 == 1) ? Size : 300;
-        public double Radius => 5;
+        public double Width => (Parent == null)? CanvasWidth : (space.Level % 2 == 1) ? Size : Parent.Width;
+        public double Height => (Parent == null) ? CanvasHeight : (space.Level % 2 == 0) ? Size : Parent.Height;
+        public double Radius => Math.Min(Width,Height)*0.05;
 
-        public Brush FillColor => new SolidColorBrush(Color.FromRgb(0, 0, (byte)(space.Level *50)));
+        public Brush FillColor => brushes[space.Level%brushes.Count];
 
-        private double Size => (double)space.Length / (double)space.Parent.Length * (double)300.0*0.9;
-        private double Position => (double)space.LengthOfAllPreviousChildren / (double)space.Parent.Length* (double)300.0;
+        public DiscSpaceRectangle Parent { get; internal set; }
+        public List<DiscSpaceRectangle> Children { get; internal set; }
+
+        private double Size => (Parent == null) ? CanvasHeight : (double)space.Length / (double)Parent.space.Length * Parent.Size * (double)0.9;
+        private double Position => (Parent == null) ? 0 : (double)space.LengthOfAllPreviousChildren / (double)Parent.space.Length * Parent.Size;
 
     }
 }

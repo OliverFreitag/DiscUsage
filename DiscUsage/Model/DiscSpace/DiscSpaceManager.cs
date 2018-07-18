@@ -69,5 +69,16 @@ namespace DiscUsage.Model
             }
             return mapping[info];
         }
+
+        public List<DiscSpace> OrderedByLevel
+        {
+            get
+            {
+                var orderedByLevel = Root.ChildrenRecursive.ToList();
+                orderedByLevel.Add(Root);
+                orderedByLevel = orderedByLevel.OrderBy(x => x.Level).ToList();
+                return orderedByLevel;
+            }
+        }
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="UnitTestCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestDiscSpace.cs" />
+    <Compile Include="UnitTestDiscSpaceRectangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

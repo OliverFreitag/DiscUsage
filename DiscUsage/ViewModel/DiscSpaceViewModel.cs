@@ -10,6 +10,7 @@ namespace DiscUsage.ViewModel
 {
     public class DiscSpaceViewModel
     {
+
         public DiscSpaceViewModel()
         {
         }
