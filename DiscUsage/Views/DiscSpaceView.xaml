@@ -15,7 +15,8 @@
             <StackPanel Orientation="Horizontal">
                 <TextBox Text="{Binding Path=Name, Mode=OneWay}" Width="100" Margin="3 5 3 5"/>
                 <TextBox Text="{Binding Path=Length, Mode=OneWay}" Width="100" Margin="3 5 3 5"/>
-                <TextBox Text="{Binding Path=Count, Mode=OneWay}" Width="100" Margin="3 5 3 5"/>
+                <TextBox Text="{Binding Path=Count, Mode=OneWay}" IsReadOnly="True" Focusable="False" Width="100" Margin="3 5 3 5"/>
+                <Image Width="10" Height="10"/>
             </StackPanel>
         </DataTemplate>
     </UserControl.Resources>

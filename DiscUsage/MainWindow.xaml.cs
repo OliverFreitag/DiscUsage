@@ -42,7 +42,7 @@ namespace DiscUsage
 
         private void DiscSpaceManager_Loaded(DiscSpace space)
         {
-            viewModel.Add(discSpaceManager.Root.Children);
+            viewModel.Add(discSpaceManager.Root.OrderedChildren);
             DiscSpaceControl.DataContext = viewModel;
         }
     }

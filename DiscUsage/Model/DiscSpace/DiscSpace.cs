@@ -22,5 +22,7 @@ namespace DiscUsage.Model
         public Int64 Length => cache.Length;
         public String Name => cache.Name;
         public int Count => cache.Count;
+
+        public List<DiscSpace> OrderedChildren => Children.OrderByDescending( x=> x.Length).ToList();
     }
 }
