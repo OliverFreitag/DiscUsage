@@ -49,7 +49,9 @@ namespace DiscUsage
 
         private void DiscSpaceCanvasControl_Loaded(object sender, RoutedEventArgs e)
         {
-            discSpaceCanvasViewModel.Add(discSpaceManager.Root.OrderedChildren);
+            //var allButRootSpaces = discSpaceManager.Mapping.Values.ToList();
+            //allButRootSpaces.Remove(discSpaceManager.Root);
+            discSpaceCanvasViewModel.Add(discSpaceManager.Root.ChildrenRecursive);
             DiscSpaceCanvasControl.DataContext = discSpaceCanvasViewModel;
         }
     }

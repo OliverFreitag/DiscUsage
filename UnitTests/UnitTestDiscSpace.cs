@@ -27,6 +27,7 @@ namespace UnitTests
 
         private List<DiscSpace> CreatedDiscSpaces = new List<DiscSpace>();
         private DiscSpaceManager discSpaceManager = null;
+
         [TestMethod]
         public void TestAddedEvents()
         {
@@ -67,6 +68,29 @@ namespace UnitTests
             }
 
             Assert.AreSame(space, discSpaceManager.Map(space.cache));
+        }
+
+        [TestMethod]
+        public void TestRecursive()
+        {
+            var discCache = new DiscCache();
+            var discSpace = new DiscSpaceManager();
+            discCache.Created += discSpace.Added;
+            discCache.Load(testDir);
+            Assert.AreEqual(discCache.drivesCache.Count, 1);
+            Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
+            Assert.AreEqual(discSpace.Mapping.Count, 38);
+            Assert.AreEqual(discSpace.Root.ChildrenRecursive.Count, discSpace.Mapping.Count-1);
+
+            Assert.AreEqual(discSpace.Root.Level, 0);
+            Assert.AreEqual(discSpace.Root.Children.Count, 3);
+            Assert.AreEqual(discSpace.Root.Children[0].Level, 1);
+            Assert.AreEqual(discSpace.Root.Children[1].Level, 1);
+            Assert.AreEqual(discSpace.Root.Children[2].Level, 1);
+
+            Assert.AreEqual(discSpace.Root.Children[0].Children.Count, 2);
+            Assert.AreEqual(discSpace.Root.Children[0].Children[0].Level, 2);
+            Assert.AreEqual(discSpace.Root.Children[0].Children[1].Level, 2);
         }
     }
 }

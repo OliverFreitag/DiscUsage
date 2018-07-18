@@ -9,7 +9,7 @@ namespace DiscUsage.Model
     public class DiscSpace
     {
         public InfoCache cache;
-       
+
         public List<DiscSpace> Children = new List<DiscSpace>();
         public DiscSpace Parent;
 
@@ -23,9 +23,16 @@ namespace DiscUsage.Model
         public String Name => cache.Name;
         public int Count => cache.Count;
 
+        List<DiscSpace> Flatten(List<DiscSpace> e)
+        {
+            return e.Concat( e.SelectMany(c => Flatten(c.Children))).ToList();
+        }
+
+        public List<DiscSpace> ChildrenRecursive => Flatten(Children);
+
         public List<DiscSpace> OrderedChildren => Children.OrderByDescending( x=> x.Length).ToList();
 
-        public int Level => (Parent == null) ? 0 : Parent.Level;
+        public int Level => (Parent == null) ? 0 : Parent.Level+1;
         public int IndexInParentOrderedCollection => (Parent == null) ? 0 : Parent.OrderedChildren.IndexOf(this);
             
         public long LengthOfAllPreviousChildren =>  Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection<IndexInParentOrderedCollection)
