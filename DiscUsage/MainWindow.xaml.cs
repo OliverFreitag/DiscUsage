@@ -29,7 +29,8 @@ namespace DiscUsage
 
         private DiscCache discCache = new DiscCache();
         private DiscSpaceManager discSpaceManager = new DiscSpaceManager();
-        private DiscSpaceViewModel viewModel = new DiscSpaceViewModel();
+        private DiscSpaceViewModel discSpaceViewModel = new DiscSpaceViewModel();
+        private DiscSpaceCanvasViewModel discSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
 
         private void DiscSpaceControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -42,8 +43,14 @@ namespace DiscUsage
 
         private void DiscSpaceManager_Loaded(DiscSpace space)
         {
-            viewModel.Add(discSpaceManager.Root.OrderedChildren);
-            DiscSpaceControl.DataContext = viewModel;
+            discSpaceViewModel.Add(discSpaceManager.Root.OrderedChildren);
+            DiscSpaceControl.DataContext = discSpaceViewModel;
+        }
+
+        private void DiscSpaceCanvasControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            discSpaceCanvasViewModel.Add(discSpaceManager.Root.OrderedChildren);
+            DiscSpaceCanvasControl.DataContext = discSpaceCanvasViewModel;
         }
     }
 }

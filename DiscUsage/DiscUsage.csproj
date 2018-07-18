@@ -81,7 +81,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\DiscSpaceCanvasViewModel.cs" />
+    <Compile Include="ViewModel\DiscSpaceRectangle.cs" />
     <Compile Include="ViewModel\DiscSpaceViewModel.cs" />
+    <Compile Include="Views\DiscSpaceCanvasView.xaml.cs">
+      <DependentUpon>DiscSpaceCanvasView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DiscSpaceView.xaml.cs">
       <DependentUpon>DiscSpaceView.xaml</DependentUpon>
     </Compile>
@@ -104,6 +109,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\DiscSpaceCanvasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DiscSpaceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

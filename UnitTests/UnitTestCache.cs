@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DiscUsage;
 using System.Collections.Generic;
 using System.Linq;
+using DiscUsage.Model;
 
 namespace UnitTests
 {
