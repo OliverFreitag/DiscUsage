@@ -12,7 +12,7 @@
     
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type data:DiscSpace}">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" >
                 <TextBox Text="{Binding Path=Name, Mode=OneWay}" Width="100" Margin="3 5 3 5"/>
                 <TextBox Text="{Binding Path=Length, Mode=OneWay}" Width="100" Margin="3 5 3 5"/>
                 <TextBox Text="{Binding Path=Count, Mode=OneWay}" IsReadOnly="True" Focusable="False" Width="100" Margin="3 5 3 5"/>
@@ -22,6 +22,7 @@
     </UserControl.Resources>
     
     <Grid>
-        <ListBox ItemsSource="{Binding DiscSpaces}"/>
+        <ListBox ItemsSource="{Binding DiscSpaces}" SelectedItem = "{Binding SelectedDiscSpace}"/>
+        
     </Grid>
 </UserControl>

@@ -15,5 +15,10 @@
         </Grid.RowDefinitions>
         <views:DiscSpaceView x:Name="DiscSpaceControl" Loaded="DiscSpaceControl_Loaded" Grid.Row="0" />
         <views:DiscSpaceCanvasView x:Name="DiscSpaceCanvasControl" Loaded="DiscSpaceCanvasControl_Loaded" Grid.Row="1" />
+        <Button Content = "Delete" 
+            Command = "{Binding DeleteCommand}"
+            HorizontalAlignment = "Left" 
+            VerticalAlignment = "Top" 
+            Width = "75" Grid.Row="2" />
     </Grid>
 </Window>

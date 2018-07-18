@@ -30,7 +30,7 @@ namespace DiscUsage.ViewModel
         public double Height => (Parent == null) ? CanvasHeight : (space.Level % 2 == 0) ? Size : Parent.Height-Margin;
         public double Radius => Math.Min(_CornerRadius, Math.Min(Width,Height)/2);
 
-        public Brush FillColor => Brushes.Blue; //brushes[space.Level%brushes.Count];
+        public Brush FillColor => brushes[space.Level%brushes.Count];
         public double StrokeWidth => this._strokeWidth;
 
         public DiscSpaceRectangle Parent { get; internal set; }
