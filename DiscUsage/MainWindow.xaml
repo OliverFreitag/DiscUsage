@@ -14,14 +14,8 @@
         
         mc:Ignorable="d"
         Title="Disc Usage" Height="800" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <views:DiscSpaceView x:Name="DiscSpaceControl" Loaded="DiscSpaceControl_Loaded" Grid.Row="0" />
-        <views:DiscSpaceCanvasView x:Name="DiscSpaceCanvasControl" Loaded="DiscSpaceCanvasControl_Loaded" Grid.Row="1" />
-
-    </Grid>
+    <StackPanel>
+        <views:DiscSpaceView x:Name="DiscSpaceControl" Loaded="DiscSpaceControl_Loaded" />
+        <views:DiscSpaceCanvasView x:Name="DiscSpaceCanvasControl" Loaded="DiscSpaceCanvasControl_Loaded" />
+    </StackPanel>
 </Window>

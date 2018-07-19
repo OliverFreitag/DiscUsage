@@ -21,33 +21,25 @@
             </StackPanel>
         </DataTemplate>
     </UserControl.Resources>
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding DiscSpaces}" SelectedItem = "{Binding SelectedDiscSpace}"/>
 
-        <Button Grid.Row="0" Grid.Column="0" Content = "Delete" 
+    <StackPanel >
+        <StackPanel Orientation="Horizontal">
+        <Button  Content = "Delete" 
             Command = "{Binding DeleteCommand}"
             HorizontalAlignment = "Left" 
             VerticalAlignment = "Top" 
             Width = "75" />
-        <Button Grid.Row="0" Grid.Column="1" Content = "Backup" 
-            Command = "{Binding DeleteCommand}"
+        <Button  Content = "Backup" 
+            Command = "{Binding BackupCommand}"
             HorizontalAlignment = "Left" 
             VerticalAlignment = "Top" 
             Width = "75" />
-        <Button Grid.Row="0" Grid.Column="2" Content = "Hide" 
-            Command = "{Binding DeleteCommand}"
+        <Button Content = "Hide" 
+            Command = "{Binding HideCommand}"
             HorizontalAlignment = "Left" 
             VerticalAlignment = "Top" 
             Width = "75" />
-    </Grid>
+        </StackPanel>
+        <ListBox ItemsSource="{Binding DiscSpaces}" SelectedItem = "{Binding SelectedDiscSpace}"/>
+    </StackPanel>
 </UserControl>

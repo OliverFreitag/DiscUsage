@@ -11,10 +11,14 @@ namespace DiscUsage.ViewModel
     public class DiscSpaceViewModel
     {
         public TestCommand DeleteCommand { get; set; }
+        public TestCommand BackupCommand { get; set; }
+        public TestCommand HideCommand { get; set; }
 
         public DiscSpaceViewModel()
         {
             DeleteCommand = new TestCommand(OnDelete, CanDelete);
+            BackupCommand = new TestCommand(OnDelete, CanBackup);
+            HideCommand = new TestCommand(OnDelete, CanHide);
         }
 
         private DiscSpace _selectedDiscSpace;
@@ -37,7 +41,27 @@ namespace DiscUsage.ViewModel
             DiscSpaces.Remove(SelectedDiscSpace);
         }
 
+        private void OnBackup()
+        {
+            DiscSpaces.Remove(SelectedDiscSpace);
+        }
+
+        private void OnHide()
+        {
+            DiscSpaces.Remove(SelectedDiscSpace);
+        }
+
         private bool CanDelete()
+        {
+            return SelectedDiscSpace != null;
+        }
+
+        private bool CanHide()
+        {
+            return SelectedDiscSpace != null;
+        }
+
+        private bool CanBackup()
         {
             return SelectedDiscSpace != null;
         }
