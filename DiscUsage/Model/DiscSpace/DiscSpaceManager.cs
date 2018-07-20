@@ -11,6 +11,7 @@ namespace DiscUsage.Model
     public class DiscSpaceManager
     {
         public event DiscSpaceDelegate Created;
+        public event DiscSpaceDelegate Updated;
         public event DiscSpaceDelegate Loaded;
 
         public DiscSpace Root;
@@ -25,6 +26,15 @@ namespace DiscUsage.Model
         public void Load(InfoCache info)
         {
             Loaded?.Invoke(Map(info));
+        }
+
+        private void UpdateCurrentAndAllParents(DiscSpace current)
+        {
+            Updated?.Invoke(current);
+            if (current.Parent != null)
+            {
+                UpdateCurrentAndAllParents(current.Parent);
+            }
         }
 
         public void Added(InfoCache info, bool forceCreation = false)
@@ -45,6 +55,10 @@ namespace DiscUsage.Model
                 {
                     Added(info.Parent, true);
                     parentSpace = Map(info.Parent);
+                }
+                else
+                {
+                    UpdateCurrentAndAllParents(parentSpace);
                 }
             }
             var space = new DiscSpace(info, parentSpace);

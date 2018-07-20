@@ -17,7 +17,7 @@ namespace DiscUsage.ViewModels
         private double CanvasWidth => _model.Height;
         private double CanvasHeight => _model.Height;
         private double Margin = 6;
-        private double _strokeWidth = 2;
+        private double _strokeWidth = 1;
         private double _CornerRadius=8;
         DiscSpaceCanvasViewModel _model;
 

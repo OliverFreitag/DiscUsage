@@ -19,14 +19,17 @@ namespace UnitTests
             var discSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
             discCache.Created += discSpace.Added;
             discSpace.Created += discSpaceCanvasViewModel.Add;
+            discSpace.Updated += discSpaceCanvasViewModel.Update;
             discCache.Load(testDir);
 
             
             discSpaceCanvasViewModel.Loaded();
+
             foreach(var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
             {
                 Assert.AreEqual(rectangle.Parent, discSpaceCanvasViewModel.Map(rectangle.space.Parent));
             }
+
             Assert.IsNotNull(discSpaceCanvasViewModel.Root);
 
             Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Where(x => x.Parent == discSpaceCanvasViewModel.Root).Count(), 3);
@@ -67,11 +70,6 @@ namespace UnitTests
 
             Assert.AreEqual(second.Children[0].Y, second.Y+3);
             Assert.AreNotEqual(second.Children[1].Y, second.Y+3);
-        }
-
-        private void disc(DiscSpace space)
-        {
-            throw new NotImplementedException();
         }
     }
 }

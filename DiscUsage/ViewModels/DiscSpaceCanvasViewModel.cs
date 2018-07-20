@@ -41,6 +41,13 @@ namespace DiscUsage.ViewModels
             get { return _FocusedRectangle; }
             set { SetProperty(ref _FocusedRectangle, value); }
         }
+
+        public void Update(DiscSpace space)
+        {
+            var discSpaceRectangle = Map(space);
+            discSpaceRectangle.Children = discSpaceRectangle.space.OrderedChildren.ConvertAll(x => Map(x));
+        }
+
         public void Add(DiscSpace space)
         {
             var discSpaceRectangle = new DiscSpaceRectangle(space, this);
@@ -55,35 +62,12 @@ namespace DiscUsage.ViewModels
             }
             if (discSpaceRectangle.Parent == null)
             {
-                //var root = discSpaceRectangle;
-                //root.Children = root.space.OrderedChildren.ConvertAll(x => Map(x));
                 Root = discSpaceRectangle;
-                // DiscSpaceRectangles.Remove(root);
             }
         }
+
         public void Loaded()
         {
-            //var spacesCollection = new ObservableCollection<DiscSpaceRectangle>();
-
-            //foreach (var space in spaces)
-            //{
-            //    Add(space);
-            //}
-
-            //foreach (var rectangle in mapping.Values)
-            //{
-            //    //if (rectangle.space.Parent != null)
-            //    //{
-            //    //    rectangle.Parent = mapping[rectangle.space.Parent];
-            //    //    rectangle.Children = rectangle.space.OrderedChildren.ConvertAll(x => Map(x));
-            //    //}
-            //}
-
-           // DiscSpaceRectangles = spacesCollection;
-            //var root = DiscSpaceRectangles.First(x => x.Parent == null);
-            //root.Children = root.space.OrderedChildren.ConvertAll(x => Map(x));
-            //Root = root;
-            //DiscSpaceRectangles.Remove(root);
             FocusedRectangle = Root;
             RaisePropertyChanged("DiscSpaceRectangles");
         }
