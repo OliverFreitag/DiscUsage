@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace DiscUsage.ViewModel
+namespace DiscUsage.ViewModels
 {
     public class DiscSpaceRectangle : BindableBase
     {
@@ -28,11 +28,6 @@ namespace DiscUsage.ViewModel
             FocusChangedCommand = new DelegateCommand<string>(OnFocus);
         }
         public DelegateCommand<string> FocusChangedCommand { get; set; }
-
-        public bool CanFocus()
-        {
-            return true;
-        }
 
         public void OnFocus(string parameter)
         {

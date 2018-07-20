@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DiscUsage.ViewModel
+namespace DiscUsage.ViewModels
 {
     public class TestCommand:ICommand
     {

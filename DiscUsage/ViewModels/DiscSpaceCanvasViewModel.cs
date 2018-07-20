@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.ComponentModel;
 using Prism.Mvvm;
 
-namespace DiscUsage.ViewModel
+namespace DiscUsage.ViewModels
 {
     public class DiscSpaceCanvasViewModel : BindableBase
     {
@@ -40,9 +40,6 @@ namespace DiscUsage.ViewModel
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
         public void Add(List<DiscSpace> spaces)
         {
             var spacesCollection = new ObservableCollection<DiscSpaceRectangle>();
@@ -68,6 +65,7 @@ namespace DiscUsage.ViewModel
             root.Children = root.space.OrderedChildren.ConvertAll(x => Map(x));
             Root = root;
             DiscSpaceRectangles.Remove(root);
+            FocusedRectangle = Root;
         }
 
         public DiscSpaceRectangle Map(DiscSpace space)

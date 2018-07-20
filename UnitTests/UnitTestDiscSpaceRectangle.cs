@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using DiscUsage.Model;
-using DiscUsage.ViewModel;
+using DiscUsage.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests

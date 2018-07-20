@@ -3,9 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:viewModel="clr-namespace:DiscUsage.ViewModel"
+      xmlns:viewModel="clr-namespace:DiscUsage.ViewModels"
       xmlns:data="clr-namespace:DiscUsage.Model"
-              xmlns:prism="http://prismlibrary.com/"
+        xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
       xmlns:local="clr-namespace:DiscUsage.Views"
       mc:Ignorable="d" 
@@ -40,6 +40,6 @@
             VerticalAlignment = "Top" 
             Width = "75" />
         </StackPanel>
-        <ListBox ItemsSource="{Binding DiscSpaces}" SelectedItem = "{Binding SelectedDiscSpace}"/>
+        <ListBox ItemsSource="{Binding SourceDiscSpaces}" SelectedItem = "{Binding SelectedDiscSpace}"/>
     </StackPanel>
 </UserControl>

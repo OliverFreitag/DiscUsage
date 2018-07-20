@@ -6,7 +6,9 @@
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:local="clr-namespace:DiscUsage.Views"
              xmlns:data="clr-namespace:DiscUsage.Model"
-             xmlns:viewModel="clr-namespace:DiscUsage.ViewModel"
+             xmlns:viewModel="clr-namespace:DiscUsage.ViewModels"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
@@ -22,7 +24,7 @@
                            RadiusX="{Binding Radius}" RadiusY="{Binding Radius}" 
                            Stroke="White" StrokeThickness="{Binding StrokeWidth}" Opacity="{Binding Opacity}">
                         <Rectangle.RenderTransform>
-                            <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                            <TranslateTransform X="{Binding X, Mode=OneWay}" Y="{Binding Y, Mode=OneWay}"/>
                         </Rectangle.RenderTransform>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseEnter">

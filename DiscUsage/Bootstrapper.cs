@@ -1,30 +1,21 @@
-﻿using Prism.Mef;
+﻿using Microsoft.Practices.Unity;
 using Prism.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using DiscUsage.Views;
 
 namespace DiscUsage
 {
-    public class Bootstrapper : UnityBootstrapper
+    class Bootstrapper : UnityBootstrapper
     {
-         
-        //protected override void ConfigureAggregateCatalog()
-        //{
-        //    base.ConfigureAggregateCatalog();
-        //}
+        protected override DependencyObject CreateShell()
+        {
+            return Container.Resolve<MainWindow>();
+        }
 
-        //protected override DependencyObject CreateShell()
-        //{
-        //    return base.CreateShell();
-        //}
+        protected override void InitializeShell()
+        {
+            Application.Current.MainWindow.Show();
+        }
 
-        //protected override void InitializeShell()
-        //{
-        //    base.InitializeShell();
-        //}
     }
 }
