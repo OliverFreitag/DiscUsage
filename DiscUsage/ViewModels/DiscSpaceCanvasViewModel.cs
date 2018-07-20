@@ -19,14 +19,14 @@ namespace DiscUsage.ViewModels
         {
         }
 
-        private double _Height=800;
+        private double _Height=600;
         public double Height
         {
             get { return _Height; }
             set { SetProperty(ref _Height, value); }
         }
 
-        private ObservableCollection<DiscSpaceRectangle> _DiscSpaceRectangles;
+        private ObservableCollection<DiscSpaceRectangle> _DiscSpaceRectangles=new ObservableCollection<DiscSpaceRectangle>();
         public ObservableCollection<DiscSpaceRectangle> DiscSpaceRectangles
         {
             get { return _DiscSpaceRectangles; }
@@ -41,32 +41,49 @@ namespace DiscUsage.ViewModels
             get { return _FocusedRectangle; }
             set { SetProperty(ref _FocusedRectangle, value); }
         }
-
-        public void Add(List<DiscSpace> spaces)
+        public void Add(DiscSpace space)
         {
-            var spacesCollection = new ObservableCollection<DiscSpaceRectangle>();
+            var discSpaceRectangle = new DiscSpaceRectangle(space, this);
 
-            foreach (var space in spaces)
+            _DiscSpaceRectangles.Add(discSpaceRectangle);
+            mapping[space] = discSpaceRectangle;
+
+            if (discSpaceRectangle.space.Parent != null)
             {
-                var discSpaceRectangle = new DiscSpaceRectangle(space,this);
-                spacesCollection.Add(discSpaceRectangle);
-                mapping[space] = discSpaceRectangle;
+                discSpaceRectangle.Parent = mapping[discSpaceRectangle.space.Parent];
+                discSpaceRectangle.Parent.Children = discSpaceRectangle.Parent.space.OrderedChildren.ConvertAll(x => Map(x));
             }
-
-            foreach (var rectangle in mapping.Values)
+            if (discSpaceRectangle.Parent == null)
             {
-                if (rectangle.space.Parent != null)
-                {
-                    rectangle.Parent = mapping[rectangle.space.Parent];
-                    rectangle.Children = rectangle.space.OrderedChildren.ConvertAll(x => Map(x));
-                }
+                //var root = discSpaceRectangle;
+                //root.Children = root.space.OrderedChildren.ConvertAll(x => Map(x));
+                Root = discSpaceRectangle;
+                // DiscSpaceRectangles.Remove(root);
             }
+        }
+        public void Loaded()
+        {
+            //var spacesCollection = new ObservableCollection<DiscSpaceRectangle>();
 
-            DiscSpaceRectangles = spacesCollection;
-            var root = DiscSpaceRectangles.First(x => x.Parent == null);
-            root.Children = root.space.OrderedChildren.ConvertAll(x => Map(x));
-            Root = root;
-            DiscSpaceRectangles.Remove(root);
+            //foreach (var space in spaces)
+            //{
+            //    Add(space);
+            //}
+
+            //foreach (var rectangle in mapping.Values)
+            //{
+            //    //if (rectangle.space.Parent != null)
+            //    //{
+            //    //    rectangle.Parent = mapping[rectangle.space.Parent];
+            //    //    rectangle.Children = rectangle.space.OrderedChildren.ConvertAll(x => Map(x));
+            //    //}
+            //}
+
+           // DiscSpaceRectangles = spacesCollection;
+            //var root = DiscSpaceRectangles.First(x => x.Parent == null);
+            //root.Children = root.space.OrderedChildren.ConvertAll(x => Map(x));
+            //Root = root;
+            //DiscSpaceRectangles.Remove(root);
             FocusedRectangle = Root;
             RaisePropertyChanged("DiscSpaceRectangles");
         }

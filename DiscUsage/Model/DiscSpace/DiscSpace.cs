@@ -20,6 +20,7 @@ namespace DiscUsage.Model
         }
 
         public Int64 Length => cache.Length;
+        public Int64 ParentLength => cache.Parent.Length;
         public String Name => cache.Name;
         public String FullName => cache.FullName;
         public int Count => cache.Count;

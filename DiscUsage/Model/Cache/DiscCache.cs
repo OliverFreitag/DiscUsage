@@ -21,7 +21,11 @@ namespace DiscUsage.Model
 
         public void Load(string directory)
         {
-            Load(directory,null);
+            Load(directory, null);
+           // var task = Task.Run(() =>
+           //     Load(directory, null));
+
+           //task.Wait();
         }
 
         public void Load(string directory, InfoCache parent)

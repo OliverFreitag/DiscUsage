@@ -16,11 +16,13 @@ namespace UnitTests
         {
             var discCache = new DiscCache();
             var discSpace = new DiscSpaceManager();
+            var discSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
             discCache.Created += discSpace.Added;
+            discSpace.Created += discSpaceCanvasViewModel.Add;
             discCache.Load(testDir);
 
-            var discSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
-            discSpaceCanvasViewModel.Add(discSpace.OrderedByLevel);
+            
+            discSpaceCanvasViewModel.Loaded();
             foreach(var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
             {
                 Assert.AreEqual(rectangle.Parent, discSpaceCanvasViewModel.Map(rectangle.space.Parent));
@@ -65,6 +67,11 @@ namespace UnitTests
 
             Assert.AreEqual(second.Children[0].Y, second.Y+3);
             Assert.AreNotEqual(second.Children[1].Y, second.Y+3);
+        }
+
+        private void disc(DiscSpace space)
+        {
+            throw new NotImplementedException();
         }
     }
 }
