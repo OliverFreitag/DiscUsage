@@ -14,7 +14,7 @@ namespace DiscUsage.ViewModels
     {
         public MainWindowViewModel()
         {
-            Load();
+           // Load();
             LoadCommand = new DelegateCommand(Load).ObservesCanExecute(()=>CanLoad);
         }
 

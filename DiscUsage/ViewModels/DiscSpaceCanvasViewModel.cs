@@ -66,6 +66,8 @@ namespace DiscUsage.ViewModels
             Root = root;
             DiscSpaceRectangles.Remove(root);
             FocusedRectangle = Root;
+            RaisePropertyChanged("DiscSpaceRectangles");
+
         }
 
         public DiscSpaceRectangle Map(DiscSpace space)
