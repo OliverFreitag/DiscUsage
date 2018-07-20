@@ -29,15 +29,10 @@ namespace DiscUsage.ViewModels
 
         public DiscSpace SelectedDiscSpace
         {
-            get
-            {
-                return _selectedDiscSpace;
-            }
-            set
-            {
-                _selectedDiscSpace = value;
+            get { return _selectedDiscSpace; }
+            set {
+                SetProperty(ref _selectedDiscSpace, value);
                 RaisePropertyChanged("IsDiscSpaceSelected");
-                RaisePropertyChanged("SelectedDiscSpace");
             }
         }
 

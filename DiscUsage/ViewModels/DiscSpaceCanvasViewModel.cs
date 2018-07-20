@@ -23,28 +23,23 @@ namespace DiscUsage.ViewModels
         public double Height
         {
             get { return _Height; }
-            set { _Height = value; }
+            set { SetProperty(ref _Height, value); }
         }
 
+        private ObservableCollection<DiscSpaceRectangle> _DiscSpaceRectangles;
         public ObservableCollection<DiscSpaceRectangle> DiscSpaceRectangles
         {
-            get;
-            set;
+            get { return _DiscSpaceRectangles; }
+            set { SetProperty(ref _DiscSpaceRectangles,value); }
         }
 
         public DiscSpaceRectangle Root;
+
         private DiscSpaceRectangle _FocusedRectangle;
         public DiscSpaceRectangle FocusedRectangle
         {
             get { return _FocusedRectangle; }
-            set
-            {
-                if (_FocusedRectangle != value)
-                {
-                    _FocusedRectangle = value;
-                    RaisePropertyChanged("FocusedRectangle");
-                }
-            }
+            set { SetProperty(ref _FocusedRectangle, value); }
         }
 
         public void Add(List<DiscSpace> spaces)

@@ -24,10 +24,24 @@ namespace DiscUsage.ViewModels
         public DiscSpaceViewModel DiscSpaceViewModel = new DiscSpaceViewModel();
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
 
-        public bool IsLoaded { get; set; }
-        public bool IsLoading { get; set; }
-        public bool CanLoad => !IsLoaded || !IsLoading;
+        private bool _IsLoaded;
+        public bool IsLoaded {
+            get { return _IsLoaded; }
+            set {
+                SetProperty(ref _IsLoaded, value);
+                RaisePropertyChanged("CanLoad");
+            }
+        }
 
+        private bool _IsLoading;
+        public bool IsLoading {
+            get { return _IsLoading; }
+            set {
+                SetProperty(ref _IsLoading, value);
+                RaisePropertyChanged("CanLoad");
+            }
+        }
+        public bool CanLoad => !IsLoaded || !IsLoading;
 
         public ObservableCollection<DiscSpace> DiscSpaces => DiscSpaceViewModel.SourceDiscSpaces;
 
