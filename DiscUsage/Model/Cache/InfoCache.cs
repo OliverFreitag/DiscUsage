@@ -11,6 +11,7 @@ namespace DiscUsage.Model
         Int64 Length { get; }
         int Count { get; }
         string Name { get; }
+        string FullName { get; }
         InfoCache Parent { get; }
         bool IsRoot { get; }
     }

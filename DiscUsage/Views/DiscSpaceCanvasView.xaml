@@ -39,6 +39,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <TextBox Text="{Binding FocusedRectangle.Name, Mode=OneWay}"/>
+        <TextBox Text="{Binding FocusedRectangle.FullName, Mode=OneWay}"/>
     </StackPanel>
 </UserControl>

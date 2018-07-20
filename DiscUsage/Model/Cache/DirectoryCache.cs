@@ -35,5 +35,7 @@ namespace DiscUsage.Model
         public bool IsRoot => directoryInfo.Parent == null;
 
         public int Count => directories.Count + files.Count;
+
+        public string FullName => directoryInfo.FullName;
     }
 }

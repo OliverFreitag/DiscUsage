@@ -21,6 +21,7 @@ namespace DiscUsage.Model
 
         public Int64 Length => cache.Length;
         public String Name => cache.Name;
+        public String FullName => cache.FullName;
         public int Count => cache.Count;
 
         List<DiscSpace> Flatten(List<DiscSpace> e)

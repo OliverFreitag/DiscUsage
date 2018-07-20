@@ -32,5 +32,7 @@ namespace DiscUsage.Model
         public bool IsRoot => false;
 
         public int Count => 1;
+
+        public string FullName => file.FullName;
     }
 }
