@@ -11,8 +11,9 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}">
+    
+    <StackPanel Orientation="Vertical">
+        <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}" Height="{Binding Height}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas Background="LightGray"/>

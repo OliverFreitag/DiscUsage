@@ -14,8 +14,8 @@ namespace DiscUsage.ViewModels
     {
         private List<Brush> brushes = new List<Brush> { Brushes.Gray, Brushes.Blue, Brushes.Red, Brushes.Green, Brushes.Orange, Brushes.LightBlue, Brushes.Yellow, Brushes.LightGray };
         public DiscSpace space;
-        private double CanvasWidth=600;
-        private double CanvasHeight = 600;
+        private double CanvasWidth => _model.Height;
+        private double CanvasHeight => _model.Height;
         private double Margin = 6;
         private double _strokeWidth = 2;
         private double _CornerRadius=8;

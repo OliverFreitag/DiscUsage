@@ -19,6 +19,13 @@ namespace DiscUsage.ViewModels
         {
         }
 
+        private double _Height=800;
+        public double Height
+        {
+            get { return _Height; }
+            set { _Height = value; }
+        }
+
         public ObservableCollection<DiscSpaceRectangle> DiscSpaceRectangles
         {
             get;
@@ -67,7 +74,6 @@ namespace DiscUsage.ViewModels
             DiscSpaceRectangles.Remove(root);
             FocusedRectangle = Root;
             RaisePropertyChanged("DiscSpaceRectangles");
-
         }
 
         public DiscSpaceRectangle Map(DiscSpace space)
