@@ -23,7 +23,7 @@ namespace UnitTests
             discCache.LoadAsync(testDir).Wait();
 
             
-            discSpaceCanvasViewModel.Loaded();
+            discSpaceCanvasViewModel.Loaded(null);
 
             foreach(var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
             {
@@ -37,6 +37,8 @@ namespace UnitTests
             Assert.AreEqual(discSpaceCanvasViewModel.Root.Children[0].Height, 600 - 6);
             Assert.AreEqual(discSpaceCanvasViewModel.Root.Children[1].Height, 600 - 6);
             Assert.AreEqual(discSpaceCanvasViewModel.Root.Children[2].Height, 600 - 6);
+
+            //Assert.AreEqual(discSpaceCanvasViewModel.Root.Children[2].Width + discSpaceCanvasViewModel.Root.Children[2].X, 600 - 6);
 
             Assert.AreEqual(discSpaceCanvasViewModel.Root.Children[0].X, 3);
             Assert.AreNotEqual(discSpaceCanvasViewModel.Root.Children[1].X, 3);

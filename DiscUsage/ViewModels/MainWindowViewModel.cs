@@ -54,11 +54,12 @@ namespace DiscUsage.ViewModels
             discSpaceManager.Loaded += DiscSpaceManager_Loaded;
             discSpaceManager.Created += DiscSpaceCanvasViewModel.Add;
             discSpaceManager.Updated += DiscSpaceCanvasViewModel.Update;
+            discSpaceManager.Loaded += DiscSpaceCanvasViewModel.Loaded;
 
             var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
             //var task = discCache.LoadAsync(@"C:\Users\Oliver");
 
-            DiscSpaceCanvasControl_Loaded();
+            //DiscSpaceCanvasControl_Loaded();
             IsLoaded = true;
         }
 
@@ -73,7 +74,7 @@ namespace DiscUsage.ViewModels
 
         private void DiscSpaceCanvasControl_Loaded()
         {
-            DiscSpaceCanvasViewModel.Loaded();
+            DiscSpaceCanvasViewModel.Loaded(null);
             RaisePropertyChanged("DiscSpaceCanvasViewModel");
             //DiscSpaceCanvasControl.DataContext = discSpaceCanvasViewModel;
         }

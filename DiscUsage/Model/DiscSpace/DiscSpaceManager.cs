@@ -72,11 +72,8 @@ namespace DiscUsage.Model
             {
                 Root = space;
             }
-            //await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
-            //{
-                //UI code here
-                Created?.Invoke(space);
-            //});
+
+            Created?.Invoke(space);
             
         }
 

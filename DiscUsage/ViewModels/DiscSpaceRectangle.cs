@@ -71,7 +71,7 @@ namespace DiscUsage.ViewModels
         public DiscSpaceRectangle Parent { get; internal set; }
         public List<DiscSpaceRectangle> Children => space.OrderedChildren.ConvertAll(x => _model.Map(x));
         public string Name => space.Name;
-        public string FullName => space.FullName;
+        public string FullName => space.FullName+":"+Size.ToString();
 
         private double Size => (Parent == null) ? CanvasHeight : (double)space.Length / (double)Parent.space.Length * Parent.Size - Margin;
         private double Position => (Parent == null) ? 0 : (double)space.LengthOfAllPreviousChildren / (double)Parent.space.Length * Parent.Size+Margin/2;

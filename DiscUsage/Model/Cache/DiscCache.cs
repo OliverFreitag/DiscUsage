@@ -60,6 +60,18 @@ namespace DiscUsage.Model
             }
         }
 
+        private void RaiseLoadedEvent(InfoCache cache)
+        {
+            if (_uiContext == null)
+            {
+                Loaded?.Invoke(cache);
+            }
+            else
+            {
+                _uiContext.Send(x => Loaded?.Invoke(cache), null);
+            }
+        }
+
         private DirectoryCache Load(InfoCache parent,DirectoryInfo directory)
         {
             var directoryCache = new DirectoryCache(directory, parent);
@@ -80,7 +92,7 @@ namespace DiscUsage.Model
             }
             if (parent == null)
             {
-                Loaded?.Invoke(null);
+                RaiseLoadedEvent(null);
             }
             return directoryCache;
         }

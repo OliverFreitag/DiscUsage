@@ -68,13 +68,12 @@ namespace DiscUsage.ViewModels
             {
                 Root = discSpaceRectangle;
             }
-            foreach (var s in DiscSpaceRectangles)
-            {
-                s.RaisePropertiesChanged();
-            }
+
+            RaiseAllEvents();
+            
         }
 
-        public void Loaded()
+        public void Loaded(DiscSpace space)
         {
             FocusedRectangle = Root;
             RaisePropertyChanged("DiscSpaceRectangles");
@@ -82,6 +81,7 @@ namespace DiscUsage.ViewModels
             {
                 s.RaisePropertiesChanged();
             }
+            RaiseAllEvents();
         }
 
         public DiscSpaceRectangle Map(DiscSpace space)
@@ -91,6 +91,14 @@ namespace DiscUsage.ViewModels
                 return null;
             }
             return mapping[space];
+        }
+
+        private void RaiseAllEvents()
+        {
+            foreach (var s in DiscSpaceRectangles)
+            {
+                s.RaisePropertiesChanged();
+            }
         }
     }
 }
