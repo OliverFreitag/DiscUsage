@@ -45,7 +45,7 @@ namespace DiscUsage.ViewModels
         public void Update(DiscSpace space)
         {
             var discSpaceRectangle = Map(space);
-            discSpaceRectangle.Children = discSpaceRectangle.space.OrderedChildren.ConvertAll(x => Map(x));
+            //discSpaceRectangle.Children = discSpaceRectangle.space.OrderedChildren.ConvertAll(x => Map(x));
         }
 
         public void Add(DiscSpace space)
@@ -58,7 +58,7 @@ namespace DiscUsage.ViewModels
             if (discSpaceRectangle.space.Parent != null)
             {
                 discSpaceRectangle.Parent = mapping[discSpaceRectangle.space.Parent];
-                discSpaceRectangle.Parent.Children = discSpaceRectangle.Parent.space.OrderedChildren.ConvertAll(x => Map(x));
+                //discSpaceRectangle.Parent.Children = discSpaceRectangle.Parent.space.OrderedChildren.ConvertAll(x => Map(x));
             }
             if (discSpaceRectangle.Parent == null)
             {

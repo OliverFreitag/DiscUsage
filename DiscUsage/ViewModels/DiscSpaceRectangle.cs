@@ -59,7 +59,7 @@ namespace DiscUsage.ViewModels
         public double Opacity => (_model.FocusedRectangle == this) ? 0.6 : 0.3;
 
         public DiscSpaceRectangle Parent { get; internal set; }
-        public List<DiscSpaceRectangle> Children { get; internal set; }
+        public List<DiscSpaceRectangle> Children => space.OrderedChildren.ConvertAll(x => _model.Map(x));
         public string Name => space.Name;
         public string FullName => space.FullName;
 
