@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace DiscUsage.Model
 {
@@ -18,17 +19,18 @@ namespace DiscUsage.Model
         public DiscCache()
         {
         }
-
-        public void Load(string directory)
+        private SynchronizationContext _uiContext; 
+        public async Task LoadAsync(string directory)
         {
-            Load(directory, null);
-           // var task = Task.Run(() =>
-           //     Load(directory, null));
+            _uiContext = SynchronizationContext.Current;
+            //Load(directory, null);
+            await Task.Run(() =>
+                Load(directory, null));
 
-           //task.Wait();
+            //task.Wait();
         }
 
-        public void Load(string directory, InfoCache parent)
+        private void Load(string directory, InfoCache parent)
         {
             var info = new DirectoryInfo(directory);
             drivesCache.Add(Load(parent,info));
@@ -36,6 +38,7 @@ namespace DiscUsage.Model
 
         public void Load()
         {
+            _uiContext = SynchronizationContext.Current;
             var drives = DriveInfo.GetDrives();
             foreach(var drive in drives)
             {
@@ -43,6 +46,18 @@ namespace DiscUsage.Model
                 drivesCache.Add(directoryCache);
             }
             
+        }
+
+        private void RaiseCreatedEvent(InfoCache cache)
+        {
+            if (_uiContext == null)
+            {
+                Created?.Invoke(cache);
+            }
+            else
+            {
+                _uiContext.Send(x => Created?.Invoke(cache), null);
+            }
         }
 
         private DirectoryCache Load(InfoCache parent,DirectoryInfo directory)
@@ -54,14 +69,14 @@ namespace DiscUsage.Model
             {
                 var subDirectoryCache=Load(directoryCache, subDirectory);
                 directoryCache.directories.Add(subDirectoryCache);
-                Created?.Invoke(subDirectoryCache);
+                RaiseCreatedEvent(subDirectoryCache);         
             }
             var files = directory.GetFiles();
             foreach (var file in files)
             {
                 var fileCache = Load(file,directoryCache);
                 directoryCache.files.Add(fileCache);
-                Created?.Invoke(fileCache);
+                RaiseCreatedEvent(fileCache);
             }
             if (parent == null)
             {

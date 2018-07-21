@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace DiscUsage.Model
 {
@@ -20,7 +21,7 @@ namespace DiscUsage.Model
 
         public void Added(InfoCache info)
         {
-            Added(info, false);
+           Added(info, false);
         }
 
         public void Load(InfoCache info)
@@ -71,7 +72,12 @@ namespace DiscUsage.Model
             {
                 Root = space;
             }
-            Created?.Invoke(space);
+            //await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+            //{
+                //UI code here
+                Created?.Invoke(space);
+            //});
+            
         }
 
         public Dictionary<InfoCache, DiscSpace> Mapping => mapping;

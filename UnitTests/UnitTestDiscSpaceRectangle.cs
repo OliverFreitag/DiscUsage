@@ -20,7 +20,7 @@ namespace UnitTests
             discCache.Created += discSpace.Added;
             discSpace.Created += discSpaceCanvasViewModel.Add;
             discSpace.Updated += discSpaceCanvasViewModel.Update;
-            discCache.Load(testDir);
+            discCache.LoadAsync(testDir).Wait();
 
             
             discSpaceCanvasViewModel.Loaded();

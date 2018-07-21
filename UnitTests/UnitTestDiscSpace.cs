@@ -18,7 +18,7 @@ namespace UnitTests
             var discCache = new DiscCache();
             var discSpace = new DiscSpaceManager();
             discCache.Created += discSpace.Added;
-            discCache.Load(testDir);
+            discCache.LoadAsync(testDir).Wait();
             Assert.AreEqual(discCache.drivesCache.Count, 1);
             Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
             Assert.AreEqual(discSpace.Mapping.Count, 38);
@@ -37,7 +37,7 @@ namespace UnitTests
             discSpaceManager = discSpace;
             discCache.Created += discSpace.Added;
             discSpace.Created += DiscSpace_Created;
-            discCache.Load(testDir);
+            discCache.LoadAsync(testDir).Wait();
             discCache.Created -= discSpace.Added;
             discSpace.Created -= DiscSpace_Created;
             Assert.AreEqual(discCache.drivesCache.Count, 1);
@@ -76,7 +76,7 @@ namespace UnitTests
             var discCache = new DiscCache();
             var discSpace = new DiscSpaceManager();
             discCache.Created += discSpace.Added;
-            discCache.Load(testDir);
+            discCache.LoadAsync(testDir).Wait();
             Assert.AreEqual(discCache.drivesCache.Count, 1);
             Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
             Assert.AreEqual(discSpace.Mapping.Count, 38);

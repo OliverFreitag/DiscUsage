@@ -16,7 +16,7 @@ namespace UnitTests
         public void TestDirectoriesCached()
         {
             var discCache = new DiscCache();
-            discCache.Load(testDir,null);
+            discCache.LoadAsync(testDir).Wait();
             var rootDriveCache = discCache.drivesCache[0];
 
             Assert.AreEqual(discCache.drivesCache.Count, 1,"number of root directories");
@@ -32,7 +32,7 @@ namespace UnitTests
         public void TestDirectoriesLoaded()
         {
             var discCache = new DiscCache();
-            discCache.Load(testDir);
+            discCache.LoadAsync(testDir).Wait();
             var rootDriveCache = discCache.drivesCache[0];
             Assert.AreEqual(rootDriveCache.Length,                  40599922, "size of root directories");
             Assert.AreEqual(rootDriveCache.directories[0].Length,   16676785, "size of " + rootDriveCache.directories[0].Name);
@@ -48,7 +48,7 @@ namespace UnitTests
             CreatedEvents.Clear();
             var discCache = new DiscCache();
             discCache.Created += DiscCache_Created;
-            discCache.Load(testDir);
+            discCache.LoadAsync(testDir).Wait();
             discCache.Created -= DiscCache_Created;
             var rootDriveCache = discCache.drivesCache[0];
             Assert.AreEqual(CreatedEvents.Count, 4599);
