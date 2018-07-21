@@ -56,6 +56,7 @@ namespace DiscUsage.ViewModels
             discSpaceManager.Updated += DiscSpaceCanvasViewModel.Update;
 
             var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
+            //var task = discCache.LoadAsync(@"C:\Users\Oliver");
 
             DiscSpaceCanvasControl_Loaded();
             IsLoaded = true;

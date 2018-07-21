@@ -47,6 +47,16 @@ namespace DiscUsage.ViewModels
             }
         }
 
+        public void RaisePropertiesChanged()
+        {
+            RaisePropertyChanged("X");
+            RaisePropertyChanged("Y");
+            RaisePropertyChanged("Width");
+            RaisePropertyChanged("Height");
+            RaisePropertyChanged("Radius");
+            RaisePropertyChanged("Children");
+        }
+
         public double X => (Parent == null) ? 0 : (space.Level % 2 == 1) ? Position + Parent.X: Parent.X+Margin/2;
         public double Y => (Parent == null) ? 0 : (space.Level % 2 == 0) ? Position + Parent.Y: Parent.Y+Margin/2;
 

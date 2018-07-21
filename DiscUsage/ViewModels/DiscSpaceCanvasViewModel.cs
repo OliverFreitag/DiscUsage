@@ -45,6 +45,10 @@ namespace DiscUsage.ViewModels
         public void Update(DiscSpace space)
         {
             var discSpaceRectangle = Map(space);
+            //foreach (var s in DiscSpaceRectangles)
+            //{
+            //    s.RaisePropertiesChanged();
+            //}
             //discSpaceRectangle.Children = discSpaceRectangle.space.OrderedChildren.ConvertAll(x => Map(x));
         }
 
@@ -64,12 +68,20 @@ namespace DiscUsage.ViewModels
             {
                 Root = discSpaceRectangle;
             }
+            foreach (var s in DiscSpaceRectangles)
+            {
+                s.RaisePropertiesChanged();
+            }
         }
 
         public void Loaded()
         {
             FocusedRectangle = Root;
             RaisePropertyChanged("DiscSpaceRectangles");
+            foreach (var s in DiscSpaceRectangles)
+            {
+                s.RaisePropertiesChanged();
+            }
         }
 
         public DiscSpaceRectangle Map(DiscSpace space)
