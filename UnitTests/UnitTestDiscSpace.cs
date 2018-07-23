@@ -48,11 +48,12 @@ namespace UnitTests
             Assert.AreEqual(new HashSet<DiscSpace>(CreatedDiscSpaces).Count, CreatedDiscSpaces.Count);
             var diffSet = new HashSet<DiscSpace>(CreatedDiscSpaces).Where(x => !discSpace.Mapping.Values.Contains(x));
             Assert.AreEqual(diffSet.Count(), 0);
-            foreach(var diff in CreatedDiscSpaces)
-            {
-                Assert.IsNotNull(discSpace.Map(diff.cache));
-            }
-            var cache=CreatedDiscSpaces.ConvertAll(x => x.cache);
+            //foreach(var diff in CreatedDiscSpaces)
+            //{
+            //    Assert.IsNotNull(discSpace.Map(diff.cache));
+            //}
+            
+            var cache=CreatedDiscSpaces.ConvertAll(x => discSpace.MapBack(x));
             Assert.AreEqual(new HashSet<InfoCache>(cache).Count, cache.Count);
             Assert.AreEqual(CreatedDiscSpaces.Count, discSpace.Mapping.Count);
         }
@@ -60,14 +61,14 @@ namespace UnitTests
         private void DiscSpace_Created(DiscSpace space)
         {
             CreatedDiscSpaces.Add(space);
-           // CreatedDiscSpaces.Add(space);
-            if (space.cache.Parent!=null)
+            // CreatedDiscSpaces.Add(space);
+            if (space.Manager.MapBack(space).Parent!=null)
             {
                 Assert.IsNotNull(space.Parent);
                 Assert.IsTrue(space.Parent.Children.Contains(space));
             }
 
-            Assert.AreSame(space, discSpaceManager.Map(space.cache));
+            //Assert.AreSame(space, discSpaceManager.Map(space.cache));
         }
 
         [TestMethod]
@@ -84,13 +85,30 @@ namespace UnitTests
 
             Assert.AreEqual(discSpace.Root.Level, 0);
             Assert.AreEqual(discSpace.Root.Children.Count, 3);
+
             Assert.AreEqual(discSpace.Root.Children[0].Level, 1);
             Assert.AreEqual(discSpace.Root.Children[1].Level, 1);
             Assert.AreEqual(discSpace.Root.Children[2].Level, 1);
 
-            Assert.AreEqual(discSpace.Root.Children[0].Children.Count, 2);
-            Assert.AreEqual(discSpace.Root.Children[0].Children[0].Level, 2);
-            Assert.AreEqual(discSpace.Root.Children[0].Children[1].Level, 2);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[0].ChildrenRecursive.Count, 19);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[1].ChildrenRecursive.Count, 15);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[2].ChildrenRecursive.Count, 0);
+
+            Assert.AreEqual(discSpace.Root.OrderedChildren[0].Count, 18);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[1].Count, 16);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[2].Count, 11);
+
+            Assert.AreEqual(discSpace.Root.OrderedChildren[0].Length, 22211624);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[1].Length, 16676785);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[2].Length, 1706954);
+
+            Assert.AreEqual(discSpace.Root.OrderedChildren[0].LengthOfAllPreviousChildren, 0);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[1].LengthOfAllPreviousChildren, 22211624);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[2].LengthOfAllPreviousChildren, 22211624+ 16676785);
+
+            Assert.AreEqual(discSpace.Root.OrderedChildren[0].Children.Count, 2);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[0].Children[0].Level, 2);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[0].Children[1].Level, 2);
 
         }
     }

@@ -45,30 +45,51 @@ namespace DiscUsage.ViewModels
         public void Update(DiscSpace space)
         {
             var discSpaceRectangle = Map(space);
+            Update(space, discSpaceRectangle);
+        }
+
+        public void Update(DiscSpace space, DiscSpaceRectangle discSpaceRectangle)
+        {
+            //var discSpaceRectangle = Map(space);
             //foreach (var s in DiscSpaceRectangles)
             //{
             //    s.RaisePropertiesChanged();
-            //}
+            //}a
             //discSpaceRectangle.Children = discSpaceRectangle.space.OrderedChildren.ConvertAll(x => Map(x));
+            discSpaceRectangle.Length = space.Length;
+            discSpaceRectangle.LengthOfAllPreviousChildren = space.LengthOfAllPreviousChildren;
+            discSpaceRectangle.RaisePropertiesChanged();
+        }
+
+        private void UpdateAll()
+        {
+
+            foreach(var keyValuePair in mapping)
+            {
+                Update(keyValuePair.Key, keyValuePair.Value);
+            }
         }
 
         public void Add(DiscSpace space)
         {
-            var discSpaceRectangle = new DiscSpaceRectangle(space, this);
-
+            var discSpaceRectangle = new DiscSpaceRectangle(space.Manager,this,space.Parent,space.Name,space.FullName);
+            //discSpaceRectangle.Children = space.Children.ConvertAll(x=>(DiscSpace)Map(x));
             _DiscSpaceRectangles.Add(discSpaceRectangle);
             mapping[space] = discSpaceRectangle;
 
-            if (discSpaceRectangle.space.Parent != null)
+
+
+            if (discSpaceRectangle.Parent != null)
             {
-                discSpaceRectangle.Parent = mapping[discSpaceRectangle.space.Parent];
+                discSpaceRectangle.Parent = mapping[discSpaceRectangle.Parent];
                 //discSpaceRectangle.Parent.Children = discSpaceRectangle.Parent.space.OrderedChildren.ConvertAll(x => Map(x));
+                discSpaceRectangle.Parent.Children = space.Parent.Children.ConvertAll(x => (DiscSpace)Map(x));
             }
             if (discSpaceRectangle.Parent == null)
             {
                 Root = discSpaceRectangle;
             }
-
+            UpdateAll();
             RaiseAllEvents();
             
         }
@@ -91,6 +112,15 @@ namespace DiscUsage.ViewModels
                 return null;
             }
             return mapping[space];
+        }
+
+        public DiscSpace MapBack(DiscSpaceRectangle space)
+        {
+            if (!mapping.ContainsValue(space))
+            {
+                return null;
+            }
+            return mapping.FirstOrDefault(x => x.Value == space).Key;
         }
 
         private void RaiseAllEvents()
