@@ -19,14 +19,17 @@ namespace DiscUsage.Model
         private Dictionary<InfoCache, DiscSpace> mapping = new Dictionary<InfoCache, DiscSpace>();
         public Int64 MinimalLimit = 1024 * 1024;
 
-        public void Added(InfoCache info)
-        {
-           Added(info, false);
-        }
+        //public void Create(InfoCache info)
+        //{
+        //   Create(info);
+        //}
 
         public void Load(InfoCache info)
         {
-            Loaded?.Invoke(Map(info));
+            var space = Map(info);
+            Update(info, space);
+            //UpdateAll();
+            Loaded?.Invoke(space);
         }
 
         private void Update(DiscSpace space)
@@ -36,15 +39,17 @@ namespace DiscUsage.Model
 
         private void Update(InfoCache info, DiscSpace space)
         {
-            //var space = Map(info);
-            //space.Level= (space.Parent == null) ? 0 : space.Parent.Level + 1;
             space.Count = info.Count;
-            space.Length = info.Length;
-            //if (info is DirectoryCache)
-            //{
-            //    var directory = (DirectoryCache)info;
-            //    space.Children = directory.directories.ConvertAll(x => Map(x)).FindAll(x=>x!=null);
-            //}
+            if (info is FileCache)
+            {
+                space.OwnLength = info.Length;
+            }
+            else
+            {
+                var directory = (DirectoryCache)info;
+                space.OwnLength = directory.files.Sum(x => x.Length);
+            }
+            
 
             if (space.Parent != null)
             {
@@ -71,6 +76,25 @@ namespace DiscUsage.Model
             }
         }
 
+        //private DiscSpace GetAndCreateParent(InfoCache info)
+        //{
+        //    DiscSpace parentSpace = null;
+        //    if (info.Parent != null)
+        //    {
+        //        parentSpace = Map(info.Parent);
+        //        if (parentSpace == null)
+        //        {
+        //            Create(info.Parent, true);
+        //            parentSpace = Map(info.Parent);
+        //        }
+        //        else
+        //        {
+        //            //UpdateCurrentAndAllParents(parentSpace);
+        //        }
+        //    }
+        //    return parentSpace;
+        //}
+
         /// <summary>
         /// A new cache info is added to the disc space manager. 
         /// This results in a new disc space, if a new info is given ans the info is not under the minimal limit.
@@ -78,46 +102,42 @@ namespace DiscUsage.Model
         /// </summary>
         /// <param name="info"></param>
         /// <param name="forceCreation"> if this parameter is set to true, the mimimal limit is virtually set to 0.</param>
-        public void Added(InfoCache info, bool forceCreation = false)
+        public void Create(InfoCache info)
         {
-            if (info.Length < MinimalLimit && !forceCreation)
-            {
-                return;
-            }
-            if (Map(info) != null)
-            {
-                UpdateAll();
-                return;
-            }
-            DiscSpace parentSpace = null;
-            if (info.Parent != null)
-            {
-                parentSpace = Map(info.Parent);
-                if (parentSpace == null)
-                {
-                    Added(info.Parent, true);
-                    parentSpace = Map(info.Parent);
-                }
-                else
-                {
-                    UpdateCurrentAndAllParents(parentSpace);
-                }
-            }
-            var space = new DiscSpace(this,parentSpace,info.Name, info.FullName);
-            
-            mapping[info] = space;
-            Update(info,space);
-            if (parentSpace != null)
-            {
-                parentSpace.Children.Add(space);
-            }
-            if (space.Parent == null)
-            {
-                Root = space;
-            }
+            var parentSpace = Map(info.Parent);
+            var space = new DiscSpace(this, parentSpace, info.Name, info.FullName);
+           
+            //var parentSpace = GetAndCreateParent(info);
+            //if (info.Length < MinimalLimit && )
+            //{
+            //    parentSpace.OwnLength += info.Length;
+            //    return;
+            //}
 
-            Created?.Invoke(space);
-            UpdateAll();
+            //if (Map(info) != null)
+            //{
+            //    UpdateAll();
+            //    return;
+            //}
+            
+            //var space = new DiscSpace(this,parentSpace,info.Name, info.FullName);
+            
+            //mapping[info] = space;
+            //Update(info,space);
+            //if (parentSpace != null)
+            //{
+            //    parentSpace.Children.Add(space);
+            //}
+            //if (space.Parent == null)
+            //{
+            //    Root = space;
+            //}
+            //if (info.Length > MinimalLimit)
+            //{
+            //    UpdateAll();
+            //    Created?.Invoke(space);
+            //}
+            
         }
 
         public Dictionary<InfoCache, DiscSpace> Mapping => mapping;

@@ -50,13 +50,7 @@ namespace DiscUsage.ViewModels
 
         public void Update(DiscSpace space, DiscSpaceRectangle discSpaceRectangle)
         {
-            //var discSpaceRectangle = Map(space);
-            //foreach (var s in DiscSpaceRectangles)
-            //{
-            //    s.RaisePropertiesChanged();
-            //}a
-            //discSpaceRectangle.Children = discSpaceRectangle.space.OrderedChildren.ConvertAll(x => Map(x));
-            discSpaceRectangle.Length = space.Length;
+            discSpaceRectangle.OwnLength = space.OwnLength;
             discSpaceRectangle.LengthOfAllPreviousChildren = space.LengthOfAllPreviousChildren;
             discSpaceRectangle.RaisePropertiesChanged();
         }
@@ -77,31 +71,22 @@ namespace DiscUsage.ViewModels
             _DiscSpaceRectangles.Add(discSpaceRectangle);
             mapping[space] = discSpaceRectangle;
 
-
-
             if (discSpaceRectangle.Parent != null)
             {
                 discSpaceRectangle.Parent = mapping[discSpaceRectangle.Parent];
-                //discSpaceRectangle.Parent.Children = discSpaceRectangle.Parent.space.OrderedChildren.ConvertAll(x => Map(x));
                 discSpaceRectangle.Parent.Children = space.Parent.Children.ConvertAll(x => (DiscSpace)Map(x));
             }
             if (discSpaceRectangle.Parent == null)
             {
                 Root = discSpaceRectangle;
             }
-            UpdateAll();
-            RaiseAllEvents();
             
+            RaiseAllEvents();
         }
 
         public void Loaded(DiscSpace space)
         {
             FocusedRectangle = Root;
-            RaisePropertyChanged("DiscSpaceRectangles");
-            foreach (var s in DiscSpaceRectangles)
-            {
-                s.RaisePropertiesChanged();
-            }
             RaiseAllEvents();
         }
 
@@ -125,6 +110,8 @@ namespace DiscUsage.ViewModels
 
         private void RaiseAllEvents()
         {
+            UpdateAll();
+            RaisePropertyChanged("DiscSpaceRectangles");
             foreach (var s in DiscSpaceRectangles)
             {
                 s.RaisePropertiesChanged();

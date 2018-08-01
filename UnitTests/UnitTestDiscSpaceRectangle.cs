@@ -17,12 +17,14 @@ namespace UnitTests
             var discCache = new DiscCache();
             var discSpace = new DiscSpaceManager();
             var discSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
-            discCache.Created += discSpace.Added;
+
+            discCache.Created += discSpace.Create;
+
             discSpace.Created += discSpaceCanvasViewModel.Add;
             discSpace.Updated += discSpaceCanvasViewModel.Update;
-            discCache.LoadAsync(testDir).Wait();
 
-            
+            discCache.LoadAsync(testDir).Wait();
+           
             discSpaceCanvasViewModel.Loaded(null);
 
             foreach(var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)

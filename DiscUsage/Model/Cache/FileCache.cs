@@ -9,17 +9,17 @@ namespace DiscUsage.Model
 {
     public class FileCache : InfoCache
     {
-        public FileInfo file;
+        public FileInfo Info { get; private set; }
 
         public FileCache(FileInfo file, InfoCache parent)
         {
-            this.file = file;
+            this.Info = file;
             this.parent = parent;
         }
 
-        public long Length => file.Length;
+        public long Length => Info.Length;
 
-        public string Name => file.Name;
+        public string Name => Info.Name;
         public InfoCache parent;
         public InfoCache Parent
         {
@@ -33,6 +33,6 @@ namespace DiscUsage.Model
 
         public int Count => 1;
 
-        public string FullName => file.FullName;
+        public string FullName => Info.FullName;
     }
 }

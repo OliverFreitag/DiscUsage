@@ -9,20 +9,20 @@ namespace DiscUsage.Model
 {
     public class DirectoryCache : InfoCache
     {
-        public DirectoryInfo directoryInfo;
+        public DirectoryInfo Info { get; private set; }
         public List<DirectoryCache> directories = new List<DirectoryCache>();
         public List<FileCache> files = new List<FileCache>();
         private InfoCache parent;
 
         public DirectoryCache(DirectoryInfo directoryInfo, InfoCache parent)
         {
-            this.directoryInfo = directoryInfo;
+            this.Info = directoryInfo;
             this.parent = parent;
         }
 
         public long Length => directories.Sum(x => x.Length) + files.Sum(x => x.Length);
 
-        public string Name => directoryInfo.Name;
+        public string Name => Info.Name;
 
         public InfoCache Parent
         {
@@ -32,10 +32,12 @@ namespace DiscUsage.Model
             }
         }
 
-        public bool IsRoot => directoryInfo.Parent == null;
+        public bool IsRoot => Info.Parent == null;
 
         public int Count => directories.Count + files.Count;
 
-        public string FullName => directoryInfo.FullName;
+        public int CountRecursive => 1 + files.Count + directories.Sum(x => x.CountRecursive);
+
+        public string FullName => Info.FullName;
     }
 }

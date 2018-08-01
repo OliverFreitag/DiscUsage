@@ -75,13 +75,15 @@ namespace DiscUsage.Model
         private DirectoryCache Load(InfoCache parent,DirectoryInfo directory)
         {
             var directoryCache = new DirectoryCache(directory, parent);
-            directoryCache.directoryInfo = directory;
+            RaiseCreatedEvent(directoryCache);
+            //directoryCache.directoryInfo = directory; 
+            //todo: deal with exceptions
             var subDirectories = directory.GetDirectories();
             foreach (var subDirectory in subDirectories)
             {
                 var subDirectoryCache=Load(directoryCache, subDirectory);
                 directoryCache.directories.Add(subDirectoryCache);
-                RaiseCreatedEvent(subDirectoryCache);         
+                         
             }
             var files = directory.GetFiles();
             foreach (var file in files)
@@ -90,18 +92,20 @@ namespace DiscUsage.Model
                 directoryCache.files.Add(fileCache);
                 RaiseCreatedEvent(fileCache);
             }
-            if (parent == null)
-            {
-                RaiseLoadedEvent(null);
-            }
+            //if (parent == null)
+            //{
+                RaiseLoadedEvent(parent);
+            //}
             return directoryCache;
         }
 
         private FileCache Load(FileInfo file, DirectoryCache parent)
         {
             var fileCache = new FileCache(file,parent);
-            fileCache.file = file;
-         //   fileCache.Length = file.Length;
+            //fileCache.file = file;
+            RaiseCreatedEvent(fileCache);
+            RaiseLoadedEvent(fileCache);
+            //   fileCache.Length = file.Length;
             return fileCache;
         }
     }

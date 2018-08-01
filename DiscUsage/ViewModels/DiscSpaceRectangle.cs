@@ -13,13 +13,12 @@ namespace DiscUsage.ViewModels
     public class DiscSpaceRectangle : DiscSpace
     {
         private List<Brush> brushes = new List<Brush> { Brushes.Gray, Brushes.Blue, Brushes.Red, Brushes.Green, Brushes.Orange, Brushes.LightBlue, Brushes.Yellow, Brushes.LightGray };
-        //public DiscSpace space;
+
         private double CanvasWidth => ManagerRectangle.Height;
         private double CanvasHeight => ManagerRectangle.Height;
         private double Margin = 6;
         private double _strokeWidth = 1;
         private double _CornerRadius=8;
-       // DiscSpaceCanvasViewModel _model;
 
         public DiscSpaceRectangle ParentRectangle => (DiscSpaceRectangle)Parent;
         public List<DiscSpaceRectangle> ChildrenRectangle => OrderedChildren.ConvertAll(x => (DiscSpaceRectangle)x);

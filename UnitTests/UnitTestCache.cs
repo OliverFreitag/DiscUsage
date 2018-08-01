@@ -26,6 +26,12 @@ namespace UnitTests
             Assert.AreEqual(rootDriveCache.directories[0].directories.Count, 16, "number of directories in " + rootDriveCache.directories[0].Name);
             Assert.AreEqual(rootDriveCache.directories[1].directories.Count, 11, "number of directories in " + rootDriveCache.directories[1].Name);
             Assert.AreEqual(rootDriveCache.directories[2].directories.Count, 18, "number of directories in " + rootDriveCache.directories[2].Name);
+
+            Assert.AreEqual(rootDriveCache.directories[0].CountRecursive, 599, "CountRecursive of " + rootDriveCache.directories[0].Name);
+            Assert.AreEqual(rootDriveCache.directories[1].CountRecursive, 715, "CountRecursive of " + rootDriveCache.directories[1].Name);
+            Assert.AreEqual(rootDriveCache.directories[2].CountRecursive, 3284, "CountRecursive of " + rootDriveCache.directories[2].Name);
+
+            Assert.AreEqual(rootDriveCache.CountRecursive, 3284+715+599+1+rootDriveCache.files.Count, "CountRecursive of " + rootDriveCache.Name);
         }
 
         [TestMethod]
