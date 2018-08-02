@@ -18,9 +18,7 @@ namespace DiscUsage.ViewModels
         }
 
         private DiscCache discCache = new DiscCache();
-        //private DiscSpaceManager discSpaceManager = new DiscSpaceManager();
 
-        //public DiscSpaceViewModel DiscSpaceViewModel = new DiscSpaceViewModel();
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
 
         private bool _IsLoaded;

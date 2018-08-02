@@ -16,7 +16,6 @@ namespace DiscUsage.Model
             this.Parent = parent;
             Name = name;
             FullName = fullname;
-            //Level = level;
             Manager = manager;
             Children = new List<DiscSpace>();
             parent?.Children.Add(this);

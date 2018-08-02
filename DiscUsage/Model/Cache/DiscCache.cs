@@ -23,11 +23,10 @@ namespace DiscUsage.Model
         public async Task LoadAsync(string directory)
         {
             _uiContext = SynchronizationContext.Current;
-            //Load(directory, null);
+
             await Task.Run(() =>
                 Load(directory, null));
 
-            //task.Wait();
         }
 
         private void Load(string directory, DirectoryCache parent)
@@ -76,36 +75,28 @@ namespace DiscUsage.Model
         {
             var directoryCache = new DirectoryCache(directory, parent);
             RaiseCreatedEvent(directoryCache);
-            //directoryCache.directoryInfo = directory; 
+
             //todo: deal with exceptions
             var subDirectories = directory.GetDirectories();
             foreach (var subDirectory in subDirectories)
             {
-                var subDirectoryCache=Load(directoryCache, subDirectory);
-               // directoryCache.directories.Add(subDirectoryCache);
-                         
+                var subDirectoryCache=Load(directoryCache, subDirectory);                 
             }
             var files = directory.GetFiles();
             foreach (var file in files)
             {
                 var fileCache = Load(file,directoryCache);
-               // directoryCache.files.Add(fileCache);
-                //RaiseCreatedEvent(fileCache);
             }
-            //if (parent == null)
-            //{
-                RaiseLoadedEvent(directoryCache);
-            //}
+
+            RaiseLoadedEvent(directoryCache);
+
             return directoryCache;
         }
 
         private FileCache Load(FileInfo file, DirectoryCache parent)
         {
             var fileCache = new FileCache(file,parent);
-            //fileCache.file = file;
             RaiseCreatedEvent(fileCache);
-            // RaiseLoadedEvent(fileCache);
-            //   fileCache.Length = file.Length;
             RaiseLoadedEvent(fileCache);
             return fileCache;
         }

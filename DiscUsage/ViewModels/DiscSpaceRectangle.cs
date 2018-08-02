@@ -57,7 +57,6 @@ namespace DiscUsage.ViewModels
             RaisePropertyChanged("Width");
             RaisePropertyChanged("Height");
            // RaisePropertyChanged("Radius");
-           // RaisePropertyChanged("Children");
         }
 
         private void ReCalcProperties()
