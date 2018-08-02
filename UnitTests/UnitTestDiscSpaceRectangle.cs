@@ -26,15 +26,16 @@ namespace UnitTests
             discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
 
             discCache.LoadAsync(testDir).Wait();
-           
-          //  discSpaceCanvasViewModel.Loaded(null);
 
-            //foreach(var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
-            //{
-            //    var space = discSpaceCanvasViewModel.Manager.MapBack(rectangle);
-            //    var info = discSpaceCanvasViewModel.Manager.MapBack(space);
-            //    Assert.AreEqual(rectangle.Parent,rectangle.ManagerRectangle.Map( rectangle.Manager.Map(info.Parent)));
-            //}
+            //  discSpaceCanvasViewModel.Loaded(null);
+
+            foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
+            {
+                //var space = discSpaceCanvasViewModel.Manager.MapBack(rectangle);
+                //var info = discSpaceCanvasViewModel.Manager.MapBack(space);
+                //Assert.AreEqual(rectangle.Parent, rectangle.ManagerRectangle.Map(rectangle.Manager.Map(info.Parent)));
+                Assert.IsNotNull(rectangle.ManagerRectangle);
+            }
 
             Assert.IsNotNull(discSpaceCanvasViewModel.Root);
 

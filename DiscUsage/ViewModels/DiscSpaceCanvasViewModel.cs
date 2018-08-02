@@ -8,6 +8,7 @@ using DiscUsage.Model;
 using System.Windows.Media;
 using System.ComponentModel;
 using Prism.Mvvm;
+using System.Diagnostics;
 
 namespace DiscUsage.ViewModels
 {
@@ -58,9 +59,9 @@ namespace DiscUsage.ViewModels
         private void UpdateAll()
         {
 
-            foreach(var keyValuePair in Manager.Mapping)
+            foreach(var rectangle in DiscSpaceRectangles)
             {
-                Update(keyValuePair.Value);
+                Update(rectangle);
             }
         }
 
@@ -88,7 +89,9 @@ namespace DiscUsage.ViewModels
         public void Loaded(DiscSpace space)
         {
             FocusedRectangle = Root;
-            DiscSpaceRectangles.Add((DiscSpaceRectangle)space);
+            var rectangle = (DiscSpaceRectangle)space;
+            DiscSpaceRectangles.Add(rectangle);
+            Debug.Assert(rectangle.ManagerRectangle!=null);
             RaiseAllEvents();
         }
 

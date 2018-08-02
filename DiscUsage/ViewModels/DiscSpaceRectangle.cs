@@ -14,8 +14,8 @@ namespace DiscUsage.ViewModels
     {
         private List<Brush> brushes = new List<Brush> { Brushes.Gray, Brushes.Blue, Brushes.Red, Brushes.Green, Brushes.Orange, Brushes.LightBlue, Brushes.Yellow, Brushes.LightGray };
 
-        private double CanvasWidth => ManagerRectangle.Height;
-        private double CanvasHeight => ManagerRectangle.Height;
+        private double CanvasWidth => 600;
+        private double CanvasHeight => 600;
         private double Margin = 6;
         private double _strokeWidth = 1;
         private double _CornerRadius=8;

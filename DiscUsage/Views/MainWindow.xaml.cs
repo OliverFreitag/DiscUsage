@@ -29,7 +29,7 @@ namespace DiscUsage.Views
         {
             InitializeComponent();
             _vm = (MainWindowViewModel)this.DataContext;
-            this.DiscSpaceControl.DataContext = _vm.DiscSpaceViewModel;
+            this.DiscSpaceControl.DataContext = _vm.DiscSpaceCanvasViewModel;
             this.DiscSpaceCanvasControl.DataContext = _vm.DiscSpaceCanvasViewModel;
         }
 
