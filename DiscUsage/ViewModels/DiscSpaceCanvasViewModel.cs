@@ -91,8 +91,15 @@ namespace DiscUsage.ViewModels
             FocusedRectangle = Root;
             var rectangle = (DiscSpaceRectangle)space;
             DiscSpaceRectangles.Add(rectangle);
+            var rectangles = DiscSpaceRectangles.OrderBy(x => x.Level).ToList();
+            DiscSpaceRectangles.Clear();
+            rectangles.ForEach(x => DiscSpaceRectangles.Add(x));
             Debug.Assert(rectangle.ManagerRectangle!=null);
             RaiseAllEvents();
+            if (space == Root)
+            {
+                int i = 0;
+            }
         }
 
         //public DiscSpaceRectangle Map(DiscSpace space)

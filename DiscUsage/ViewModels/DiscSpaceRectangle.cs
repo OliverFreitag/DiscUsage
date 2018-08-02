@@ -51,6 +51,7 @@ namespace DiscUsage.ViewModels
 
         public void RaisePropertiesChanged()
         {
+            ReCalcProperties();
             RaisePropertyChanged("X");
             RaisePropertyChanged("Y");
             RaisePropertyChanged("Width");
@@ -59,11 +60,20 @@ namespace DiscUsage.ViewModels
            // RaisePropertyChanged("Children");
         }
 
-        public double X => (Parent == null) ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
-        public double Y => (Parent == null) ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
+        private void ReCalcProperties()
+        {
+            X = (Parent == null) ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
+            Y = (Parent == null) ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
 
-        public double Width => (Parent == null)? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
-        public double Height => (Parent == null) ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
+            Width = (Parent == null)? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
+            Height = (Parent == null) ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
+    }
+
+        public double X { get; private set; }
+        public double Y { get; private set; }
+
+        public double Width { get; private set; }
+        public double Height { get; private set; }
         public double Radius => Math.Min(_CornerRadius, Math.Min(Width,Height)/2);
 
         public Brush FillColor => brushes[Level%brushes.Count];
