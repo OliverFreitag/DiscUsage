@@ -83,7 +83,7 @@ namespace DiscUsage.ViewModels
             //}
             var rectangle = (DiscSpaceRectangle)space;
             rectangle.ManagerRectangle = this;
-            RaiseAllEvents();
+           // RaiseAllEvents();
         }
 
         public void Loaded(DiscSpace space)
@@ -116,11 +116,11 @@ namespace DiscUsage.ViewModels
         private void RaiseAllEvents()
         {
             UpdateAll();
-            RaisePropertyChanged("DiscSpaceRectangles");
-            foreach (var s in DiscSpaceRectangles)
-            {
-                s.RaisePropertiesChanged();
-            }
+            //RaisePropertyChanged("DiscSpaceRectangles");
+            //foreach (var s in DiscSpaceRectangles)
+            //{
+            //    s.RaisePropertiesChanged();
+            //}
         }
     }
 }

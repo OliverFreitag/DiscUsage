@@ -61,12 +61,13 @@ namespace DiscUsage.ViewModels
         }
 
         public DelegateCommand LoadCommand { get; set; }
-
+        private int Counter = 0;
         private void DiscSpaceManager_Loaded(DiscSpace space)
         {
             //DiscSpaceCanvasViewModel.Add(DiscSpaceCanvasViewModel.Manager.Root.OrderedChildren);
             //RaisePropertyChanged("DiscSpaces");
             //DiscSpaceControl.DataContext = discSpaceViewModel;
+            Counter++;
         }
 
         private void DiscSpaceCanvasControl_Loaded()

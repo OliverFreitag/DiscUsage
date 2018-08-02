@@ -55,8 +55,8 @@ namespace DiscUsage.ViewModels
             RaisePropertyChanged("Y");
             RaisePropertyChanged("Width");
             RaisePropertyChanged("Height");
-            RaisePropertyChanged("Radius");
-            RaisePropertyChanged("Children");
+           // RaisePropertyChanged("Radius");
+           // RaisePropertyChanged("Children");
         }
 
         public double X => (Parent == null) ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;

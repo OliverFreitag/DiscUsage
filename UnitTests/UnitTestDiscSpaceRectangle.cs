@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DiscUsage.Model;
 using DiscUsage.ViewModels;
@@ -24,6 +25,7 @@ namespace UnitTests
             discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Add;
             discSpaceCanvasViewModel.Manager.Updated += discSpaceCanvasViewModel.Update;
             discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
+            discSpaceCanvasViewModel.Manager.Loaded += Manager_Loaded;
 
             discCache.LoadAsync(testDir).Wait();
 
@@ -80,6 +82,15 @@ namespace UnitTests
 
             Assert.AreEqual(second.ChildrenRectangle[0].Y, second.Y+3);
             Assert.AreNotEqual(second.ChildrenRectangle[1].Y, second.Y+3);
+
+            Assert.AreEqual(LoadedEvents.Count, discSpaceCanvasViewModel.DiscSpaceRectangles.Count);
+        }
+
+        private List<DiscSpaceRectangle> LoadedEvents = new List<DiscSpaceRectangle>();
+
+        private void Manager_Loaded(DiscSpace space)
+        {
+            LoadedEvents.Add((DiscSpaceRectangle)space);
         }
     }
 }
