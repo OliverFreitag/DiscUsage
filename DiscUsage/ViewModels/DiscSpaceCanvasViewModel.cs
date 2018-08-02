@@ -42,39 +42,31 @@ namespace DiscUsage.ViewModels
             set { SetProperty(ref _FocusedRectangle, value); }
         }
 
-        public void Update(DiscSpace space)
-        {
-            Update((DiscSpaceRectangle)space);
-        }
+        //public void Update(DiscSpace space)
+        //{
+        //    //Update((DiscSpaceRectangle)space);
+        //}
 
-        public void Update(DiscSpaceRectangle discSpaceRectangle)
-        {
-            discSpaceRectangle.RaisePropertiesChanged();
-        }
-
-        private void UpdateAll()
-        {
-
-            foreach(var rectangle in DiscSpaceRectangles)
-            {
-                Update(rectangle);
-            }
-        }
+        //private void Update(DiscSpaceRectangle discSpaceRectangle)
+        //{
+        //    discSpaceRectangle.RaisePropertiesChanged();
+        //}
 
         public void Add(DiscSpace space)
         {
-            var rectangle = (DiscSpaceRectangle)space;
-            rectangle.ManagerRectangle = this;
+
         }
 
         public void Loaded(DiscSpace space)
         {
-            FocusedRectangle = Root;
             var rectangle = (DiscSpaceRectangle)space;
+            rectangle.ManagerRectangle = this;
+            FocusedRectangle = Root;
+            //var rectangle = (DiscSpaceRectangle)space;
             DiscSpaceRectangles.Add(rectangle);
-            var rectangles = DiscSpaceRectangles.OrderBy(x => x.Level).ToList();
-            DiscSpaceRectangles.Clear();
-            rectangles.ForEach(x => DiscSpaceRectangles.Add(x));
+            //var rectangles = DiscSpaceRectangles.OrderBy(x => x.Level).ToList();
+            //DiscSpaceRectangles.Clear();
+            //rectangles.ForEach(x => DiscSpaceRectangles.Add(x));
             Debug.Assert(rectangle.ManagerRectangle!=null);
             RaiseAllEvents();
             if (space == Root)
@@ -85,7 +77,10 @@ namespace DiscUsage.ViewModels
 
         private void RaiseAllEvents()
         {
-            UpdateAll();
+            foreach (var rectangle in DiscSpaceRectangles)
+            {
+                rectangle.RaisePropertiesChanged();
+            }
         }
     }
 }

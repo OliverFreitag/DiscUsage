@@ -36,12 +36,11 @@ namespace DiscUsage.Model
                 smallChildren.ForEach(x=>mapping.Remove(MapBack(x)));
                 space.OwnLength = smallChildren.Sum(x => x.Length);
                 space.Children = space.Children.Where(x => x.Length >= MinimalLimit).ToList();
-
             }
 
             if (space.Length >= MinimalLimit)
             {
-                Created?.Invoke(space);
+                RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(space);
                 Loaded?.Invoke(space);
             }
         }
@@ -96,6 +95,29 @@ namespace DiscUsage.Model
                 Root = space;
             }
 
+            if (space.Length >= MinimalLimit)
+            {
+                RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(space);                
+            }
+
+        }
+
+        private List<DiscSpace> CreatedAlreadyRaised = new List<DiscSpace>();
+
+        private void RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(DiscSpace space)
+        {
+            var parent = space.Parent;
+            if (parent != null)
+            {
+                RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(parent); ;
+            }
+            
+            if (!CreatedAlreadyRaised.Contains(space))
+            {
+                CreatedAlreadyRaised.Add(space);
+                Created?.Invoke(space);
+            }
+           
         }
 
         public Dictionary<InfoCache, DiscSpace> Mapping => mapping;

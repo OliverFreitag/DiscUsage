@@ -48,10 +48,10 @@ namespace DiscUsage.ViewModels
             discCache.Created += DiscSpaceCanvasViewModel.Manager.Create;
             discCache.Loaded += DiscSpaceCanvasViewModel.Manager.Load;
 
-            DiscSpaceCanvasViewModel.Manager.Loaded += DiscSpaceManager_Loaded;
-            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Add;
-            DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
-            DiscSpaceCanvasViewModel.Manager.Loaded += DiscSpaceCanvasViewModel.Loaded;
+            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceManager_Loaded;
+            //DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Add;
+            //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
+            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Loaded;
 
             var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
             //var task = discCache.LoadAsync(@"C:\Users\Oliver");
@@ -68,11 +68,11 @@ namespace DiscUsage.ViewModels
             Counter++;
         }
 
-        private void DiscSpaceCanvasControl_Loaded()
-        {
-           // DiscSpaceCanvasViewModel.Loaded(null);
-            //RaisePropertyChanged("DiscSpaceCanvasViewModel");
-            //DiscSpaceCanvasControl.DataContext = discSpaceCanvasViewModel;
-        }
+        //private void DiscSpaceCanvasControl_Loaded()
+        //{
+        //   // DiscSpaceCanvasViewModel.Loaded(null);
+        //    //RaisePropertyChanged("DiscSpaceCanvasViewModel");
+        //    //DiscSpaceCanvasControl.DataContext = discSpaceCanvasViewModel;
+        //}
     }
 }

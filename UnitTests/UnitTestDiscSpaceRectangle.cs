@@ -22,10 +22,10 @@ namespace UnitTests
             discCache.Created += discSpaceCanvasViewModel.Manager.Create;
             discCache.Loaded += discSpaceCanvasViewModel.Manager.Load;
 
-            discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Add;
-            discSpaceCanvasViewModel.Manager.Updated += discSpaceCanvasViewModel.Update;
-            discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
-            discSpaceCanvasViewModel.Manager.Loaded += Manager_Loaded;
+            //discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Add;
+            //discSpaceCanvasViewModel.Manager.Updated += discSpaceCanvasViewModel.Update;
+            discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Loaded;
+            discSpaceCanvasViewModel.Manager.Created += Manager_Created;
 
             discCache.LoadAsync(testDir).Wait();
 
@@ -50,9 +50,9 @@ namespace UnitTests
 
             //Assert.AreEqual(discSpaceCanvasViewModel.Root.Children[2].Width + discSpaceCanvasViewModel.Root.Children[2].X, 600 - 6);
 
-            Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].X, 3);
-            Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].X, 3);
-            Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[2].X, 3);
+            //Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].X, 3);
+            //Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].X, 3);
+            //Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[2].X, 3);
 
             Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].Y, 3);
             Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].Y, 3);
@@ -83,14 +83,14 @@ namespace UnitTests
             Assert.AreEqual(second.ChildrenRectangle[0].Y, second.Y+3);
             Assert.AreNotEqual(second.ChildrenRectangle[1].Y, second.Y+3);
 
-            Assert.AreEqual(LoadedEvents.Count, discSpaceCanvasViewModel.DiscSpaceRectangles.Count);
+            Assert.AreEqual(CreatedEvents.Count, discSpaceCanvasViewModel.DiscSpaceRectangles.Count);
         }
 
-        private List<DiscSpaceRectangle> LoadedEvents = new List<DiscSpaceRectangle>();
+        private List<DiscSpaceRectangle> CreatedEvents = new List<DiscSpaceRectangle>();
 
-        private void Manager_Loaded(DiscSpace space)
+        private void Manager_Created(DiscSpace space)
         {
-            LoadedEvents.Add((DiscSpaceRectangle)space);
+            CreatedEvents.Add((DiscSpaceRectangle)space);
         }
     }
 }

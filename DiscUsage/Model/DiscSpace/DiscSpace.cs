@@ -35,7 +35,7 @@ namespace DiscUsage.Model
         /// <summary>
         /// Length of this disc space, which is the sum of length of all files in all sub directories.
         /// </summary>
-        public Int64 Length => OwnLength + OrderedChildren.Sum(x => x.Length);
+        public Int64 Length => OwnLength + Children.Sum(x => x.Length);
         public Int64 LengthOfAllPreviousChildren => Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection < IndexInParentOrderedCollection).Sum(x => x.Length);
 
         public Int64 ParentLength => Parent.Length;
