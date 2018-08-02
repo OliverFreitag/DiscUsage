@@ -18,10 +18,12 @@ namespace UnitTests
             var discCache = new DiscCache();
             var discSpace = new DiscSpaceManager();
             discCache.Created += discSpace.Create;
+            discCache.Loaded += discSpace.Load;
+
             discCache.LoadAsync(testDir).Wait();
             Assert.AreEqual(discCache.drivesCache.Count, 1);
             Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
-            Assert.AreEqual(discSpace.OrderedByLevel.Count, 62);
+            Assert.AreEqual(discSpace.OrderedByLevel.Count, 38);
             Assert.IsTrue(discSpace.Mapping.Values.ToList()[0].Length>discSpace.MinimalLimit);
         }
 
@@ -36,13 +38,15 @@ namespace UnitTests
             var discSpace = new DiscSpaceManager();
             discSpaceManager = discSpace;
             discCache.Created += discSpace.Create;
+            discCache.Loaded += discSpace.Load;
+
             discSpace.Created += DiscSpace_Created;
             discCache.LoadAsync(testDir).Wait();
             discCache.Created -= discSpace.Create;
             discSpace.Created -= DiscSpace_Created;
             Assert.AreEqual(discCache.drivesCache.Count, 1);
             Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
-           // Assert.AreEqual(discSpace.OrderedByLevel.Count, 62);
+            Assert.AreEqual(discSpace.OrderedByLevel.Count, 38);
             Assert.IsTrue(discSpace.Mapping.Values.ToList()[0].Length > discSpace.MinimalLimit);
 
             Assert.AreEqual(new HashSet<DiscSpace>(CreatedDiscSpaces).Count, CreatedDiscSpaces.Count);
@@ -65,7 +69,9 @@ namespace UnitTests
 
             var cache=CreatedDiscSpaces.ConvertAll(x => discSpace.MapBack(x));
             Assert.AreEqual(new HashSet<InfoCache>(cache).Count, cache.Count);
-            Assert.AreEqual(CreatedDiscSpaces.Count, discSpace.OrderedByLevel.Count);
+            //Assert.AreEqual(CreatedDiscSpaces.Count, discSpace.OrderedByLevel.Count);
+            var missing = discSpace.OrderedByLevel.Where(x => !CreatedDiscSpaces.Contains(x));
+            Assert.AreEqual(missing.Count(), 0);
         }
 
         private void DiscSpace_Created(DiscSpace space)
@@ -86,14 +92,18 @@ namespace UnitTests
         {
             var discCache = new DiscCache();
             var discSpace = new DiscSpaceManager();
+
             discCache.Created += discSpace.Create;
+            discCache.Loaded += discSpace.Load;
+
             discCache.LoadAsync(testDir).Wait();
+
             Assert.AreEqual(discCache.drivesCache.Count, 1);
             Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
 
             Assert.AreEqual(discSpace.Mapping.Values.Sum(x=>x.OwnLength), 40599922);
 
-            Assert.AreEqual(discSpace.OrderedByLevel.Count, 62);
+            Assert.AreEqual(discSpace.OrderedByLevel.Count, 38);
            // Assert.AreEqual(discSpace.Root.ChildrenRecursive.Count, discSpace.Mapping.Count-1);
 
             Assert.AreEqual(discSpace.Root.Level, 0);
@@ -105,9 +115,9 @@ namespace UnitTests
 
             Assert.AreEqual(discSpace.Root.Length, 40599922);
 
-            Assert.AreEqual(discSpace.Root.OrderedChildren[0].ChildrenRecursive.Count, 41);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[0].ChildrenRecursive.Count, 19);
             Assert.AreEqual(discSpace.Root.OrderedChildren[1].ChildrenRecursive.Count, 15);
-            Assert.AreEqual(discSpace.Root.OrderedChildren[2].ChildrenRecursive.Count, 2);
+            Assert.AreEqual(discSpace.Root.OrderedChildren[2].ChildrenRecursive.Count, 0);
 
             Assert.AreEqual(discSpace.Root.OrderedChildren[0].Count, 18);
             Assert.AreEqual(discSpace.Root.OrderedChildren[1].Count, 16);

@@ -17,6 +17,8 @@ namespace DiscUsage.ViewModels
         public DelegateCommand BackupCommand { get; set; }
         public DelegateCommand HideCommand { get; set; }
 
+        public DiscSpaceManager Manager = new DiscSpaceManager();
+
         public DiscSpaceViewModel()
         {
             DeleteCommand = new DelegateCommand(OnDelete).ObservesCanExecute(()=> IsDiscSpaceSelected);

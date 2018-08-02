@@ -11,9 +11,9 @@ using Prism.Mvvm;
 
 namespace DiscUsage.ViewModels
 {
-    public class DiscSpaceCanvasViewModel : BindableBase
+    public class DiscSpaceCanvasViewModel : DiscSpaceViewModel
     {
-        private Dictionary<DiscSpace, DiscSpaceRectangle> mapping = new Dictionary<DiscSpace, DiscSpaceRectangle>();
+        //private Dictionary<DiscSpace, DiscSpaceRectangle> mapping = new Dictionary<DiscSpace, DiscSpaceRectangle>();
 
         public DiscSpaceCanvasViewModel()
         {
@@ -33,7 +33,7 @@ namespace DiscUsage.ViewModels
             set { SetProperty(ref _DiscSpaceRectangles,value); }
         }
 
-        public DiscSpaceRectangle Root;
+        public DiscSpaceRectangle Root => (DiscSpaceRectangle)Manager.Root;
 
         private DiscSpaceRectangle _FocusedRectangle;
         public DiscSpaceRectangle FocusedRectangle
@@ -44,69 +44,71 @@ namespace DiscUsage.ViewModels
 
         public void Update(DiscSpace space)
         {
-            var discSpaceRectangle = Map(space);
-            Update(space, discSpaceRectangle);
+            //var discSpaceRectangle = Manager.Map(space);
+            Update((DiscSpaceRectangle)space);
         }
 
-        public void Update(DiscSpace space, DiscSpaceRectangle discSpaceRectangle)
+        public void Update(DiscSpaceRectangle discSpaceRectangle)
         {
-            discSpaceRectangle.OwnLength = space.OwnLength;
-            discSpaceRectangle.LengthOfAllPreviousChildren = space.LengthOfAllPreviousChildren;
+            //discSpaceRectangle.OwnLength = space.OwnLength;
+            //discSpaceRectangle.LengthOfAllPreviousChildren = space.LengthOfAllPreviousChildren;
             discSpaceRectangle.RaisePropertiesChanged();
         }
 
         private void UpdateAll()
         {
 
-            foreach(var keyValuePair in mapping)
+            foreach(var keyValuePair in Manager.Mapping)
             {
-                Update(keyValuePair.Key, keyValuePair.Value);
+                Update(keyValuePair.Value);
             }
         }
 
         public void Add(DiscSpace space)
         {
-            var discSpaceRectangle = new DiscSpaceRectangle(space.Manager,this,space.Parent,space.Name,space.FullName);
-            //discSpaceRectangle.Children = space.Children.ConvertAll(x=>(DiscSpace)Map(x));
-            _DiscSpaceRectangles.Add(discSpaceRectangle);
-            mapping[space] = discSpaceRectangle;
+            //var discSpaceRectangle = new DiscSpaceRectangle(space.Manager,space.Parent,space.Name,space.FullName);
+            ////discSpaceRectangle.Children = space.Children.ConvertAll(x=>(DiscSpace)Map(x));
+            //_DiscSpaceRectangles.Add(discSpaceRectangle);
+            //mapping[space] = discSpaceRectangle;
 
-            if (discSpaceRectangle.Parent != null)
-            {
-                discSpaceRectangle.Parent = mapping[discSpaceRectangle.Parent];
-                discSpaceRectangle.Parent.Children = space.Parent.Children.ConvertAll(x => (DiscSpace)Map(x));
-            }
-            if (discSpaceRectangle.Parent == null)
-            {
-                Root = discSpaceRectangle;
-            }
-            
+            //if (discSpaceRectangle.Parent != null)
+            //{
+            //    discSpaceRectangle.Parent = mapping[discSpaceRectangle.Parent];
+            //    discSpaceRectangle.Parent.Children = space.Parent.Children.ConvertAll(x => (DiscSpace)Map(x));
+            //}
+            //if (discSpaceRectangle.Parent == null)
+            //{
+            //    Root = discSpaceRectangle;
+            //}
+            var rectangle = (DiscSpaceRectangle)space;
+            rectangle.ManagerRectangle = this;
             RaiseAllEvents();
         }
 
         public void Loaded(DiscSpace space)
         {
             FocusedRectangle = Root;
+            DiscSpaceRectangles.Add((DiscSpaceRectangle)space);
             RaiseAllEvents();
         }
 
-        public DiscSpaceRectangle Map(DiscSpace space)
-        {
-            if (space == null || !mapping.ContainsKey(space))
-            {
-                return null;
-            }
-            return mapping[space];
-        }
+        //public DiscSpaceRectangle Map(DiscSpace space)
+        //{
+        //    if (space == null || !mapping.ContainsKey(space))
+        //    {
+        //        return null;
+        //    }
+        //    return mapping[space];
+        //}
 
-        public DiscSpace MapBack(DiscSpaceRectangle space)
-        {
-            if (!mapping.ContainsValue(space))
-            {
-                return null;
-            }
-            return mapping.FirstOrDefault(x => x.Value == space).Key;
-        }
+        //public DiscSpace MapBack(DiscSpaceRectangle space)
+        //{
+        //    if (!mapping.ContainsValue(space))
+        //    {
+        //        return null;
+        //    }
+        //    return mapping.FirstOrDefault(x => x.Value == space).Key;
+        //}
 
         private void RaiseAllEvents()
         {

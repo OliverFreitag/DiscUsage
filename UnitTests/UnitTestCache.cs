@@ -54,18 +54,16 @@ namespace UnitTests
             CreatedEvents.Clear();
             var discCache = new DiscCache();
             discCache.Created += DiscCache_Created;
+            discCache.Loaded += DiscCache_Loaded;
             discCache.LoadAsync(testDir).Wait();
             discCache.Created -= DiscCache_Created;
             var rootDriveCache = discCache.drivesCache[0];
-            Assert.AreEqual(CreatedEvents.Count, 4599);
+            Assert.AreEqual(CreatedEvents.Count, 4600);
             Assert.AreEqual(CreatedEvents.FindAll(x => x is FileCache).Sum(x => x.Length), rootDriveCache.Length);
         }
 
-        private List<InfoCache> CreatedEvents = new List<InfoCache>();
-
-        private void DiscCache_Created(InfoCache element)
+        private void DiscCache_Loaded(InfoCache element)
         {
-            CreatedEvents.Add(element);
             if (!element.IsRoot)
             {
                 Assert.IsNotNull(element.Parent);
@@ -77,8 +75,17 @@ namespace UnitTests
                 {
                     Assert.IsTrue(((DirectoryCache)element.Parent).files.Contains(element));
                 }
-                
             }
+        }
+
+        private List<InfoCache> CreatedEvents = new List<InfoCache>();
+
+        private void DiscCache_Created(InfoCache element)
+        {
+            CreatedEvents.Add(element);
+
+                
+            
         }
     }
 }

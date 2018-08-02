@@ -22,11 +22,11 @@ namespace DiscUsage.ViewModels
 
         public DiscSpaceRectangle ParentRectangle => (DiscSpaceRectangle)Parent;
         public List<DiscSpaceRectangle> ChildrenRectangle => OrderedChildren.ConvertAll(x => (DiscSpaceRectangle)x);
-        public DiscSpaceCanvasViewModel ManagerRectangle { get; private set; }
+        public DiscSpaceCanvasViewModel ManagerRectangle { get; set; }
 
-        public DiscSpaceRectangle(DiscSpaceManager manager, DiscSpaceCanvasViewModel model, DiscSpace parent,  String name, String fullname) : base(manager,parent,name,fullname)
+        public DiscSpaceRectangle(DiscSpaceManager manager, DiscSpace parent,  String name, String fullname) : base(manager,parent,name,fullname)
         {
-            ManagerRectangle = model;
+          //  ManagerRectangle = model;
             FocusChangedCommand = new DelegateCommand<string>(OnFocus);
         }
         public DelegateCommand<string> FocusChangedCommand { get; set; }

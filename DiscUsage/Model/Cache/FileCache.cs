@@ -11,10 +11,11 @@ namespace DiscUsage.Model
     {
         public FileInfo Info { get; private set; }
 
-        public FileCache(FileInfo file, InfoCache parent)
+        public FileCache(FileInfo file, DirectoryCache parent)
         {
             this.Info = file;
             this.parent = parent;
+            parent?.files.Add(this);
         }
 
         public long Length => Info.Length;

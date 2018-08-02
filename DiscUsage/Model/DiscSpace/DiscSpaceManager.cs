@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiscUsage.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,12 +25,30 @@ namespace DiscUsage.Model
         //   Create(info);
         //}
 
+        private static DiscSpace CreateDiscSpace(DiscSpaceManager manager, DiscSpace parent, String name, String fullname)
+        {
+            return new DiscSpaceRectangle(manager, parent, name, fullname);
+        }
+
         public void Load(InfoCache info)
         {
             var space = Map(info);
             Update(info, space);
             //UpdateAll();
-            Loaded?.Invoke(space);
+            if (info is DirectoryCache)
+            {
+                var smallChildren = space.Children.Where(x => x.Length < MinimalLimit).ToList();
+                smallChildren.ForEach(x=>mapping.Remove(MapBack(x)));
+                space.OwnLength = smallChildren.Sum(x => x.Length);
+                space.Children = space.Children.Where(x => x.Length >= MinimalLimit).ToList();
+
+            }
+
+            if (space.Length >= MinimalLimit)
+            {
+                Created?.Invoke(space);
+                Loaded?.Invoke(space);
+            }
         }
 
         private void Update(DiscSpace space)
@@ -40,21 +59,21 @@ namespace DiscUsage.Model
         private void Update(InfoCache info, DiscSpace space)
         {
             space.Count = info.Count;
-            if (info is FileCache)
-            {
-                space.OwnLength = info.Length;
-            }
-            else
-            {
-                var directory = (DirectoryCache)info;
-                space.OwnLength = directory.files.Sum(x => x.Length);
-            }
+            //if (info is FileCache)
+            //{
+            //    space.OwnLength = info.Length;
+            //}
+            //else
+            //{
+            //    var directory = (DirectoryCache)info;
+            //    space.OwnLength = directory.files.Sum(x => x.Length);
+            //}
             
 
-            if (space.Parent != null)
-            {
-                space.LengthOfAllPreviousChildren = space.Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection < space.IndexInParentOrderedCollection).Sum(x => x.Length);
-            }
+            //if (space.Parent != null)
+            //{
+            //    space.LengthOfAllPreviousChildren = space.Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection < space.IndexInParentOrderedCollection).Sum(x => x.Length);
+            //}
            
         }
 
@@ -105,8 +124,13 @@ namespace DiscUsage.Model
         public void Create(InfoCache info)
         {
             var parentSpace = Map(info.Parent);
-            var space = new DiscSpace(this, parentSpace, info.Name, info.FullName);
-           
+            var space = CreateDiscSpace(this, parentSpace, info.Name, info.FullName);
+            mapping[info] = space;
+            if (info is FileCache)
+            {
+                space.OwnLength = info.Length;
+            }
+
             //var parentSpace = GetAndCreateParent(info);
             //if (info.Length < MinimalLimit && )
             //{
@@ -119,25 +143,25 @@ namespace DiscUsage.Model
             //    UpdateAll();
             //    return;
             //}
-            
+
             //var space = new DiscSpace(this,parentSpace,info.Name, info.FullName);
-            
+
             //mapping[info] = space;
             //Update(info,space);
             //if (parentSpace != null)
             //{
             //    parentSpace.Children.Add(space);
             //}
-            //if (space.Parent == null)
-            //{
-            //    Root = space;
-            //}
+            if (info.Parent == null)
+            {
+                Root = space;
+            }
             //if (info.Length > MinimalLimit)
             //{
-            //    UpdateAll();
+            //    //UpdateAll();
             //    Created?.Invoke(space);
             //}
-            
+
         }
 
         public Dictionary<InfoCache, DiscSpace> Mapping => mapping;

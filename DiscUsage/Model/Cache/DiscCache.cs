@@ -30,7 +30,7 @@ namespace DiscUsage.Model
             //task.Wait();
         }
 
-        private void Load(string directory, InfoCache parent)
+        private void Load(string directory, DirectoryCache parent)
         {
             var info = new DirectoryInfo(directory);
             drivesCache.Add(Load(parent,info));
@@ -72,7 +72,7 @@ namespace DiscUsage.Model
             }
         }
 
-        private DirectoryCache Load(InfoCache parent,DirectoryInfo directory)
+        private DirectoryCache Load(DirectoryCache parent,DirectoryInfo directory)
         {
             var directoryCache = new DirectoryCache(directory, parent);
             RaiseCreatedEvent(directoryCache);
@@ -82,19 +82,19 @@ namespace DiscUsage.Model
             foreach (var subDirectory in subDirectories)
             {
                 var subDirectoryCache=Load(directoryCache, subDirectory);
-                directoryCache.directories.Add(subDirectoryCache);
+               // directoryCache.directories.Add(subDirectoryCache);
                          
             }
             var files = directory.GetFiles();
             foreach (var file in files)
             {
                 var fileCache = Load(file,directoryCache);
-                directoryCache.files.Add(fileCache);
-                RaiseCreatedEvent(fileCache);
+               // directoryCache.files.Add(fileCache);
+                //RaiseCreatedEvent(fileCache);
             }
             //if (parent == null)
             //{
-                RaiseLoadedEvent(parent);
+                RaiseLoadedEvent(directoryCache);
             //}
             return directoryCache;
         }
@@ -104,8 +104,9 @@ namespace DiscUsage.Model
             var fileCache = new FileCache(file,parent);
             //fileCache.file = file;
             RaiseCreatedEvent(fileCache);
-            RaiseLoadedEvent(fileCache);
+            // RaiseLoadedEvent(fileCache);
             //   fileCache.Length = file.Length;
+            RaiseLoadedEvent(fileCache);
             return fileCache;
         }
     }
