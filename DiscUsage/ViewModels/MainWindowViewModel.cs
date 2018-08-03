@@ -53,8 +53,8 @@ namespace DiscUsage.ViewModels
             //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
             DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
             DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
-            var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
-            //var task = discCache.LoadAsync(@"C:\Users\Oliver");
+            //var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
+            var task = discCache.LoadAsync(@"C:\Users\Oliver\source");
             IsLoaded = true;
         }
 
@@ -62,7 +62,7 @@ namespace DiscUsage.ViewModels
         {
             if (e.PropertyName== "FocusedRectangle")
             {
-                DiscSpaceCanvasViewModel2.DiscSpaceRectangles.Clear();
+                DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Clear();
                 if (DiscSpaceCanvasViewModel.FocusedRectangle != null)
                 {
                     var parentAndChildren = DiscSpaceCanvasViewModel.Manager.Mapping.Values.Where(x => DiscSpaceCanvasViewModel.FocusedRectangle.ChildrenRecursive.Contains(x) || x == DiscSpaceCanvasViewModel.FocusedRectangle).ToList();
@@ -86,8 +86,9 @@ namespace DiscUsage.ViewModels
                     Length = space.Length,
                     Count = space.Count,
                     IsLoaded = space.IsLoaded,
+                    ManagerRectangle= DiscSpaceCanvasViewModel2
                     //OrderedChildren = space.OrderedChildren.Select(x => (DiscSpace)mapping[x]).ToList()
-                
+
                 };
                 mapping[space] = rectangle;
                 rectangles.Add(rectangle);
