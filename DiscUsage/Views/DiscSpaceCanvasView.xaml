@@ -19,20 +19,20 @@
 
             <Style.Triggers>
                 <!--<Trigger Property="IsMouseOver" Value="True">-->
-                    <DataTrigger Binding="{Binding Path=IsLoaded}" Value="True">
+                    <DataTrigger Binding="{Binding Path=IsCurrentlyLoading}" Value="True">
                         <!--<Setter Property="Visibility" Value="Hidden" />-->
 
                     <DataTrigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1"  Duration="0:0:1"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.3" To="1.0"  Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </DataTrigger.EnterActions>
                     <DataTrigger.ExitActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.25" Duration="0:0:1" />
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:1" />
                             </Storyboard>
                         </BeginStoryboard>
                     </DataTrigger.ExitActions>

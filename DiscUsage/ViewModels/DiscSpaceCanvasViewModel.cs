@@ -84,6 +84,7 @@ namespace DiscUsage.ViewModels
             foreach (var rectangle in DiscSpaceRectanglesInternal)
             {
                 rectangle.ReCalcProperties();
+
             }
             var bigRectangles = DiscSpaceRectanglesInternal.Where(x => x.Width >= 6 && x.Height >= 6).ToList();
 
@@ -97,7 +98,18 @@ namespace DiscUsage.ViewModels
 
             foreach (var rectangle in DiscSpaceRectangles)
             {
+                rectangle.IsCurrentlyLoading = !rectangle.IsLoaded && rectangle.Children.Where(x => !x.IsLoaded && DiscSpaceRectangles.Contains(x)).Count() == 0;
+                if (rectangle.IsCurrentlyLoading)
+                {
+                    var i = 0;
+                }
                 rectangle.RaisePropertiesChanged();
+            }
+            var loading = DiscSpaceRectangles.Where(x => x.IsCurrentlyLoading).ToList();
+            Debug.Assert(loading.Count== 1);
+            if (loading.Count>1)
+            {
+                var i = 0;
             }
         }
 
