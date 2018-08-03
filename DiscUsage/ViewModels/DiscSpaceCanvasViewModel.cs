@@ -20,6 +20,13 @@ namespace DiscUsage.ViewModels
         {
         }
 
+        private double _Width = 600;
+        public double Width
+        {
+            get { return _Width; }
+            set { SetProperty(ref _Width, value); }
+        }
+
         private double _Height=600;
         public double Height
         {
@@ -65,7 +72,7 @@ namespace DiscUsage.ViewModels
 
         }
 
-        internal void Loaded(DiscSpace space)
+        public void Loaded(DiscSpace space)
         {
             if (space == Root)
             {
@@ -130,7 +137,15 @@ namespace DiscUsage.ViewModels
                 return;
             }
             timerHackRunning = true;
-            _uiContext.Send(x => RaiseAllEvents(),null);
+            if (_uiContext != null)
+            {
+                _uiContext.Send(x => RaiseAllEvents(), null);
+            }
+            else
+            {
+                RaiseAllEvents();
+            }
+            
             timerHackRunning = false;
             
         }

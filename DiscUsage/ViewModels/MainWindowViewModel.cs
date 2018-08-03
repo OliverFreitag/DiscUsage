@@ -20,6 +20,7 @@ namespace DiscUsage.ViewModels
         private DiscCache discCache = new DiscCache();
 
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
+        public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel2 = new DiscSpaceCanvasViewModel();
 
         private bool _IsLoaded;
         public bool IsLoaded {

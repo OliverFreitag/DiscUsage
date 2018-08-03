@@ -9,6 +9,11 @@
     <StackPanel Orientation="Vertical">
         <Button Content="Load" Width="100" HorizontalAlignment="Left" Command="{Binding LoadCommand}"/>
         <views:DiscSpaceView x:Name="DiscSpaceControl"/>
-        <views:DiscSpaceCanvasView x:Name="DiscSpaceCanvasControl" />
+        <StackPanel Orientation="Horizontal">
+            <views:DiscSpaceCanvasView x:Name="DiscSpaceCanvasControl" />
+            <StackPanel Width="20"></StackPanel>
+            <views:DiscSpaceCanvasView x:Name="DiscSpaceCanvasControl2" />
+        </StackPanel>
+        
     </StackPanel>
 </Window>

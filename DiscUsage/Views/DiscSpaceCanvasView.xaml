@@ -42,7 +42,7 @@
         </Style>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical">
-        <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}" Height="{Binding Height}">
+        <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}" Height="{Binding Height}" Width="{Binding Width}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas Background="WhiteSmoke"/>

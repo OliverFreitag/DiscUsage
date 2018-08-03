@@ -23,6 +23,7 @@ namespace UnitTests
 
             //discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Add;
             //discSpaceCanvasViewModel.Manager.Updated += discSpaceCanvasViewModel.Update;
+            discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
             discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Create;
             discSpaceCanvasViewModel.Manager.Created += Manager_Created;
 
@@ -77,7 +78,7 @@ namespace UnitTests
             Assert.AreEqual(second.ChildrenRectangle[0].Y, second.Y+3);
             Assert.AreNotEqual(second.ChildrenRectangle[1].Y, second.Y+3);
 
-            Assert.AreEqual(CreatedEvents.Count, discSpaceCanvasViewModel.DiscSpaceRectangles.Count);
+            Assert.AreEqual(CreatedEvents.Where(x=>x.Height>=6&&x.Width>=6).Count(), discSpaceCanvasViewModel.DiscSpaceRectangles.Count);
         }
 
         private List<DiscSpaceRectangle> CreatedEvents = new List<DiscSpaceRectangle>();
