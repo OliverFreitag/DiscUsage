@@ -24,7 +24,7 @@ namespace UnitTests
             Assert.AreEqual(discCache.drivesCache.Count, 1);
             Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
             Assert.AreEqual(discSpace.OrderedByLevel.Count, 38);
-            Assert.IsTrue(discSpace.Mapping.Values.ToList()[0].Length>discSpace.MinimalLimit);
+            Assert.IsTrue(discSpace.Mapping.Values.ToList()[0].Length > discSpace.MinimalLimit);
         }
 
         private List<DiscSpace> CreatedDiscSpaces = new List<DiscSpace>();
@@ -59,18 +59,18 @@ namespace UnitTests
             list.Reverse();
             foreach (var space in list)
             {
-                var info=discSpace.MapBack(space);
+                var info = discSpace.MapBack(space);
                 Assert.AreEqual(info.Name, space.Name);
                 if (info is DirectoryCache)
                 {
                     var directory = (DirectoryCache)info;
                     Assert.AreEqual(directory.Count, info.Count);
                 }
-                
+
                 Assert.AreEqual(info.Length, space.Length);
             }
 
-            var cache=CreatedDiscSpaces.ConvertAll(x => discSpace.MapBack(x));
+            var cache = CreatedDiscSpaces.ConvertAll(x => discSpace.MapBack(x));
             Assert.AreEqual(new HashSet<InfoCache>(cache).Count, cache.Count);
             //Assert.AreEqual(CreatedDiscSpaces.Count, discSpace.OrderedByLevel.Count);
             var missing = discSpace.OrderedByLevel.Where(x => !CreatedDiscSpaces.Contains(x));
@@ -81,7 +81,7 @@ namespace UnitTests
         {
             CreatedDiscSpaces.Add(space);
 
-            if (space.Manager.MapBack(space).Parent!=null)
+            if (space.Manager.MapBack(space).Parent != null)
             {
                 Assert.IsNotNull(space.Parent);
                 Assert.IsTrue(space.Parent.Children.Contains(space));
@@ -104,10 +104,10 @@ namespace UnitTests
             Assert.AreEqual(discCache.drivesCache.Count, 1);
             Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
 
-            Assert.AreEqual(discSpace.Mapping.Values.Sum(x=>x.OwnLength), 40599922);
+            Assert.AreEqual(discSpace.Mapping.Values.Sum(x => x.OwnLength), 40599922);
 
             Assert.AreEqual(discSpace.OrderedByLevel.Count, 38);
-           // Assert.AreEqual(discSpace.Root.ChildrenRecursive.Count, discSpace.Mapping.Count-1);
+            // Assert.AreEqual(discSpace.Root.ChildrenRecursive.Count, discSpace.Mapping.Count-1);
 
             Assert.AreEqual(discSpace.Root.Level, 0);
             Assert.AreEqual(discSpace.Root.Children.Count, 3);
@@ -139,5 +139,29 @@ namespace UnitTests
             Assert.AreEqual(discSpace.Root.OrderedChildren[0].Children[1].Level, 2);
 
         }
+
+        [TestMethod]
+        public void TestFastLength()
+        {
+            CreatedDiscSpaces.Clear();
+            var discCache = new DiscCache();
+            var discSpace = new DiscSpaceManager();
+            discSpaceManager = discSpace;
+            discCache.Created += discSpace.Create;
+            discCache.Loaded += discSpace.Load;
+
+            discSpace.Created += DiscSpace_Created;
+
+            discCache.LoadAsync(testDir).Wait();
+
+            discCache.Created -= discSpace.Create;
+            discSpace.Created -= DiscSpace_Created;
+
+            foreach (var space in discSpace.OrderedByLevel)
+            {
+                Assert.AreEqual(space.Length, space.LengthSlow);
+            }
+        }
+
     }
 }

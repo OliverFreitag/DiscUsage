@@ -90,6 +90,8 @@ namespace DiscUsage.Model
             if (info is FileCache)
             {
                 space.OwnLength = info.Length;
+                space.Length = space.OwnLength;
+                AddLengthToAllParents(parentSpace, space.OwnLength);
             }
 
             if (info.Parent == null)
@@ -102,6 +104,16 @@ namespace DiscUsage.Model
                 RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(space);                
             }
 
+        }
+
+        private void AddLengthToAllParents(DiscSpace space, long length)
+        {
+            if (space == null)
+            {
+                return;
+            }
+            space.Length += length;
+            AddLengthToAllParents(space.Parent,length);
         }
 
         private List<DiscSpace> CreatedAlreadyRaised = new List<DiscSpace>();
