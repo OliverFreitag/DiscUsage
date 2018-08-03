@@ -11,7 +11,36 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+    <UserControl.Resources>
+
+        <Style x:Key="PropertyTriggerExampleButtonStyle" TargetType="{x:Type Rectangle}">
+
+            <Setter Property="Opacity" Value="0.25" />
+
+            <Style.Triggers>
+                <!--<Trigger Property="IsMouseOver" Value="True">-->
+                    <DataTrigger Binding="{Binding Path=IsLoaded}" Value="True">
+                        <!--<Setter Property="Visibility" Value="Hidden" />-->
+
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1"  Duration="0:0:1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.25" Duration="0:0:1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                <!--</Trigger>-->
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <StackPanel Orientation="Vertical">
         <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}" Height="{Binding Height}">
             <ItemsControl.ItemsPanel>
@@ -24,10 +53,22 @@
                     <Rectangle Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding FillColor}" 
                            RadiusX="{Binding Radius}" RadiusY="{Binding Radius}" 
                            Stroke="White" StrokeThickness="{Binding StrokeWidth}" Opacity="{Binding Opacity}"
-                             >
+                           Style="{StaticResource PropertyTriggerExampleButtonStyle}"  >
                         <Rectangle.RenderTransform>
                             <TranslateTransform X="{Binding X, Mode=OneWay}" Y="{Binding Y, Mode=OneWay}"/>
                         </Rectangle.RenderTransform>
+                        <!--<Rectangle.Triggers>
+                            <EventTrigger RoutedEvent="Rectangle.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="MyRectangle" 
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1.0" To="0.0" Duration="0:0:5"
+                                                         AutoReverse="True" RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Rectangle.Triggers>-->
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseEnter">
                                 <i:InvokeCommandAction Command="{Binding FocusChangedCommand}" CommandParameter="Enter"/>

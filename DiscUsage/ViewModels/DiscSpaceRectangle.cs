@@ -59,6 +59,7 @@ namespace DiscUsage.ViewModels
             RaisePropertyChanged("Radius");
             RaisePropertyChanged("StrokeWidth");
             RaisePropertyChanged("Opacity");
+            RaisePropertyChanged("IsLoaded");
         }
 
         private void ReCalcProperties()
