@@ -40,7 +40,7 @@ namespace DiscUsage.ViewModels
             get { return _DiscSpaceRectangles; }
             set { SetProperty(ref _DiscSpaceRectangles,value); }
         }
-        private ObservableCollection<DiscSpaceRectangle> DiscSpaceRectanglesInternal = new ObservableCollection<DiscSpaceRectangle>();
+        public ObservableCollection<DiscSpaceRectangle> DiscSpaceRectanglesInternal = new ObservableCollection<DiscSpaceRectangle>();
 
         public DiscSpaceRectangle Root => (DiscSpaceRectangle)Manager.Root;
 
@@ -78,12 +78,12 @@ namespace DiscUsage.ViewModels
             }
         }
 
-        private void RaiseAllEvents()
+        public void RaiseAllEvents()
         {
             //DiscSpaceRectangles.Clear();
             foreach (var rectangle in DiscSpaceRectanglesInternal)
             {
-                rectangle.ReCalcProperties();
+                rectangle.ReCalcProperties(this);
 
             }
             var bigRectangles = DiscSpaceRectanglesInternal.Where(x => x.Width >= 6 && x.Height >= 6).ToList();
@@ -103,7 +103,7 @@ namespace DiscUsage.ViewModels
                 {
                     var i = 0;
                 }
-                rectangle.RaisePropertiesChanged();
+                rectangle.RaisePropertiesChanged(this);
             }
             var loading = DiscSpaceRectangles.Where(x => x.IsCurrentlyLoading).ToList();
             //Debug.Assert(loading.Count== 1);

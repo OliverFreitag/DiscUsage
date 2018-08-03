@@ -28,6 +28,7 @@ namespace DiscUsage.ViewModels
         {
           //  ManagerRectangle = model;
             FocusChangedCommand = new DelegateCommand<string>(OnFocus);
+            //parent?.Children.Add(this);
         }
         public DelegateCommand<string> FocusChangedCommand { get; set; }
 
@@ -49,9 +50,9 @@ namespace DiscUsage.ViewModels
             }
         }
 
-        public void RaisePropertiesChanged()
+        public void RaisePropertiesChanged(DiscSpaceCanvasViewModel model)
         {
-            ReCalcProperties();
+            ReCalcProperties(model);
             RaisePropertyChanged("X");
             RaisePropertyChanged("Y");
             RaisePropertyChanged("Width");
@@ -63,14 +64,14 @@ namespace DiscUsage.ViewModels
             RaisePropertyChanged("IsCurrentlyLoading");
         }
 
-        public void ReCalcProperties()
+        public void ReCalcProperties(DiscSpaceCanvasViewModel model)
         {
             X = (Parent == null) ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
             Y = (Parent == null) ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
 
             Width = (Parent == null)? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
             Height = (Parent == null) ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
-    }
+        }
         
         public bool IsCurrentlyLoading { get; internal set; }
 

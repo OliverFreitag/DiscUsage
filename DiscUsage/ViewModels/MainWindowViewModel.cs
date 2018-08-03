@@ -65,10 +65,43 @@ namespace DiscUsage.ViewModels
                 DiscSpaceCanvasViewModel2.DiscSpaceRectangles.Clear();
                 if (DiscSpaceCanvasViewModel.FocusedRectangle != null)
                 {
-                    DiscSpaceCanvasViewModel.FocusedRectangle.ChildrenRecursive.ForEach(x => DiscSpaceCanvasViewModel2.DiscSpaceRectangles.Add((DiscSpaceRectangle)x));
+                    var parentAndChildren = DiscSpaceCanvasViewModel.Manager.Mapping.Values.Where(x => DiscSpaceCanvasViewModel.FocusedRectangle.ChildrenRecursive.Contains(x) || x == DiscSpaceCanvasViewModel.FocusedRectangle).ToList();
+                    Copy(parentAndChildren).ForEach(x => DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+                    DiscSpaceCanvasViewModel2.RaiseAllEvents();
                 }
                 
             }
+        }
+
+        private List<DiscSpaceRectangle> Copy(List<DiscSpace> spaces)
+        {
+            var manager = DiscSpaceCanvasViewModel2.Manager;
+            List<DiscSpaceRectangle> rectangles = new List<DiscSpaceRectangle>();
+            var mapping = new Dictionary<DiscSpace, DiscSpaceRectangle>();
+            foreach(var space in spaces.OrderBy(x=>x.Level))
+            {
+                var parent =space.Parent == null ? null : mapping.ContainsKey(space.Parent)?mapping[space.Parent]:null;
+                var rectangle = new DiscSpaceRectangle(manager, parent, space.Name, space.FullName)
+                {
+                    Length = space.Length,
+                    Count = space.Count,
+                    IsLoaded = space.IsLoaded,
+                    //OrderedChildren = space.OrderedChildren.Select(x => (DiscSpace)mapping[x]).ToList()
+                
+                };
+                mapping[space] = rectangle;
+                rectangles.Add(rectangle);
+            }
+            foreach (var space in spaces)
+            {
+                var rectangle = mapping[space];
+                if (space.OrderedChildren != null)
+                {
+                    rectangle.OrderedChildren = space.OrderedChildren.Select(x => (DiscSpace)mapping[x]).ToList();
+                }
+                
+            }
+            return rectangles;
         }
 
         public DelegateCommand LoadCommand { get; set; }
