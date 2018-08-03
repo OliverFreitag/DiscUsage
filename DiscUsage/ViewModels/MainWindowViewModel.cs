@@ -52,10 +52,23 @@ namespace DiscUsage.ViewModels
             DiscSpaceCanvasViewModel.Manager.Loaded += DiscSpaceCanvasViewModel.Loaded;
             //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
             DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
-
-            var task=discCache.LoadAsync(@"C:\");
+            DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
+            var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
             //var task = discCache.LoadAsync(@"C:\Users\Oliver");
             IsLoaded = true;
+        }
+
+        private void DiscSpaceCanvasViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName== "FocusedRectangle")
+            {
+                DiscSpaceCanvasViewModel2.DiscSpaceRectangles.Clear();
+                if (DiscSpaceCanvasViewModel.FocusedRectangle != null)
+                {
+                    DiscSpaceCanvasViewModel.FocusedRectangle.ChildrenRecursive.ForEach(x => DiscSpaceCanvasViewModel2.DiscSpaceRectangles.Add((DiscSpaceRectangle)x));
+                }
+                
+            }
         }
 
         public DelegateCommand LoadCommand { get; set; }

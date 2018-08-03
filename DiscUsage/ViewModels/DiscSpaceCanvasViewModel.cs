@@ -106,7 +106,7 @@ namespace DiscUsage.ViewModels
                 rectangle.RaisePropertiesChanged();
             }
             var loading = DiscSpaceRectangles.Where(x => x.IsCurrentlyLoading).ToList();
-            Debug.Assert(loading.Count== 1);
+            //Debug.Assert(loading.Count== 1);
             if (loading.Count>1)
             {
                 var i = 0;

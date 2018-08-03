@@ -41,7 +41,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Vertical" Width="{Binding Width}">
         <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}" Height="{Binding Height}" Width="{Binding Width}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
