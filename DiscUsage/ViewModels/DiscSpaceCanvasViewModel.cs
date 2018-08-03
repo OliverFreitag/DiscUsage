@@ -49,12 +49,14 @@ namespace DiscUsage.ViewModels
             {
                 _uiContext = System.Threading.SynchronizationContext.Current;
             }
-           
+
             var rectangle = (DiscSpaceRectangle)space;
             rectangle.ManagerRectangle = this;
             FocusedRectangle = Root;
             //var rectangle = (DiscSpaceRectangle)space;
             DiscSpaceRectangles.Add(rectangle);
+
+
             //var rectangles = DiscSpaceRectangles.OrderBy(x => x.Level).ToList();
             //DiscSpaceRectangles.Clear();
             //rectangles.ForEach(x => DiscSpaceRectangles.Add(x));
@@ -82,6 +84,8 @@ namespace DiscUsage.ViewModels
             {
                 rectangle.RaisePropertiesChanged();
             }
+            var smallRectangles = DiscSpaceRectangles.Where(x => x.Width < 6 || x.Height < 6).ToList();
+            smallRectangles.ForEach(x => DiscSpaceRectangles.Remove(x));
         }
 
         private Timer _Timer;
@@ -114,6 +118,9 @@ namespace DiscUsage.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// hack to avoid multiple timer waiting for update
+        /// </summary>
         private bool timerHackRunning = false;
 
         private void _Timer_Elapsed(object sender, ElapsedEventArgs e)

@@ -83,7 +83,7 @@ namespace DiscUsage.ViewModels
 
         public Brush FillColor => brushes[Level%brushes.Count];
         public double StrokeWidth => IsLoaded ? this._strokeWidth : 0.0;
-        public double Opacity => IsEnabled ? ((ManagerRectangle.FocusedRectangle == this) ? 0.6 : 0.3):0.0;
+        public double Opacity =>  ((ManagerRectangle.FocusedRectangle == this) ? 0.6 : 0.3);
 
         private double Size => (Parent == null) ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.Size - Margin;
         private double Position => (Parent == null) ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.Size+Margin/2;
