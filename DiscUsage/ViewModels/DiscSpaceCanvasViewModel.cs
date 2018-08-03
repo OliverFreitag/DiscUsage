@@ -59,21 +59,21 @@ namespace DiscUsage.ViewModels
             //DiscSpaceRectangles.Clear();
             //rectangles.ForEach(x => DiscSpaceRectangles.Add(x));
             Debug.Assert(rectangle.ManagerRectangle!=null);
-            RaiseAllEvents();
+            //RaiseAllEvents();
 
         }
 
         internal void Loaded(DiscSpace space)
         {
-            //if (space == Root)
-            //{
-            //    int i = 0;
-            //    IsTimerEnabled = false;
-            //}
-            //else
-            //{
-            //    IsTimerEnabled = true;
-            //}
+            if (space == Root)
+            {
+                int i = 0;
+                IsTimerEnabled = false;
+            }
+            else
+            {
+                IsTimerEnabled = true;
+            }
         }
 
         private void RaiseAllEvents()

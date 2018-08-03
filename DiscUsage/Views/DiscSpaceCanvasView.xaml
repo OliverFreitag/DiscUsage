@@ -23,7 +23,8 @@
                 <DataTemplate>
                     <Rectangle Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding FillColor}" 
                            RadiusX="{Binding Radius}" RadiusY="{Binding Radius}" 
-                           Stroke="White" StrokeThickness="{Binding StrokeWidth}" Opacity="{Binding Opacity}">
+                           Stroke="White" StrokeThickness="{Binding StrokeWidth}" Opacity="{Binding Opacity}"
+                             >
                         <Rectangle.RenderTransform>
                             <TranslateTransform X="{Binding X, Mode=OneWay}" Y="{Binding Y, Mode=OneWay}"/>
                         </Rectangle.RenderTransform>
