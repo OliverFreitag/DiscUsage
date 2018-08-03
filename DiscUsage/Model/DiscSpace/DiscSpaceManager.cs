@@ -36,6 +36,8 @@ namespace DiscUsage.Model
                 smallChildren.ForEach(x=>mapping.Remove(MapBack(x)));
                 space.OwnLength = smallChildren.Sum(x => x.Length);
                 space.Children = space.Children.Where(x => x.Length >= MinimalLimit).ToList();
+                space.IsLoaded = false;
+                space.ChildrenLength = space.Children.Sum(x => x.Length);
             }
 
             if (space.Length >= MinimalLimit)

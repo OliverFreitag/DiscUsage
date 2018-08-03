@@ -48,19 +48,19 @@ namespace DiscUsage.ViewModels
             discCache.Created += DiscSpaceCanvasViewModel.Manager.Create;
             discCache.Loaded += DiscSpaceCanvasViewModel.Manager.Load;
 
-            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceManager_Loaded;
-            //DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Add;
+            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceManager_Created;
+            DiscSpaceCanvasViewModel.Manager.Loaded += DiscSpaceCanvasViewModel.Loaded;
             //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
-            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Loaded;
+            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
 
-            var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
+            var task=discCache.LoadAsync(@"C:\Users\Oliver");
             //var task = discCache.LoadAsync(@"C:\Users\Oliver");
             IsLoaded = true;
         }
 
         public DelegateCommand LoadCommand { get; set; }
         private int Counter = 0;
-        private void DiscSpaceManager_Loaded(DiscSpace space)
+        private void DiscSpaceManager_Created(DiscSpace space)
         {
             //DiscSpaceCanvasViewModel.Add(DiscSpaceCanvasViewModel.Manager.Root.OrderedChildren);
             //RaisePropertyChanged("DiscSpaces");

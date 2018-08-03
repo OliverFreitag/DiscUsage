@@ -19,6 +19,7 @@ namespace DiscUsage.Model
             Manager = manager;
             Children = new List<DiscSpace>();
             parent?.Children.Add(this);
+            IsLoaded = false;
         }
 
         public DiscSpace Parent { get; internal set; }
@@ -32,10 +33,14 @@ namespace DiscUsage.Model
         /// </summary>
         public Int64 OwnLength { get; internal set; }
 
+        public Int64 ChildrenLength { get; internal set; }
+
+        public bool IsLoaded { get; internal set; }
+
         /// <summary>
         /// Length of this disc space, which is the sum of length of all files in all sub directories.
         /// </summary>
-        public Int64 Length => OwnLength + Children.Sum(x => x.Length);
+        public Int64 Length => IsLoaded ? OwnLength+ChildrenLength :  OwnLength + Children.Sum(x => x.Length);
         public Int64 LengthOfAllPreviousChildren => Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection < IndexInParentOrderedCollection).Sum(x => x.Length);
 
         public Int64 ParentLength => Parent.Length;

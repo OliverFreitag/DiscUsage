@@ -16,7 +16,6 @@ namespace UnitTests
         public void TestMethodLoadAndParents()
         {
             var discCache = new DiscCache();
-            //var discSpace = new DiscSpaceManager();
             var discSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
 
             discCache.Created += discSpaceCanvasViewModel.Manager.Create;
@@ -24,18 +23,13 @@ namespace UnitTests
 
             //discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Add;
             //discSpaceCanvasViewModel.Manager.Updated += discSpaceCanvasViewModel.Update;
-            discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Loaded;
+            discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Create;
             discSpaceCanvasViewModel.Manager.Created += Manager_Created;
 
             discCache.LoadAsync(testDir).Wait();
 
-            //  discSpaceCanvasViewModel.Loaded(null);
-
             foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
             {
-                //var space = discSpaceCanvasViewModel.Manager.MapBack(rectangle);
-                //var info = discSpaceCanvasViewModel.Manager.MapBack(space);
-                //Assert.AreEqual(rectangle.Parent, rectangle.ManagerRectangle.Map(rectangle.Manager.Map(info.Parent)));
                 Assert.IsNotNull(rectangle.ManagerRectangle);
             }
 

@@ -41,9 +41,12 @@ namespace UnitTests
             discCache.Loaded += discSpace.Load;
 
             discSpace.Created += DiscSpace_Created;
+
             discCache.LoadAsync(testDir).Wait();
+
             discCache.Created -= discSpace.Create;
             discSpace.Created -= DiscSpace_Created;
+
             Assert.AreEqual(discCache.drivesCache.Count, 1);
             Assert.AreEqual(discCache.drivesCache[0].Length, 40599922);
             Assert.AreEqual(discSpace.OrderedByLevel.Count, 38);
@@ -77,7 +80,7 @@ namespace UnitTests
         private void DiscSpace_Created(DiscSpace space)
         {
             CreatedDiscSpaces.Add(space);
-            // CreatedDiscSpaces.Add(space);
+
             if (space.Manager.MapBack(space).Parent!=null)
             {
                 Assert.IsNotNull(space.Parent);

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
+using System.Timers;
 
 namespace DiscUsage.Model
 {
@@ -15,6 +16,7 @@ namespace DiscUsage.Model
 
         public event DiscCacheDelegate Created;
         public event DiscCacheDelegate Loaded;
+        public event DiscCacheDelegate Timer;
 
         public DiscCache()
         {
@@ -77,16 +79,25 @@ namespace DiscUsage.Model
             RaiseCreatedEvent(directoryCache);
 
             //todo: deal with exceptions
-            var subDirectories = directory.GetDirectories();
-            foreach (var subDirectory in subDirectories)
+            try
             {
-                var subDirectoryCache=Load(directoryCache, subDirectory);                 
+                var subDirectories = directory.GetDirectories();
+                foreach (var subDirectory in subDirectories)
+                {
+                    var subDirectoryCache = Load(directoryCache, subDirectory);
+                }
+                var files = directory.GetFiles();
+                foreach (var file in files)
+                {
+                    var fileCache = Load(file, directoryCache);
+                }
             }
-            var files = directory.GetFiles();
-            foreach (var file in files)
+            catch (System.UnauthorizedAccessException ex)
             {
-                var fileCache = Load(file,directoryCache);
+                // handle exception
+                //throw;
             }
+
 
             RaiseLoadedEvent(directoryCache);
 
@@ -99,6 +110,42 @@ namespace DiscUsage.Model
             RaiseCreatedEvent(fileCache);
             RaiseLoadedEvent(fileCache);
             return fileCache;
+        }
+
+        private System.Timers.Timer _Timer;
+
+        public bool IsTimerEnabled
+        {
+            get
+            {
+                return _Timer != null;
+            }
+            set
+            {
+                if (value)
+                {
+                    if (_Timer == null)
+                    {
+                        _Timer = new System.Timers.Timer(1000);
+                        _Timer.Elapsed += _Timer_Elapsed;
+                        _Timer.Start();
+                    }
+                }
+                else
+                {
+                    if (_Timer != null)
+                    {
+                        _Timer.Stop();
+                        _Timer = null;
+                        _Timer_Elapsed(null, null);
+                    }
+                }
+            }
+        }
+
+        private void _Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Timer.Invoke(null);
         }
     }
 }

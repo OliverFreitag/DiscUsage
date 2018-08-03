@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.ComponentModel;
 using Prism.Mvvm;
 using System.Diagnostics;
+using System.Timers;
 
 namespace DiscUsage.ViewModels
 {
@@ -41,24 +42,14 @@ namespace DiscUsage.ViewModels
             get { return _FocusedRectangle; }
             set { SetProperty(ref _FocusedRectangle, value); }
         }
-
-        //public void Update(DiscSpace space)
-        //{
-        //    //Update((DiscSpaceRectangle)space);
-        //}
-
-        //private void Update(DiscSpaceRectangle discSpaceRectangle)
-        //{
-        //    discSpaceRectangle.RaisePropertiesChanged();
-        //}
-
-        public void Add(DiscSpace space)
+        private System.Threading.SynchronizationContext _uiContext;
+        public void Create(DiscSpace space)
         {
-
-        }
-
-        public void Loaded(DiscSpace space)
-        {
+            if (_uiContext == null)
+            {
+                _uiContext = System.Threading.SynchronizationContext.Current;
+            }
+           
             var rectangle = (DiscSpaceRectangle)space;
             rectangle.ManagerRectangle = this;
             FocusedRectangle = Root;
@@ -69,10 +60,20 @@ namespace DiscUsage.ViewModels
             //rectangles.ForEach(x => DiscSpaceRectangles.Add(x));
             Debug.Assert(rectangle.ManagerRectangle!=null);
             RaiseAllEvents();
-            if (space == Root)
-            {
-                int i = 0;
-            }
+
+        }
+
+        internal void Loaded(DiscSpace space)
+        {
+            //if (space == Root)
+            //{
+            //    int i = 0;
+            //    IsTimerEnabled = false;
+            //}
+            //else
+            //{
+            //    IsTimerEnabled = true;
+            //}
         }
 
         private void RaiseAllEvents()
@@ -81,6 +82,43 @@ namespace DiscUsage.ViewModels
             {
                 rectangle.RaisePropertiesChanged();
             }
+        }
+
+        private Timer _Timer;
+
+        public bool IsTimerEnabled
+        {
+            get
+            {
+                return _Timer != null;
+            }
+            set
+            {
+                if (value)
+                {
+                    if (_Timer == null)
+                    {
+                        _Timer = new Timer(10000);
+                        _Timer.Elapsed += _Timer_Elapsed;
+                        _Timer.Start();
+                    }
+                }
+                else
+                {
+                    if (_Timer != null)
+                    {
+                        _Timer.Stop();
+                        _Timer = null;
+                        _Timer_Elapsed(null, null);
+                    }
+                }
+            }
+        }
+
+        private void _Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            _uiContext.Send(x => RaiseAllEvents(),null);
+            
         }
     }
 }
