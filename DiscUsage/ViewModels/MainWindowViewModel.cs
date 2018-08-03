@@ -21,6 +21,7 @@ namespace DiscUsage.ViewModels
 
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel2 = new DiscSpaceCanvasViewModel();
+       // public DiscSpaceViewModel DiscSpaceViewModel = new DiscSpaceViewModel();
 
         private bool _IsLoaded;
         public bool IsLoaded {
@@ -53,8 +54,8 @@ namespace DiscUsage.ViewModels
             //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
             DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
             DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
-            //var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
-            var task = discCache.LoadAsync(@"C:\Users\Oliver\source");
+            var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
+            //var task = discCache.LoadAsync(@"C:\");
             IsLoaded = true;
         }
 

@@ -54,12 +54,21 @@ namespace DiscUsage.ViewModels
             SourceDiscSpaces.Remove(SelectedDiscSpace);
         }
 
-        private ObservableCollection<DiscSpace> _SourceDiscSpaces;
+        private ObservableCollection<DiscSpace> _SourceDiscSpaces = new ObservableCollection<DiscSpace>();
 
         public ObservableCollection<DiscSpace> SourceDiscSpaces
         {
             get { return _SourceDiscSpaces; }
             set { SetProperty(ref _SourceDiscSpaces, value); }
+        }
+
+        internal void Create(DiscSpace space)
+        {
+            if (space.Parent == Manager.Root)
+            {
+                SourceDiscSpaces.Add(space);
+            }
+            
         }
 
         public void Add(List<DiscSpace> spaces)
@@ -70,6 +79,11 @@ namespace DiscUsage.ViewModels
                 spacesCollection.Add(space);
             }
             SourceDiscSpaces = spacesCollection;
+        }
+
+        internal void Loaded(DiscSpace space)
+        {
+           
         }
     }
 }

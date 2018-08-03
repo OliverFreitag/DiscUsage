@@ -53,6 +53,7 @@ namespace DiscUsage.ViewModels
         private System.Threading.SynchronizationContext _uiContext;
         public void Create(DiscSpace space)
         {
+            base.Create(space);
             if (_uiContext == null)
             {
                 _uiContext = System.Threading.SynchronizationContext.Current;
@@ -67,6 +68,7 @@ namespace DiscUsage.ViewModels
 
         public void Loaded(DiscSpace space)
         {
+            base.Loaded(space);
             if (space == Root)
             {
                 int i = 0;
