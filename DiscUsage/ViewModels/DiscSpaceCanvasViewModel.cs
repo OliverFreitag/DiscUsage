@@ -40,6 +40,7 @@ namespace DiscUsage.ViewModels
             get { return _DiscSpaceRectangles; }
             set { SetProperty(ref _DiscSpaceRectangles,value); }
         }
+        private ObservableCollection<DiscSpaceRectangle> DiscSpaceRectanglesInternal = new ObservableCollection<DiscSpaceRectangle>();
 
         public DiscSpaceRectangle Root => (DiscSpaceRectangle)Manager.Root;
 
@@ -59,17 +60,9 @@ namespace DiscUsage.ViewModels
 
             var rectangle = (DiscSpaceRectangle)space;
             rectangle.ManagerRectangle = this;
-            FocusedRectangle = Root;
-            //var rectangle = (DiscSpaceRectangle)space;
-            DiscSpaceRectangles.Add(rectangle);
-
-
-            //var rectangles = DiscSpaceRectangles.OrderBy(x => x.Level).ToList();
-            //DiscSpaceRectangles.Clear();
-            //rectangles.ForEach(x => DiscSpaceRectangles.Add(x));
+            DiscSpaceRectanglesInternal.Add(rectangle);
             Debug.Assert(rectangle.ManagerRectangle!=null);
             //RaiseAllEvents();
-
         }
 
         public void Loaded(DiscSpace space)
@@ -87,12 +80,25 @@ namespace DiscUsage.ViewModels
 
         private void RaiseAllEvents()
         {
+            //DiscSpaceRectangles.Clear();
+            foreach (var rectangle in DiscSpaceRectanglesInternal)
+            {
+                rectangle.ReCalcProperties();
+            }
+            var bigRectangles = DiscSpaceRectanglesInternal.Where(x => x.Width >= 6 && x.Height >= 6).ToList();
+
+            // add
+            var notInRectangles=bigRectangles.Where(x => !DiscSpaceRectangles.Contains(x)).ToList();
+            notInRectangles.ForEach(x => DiscSpaceRectangles.Add(x));
+
+            //remove
+            var notInBigRectangles = DiscSpaceRectangles.Where(x => !bigRectangles.Contains(x)).ToList();
+            notInBigRectangles.ForEach(x => DiscSpaceRectangles.Remove(x));
+
             foreach (var rectangle in DiscSpaceRectangles)
             {
                 rectangle.RaisePropertiesChanged();
             }
-            var smallRectangles = DiscSpaceRectangles.Where(x => x.Width < 6 || x.Height < 6).ToList();
-            smallRectangles.ForEach(x => DiscSpaceRectangles.Remove(x));
         }
 
         private Timer _Timer;

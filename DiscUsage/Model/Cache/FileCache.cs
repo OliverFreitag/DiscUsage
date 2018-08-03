@@ -7,7 +7,7 @@ using System.IO;
 
 namespace DiscUsage.Model
 {
-    public class FileCache : InfoCache
+    public class FileCache : IInfoCache
     {
         public FileInfo Info { get; private set; }
 
@@ -21,8 +21,8 @@ namespace DiscUsage.Model
         public long Length => Info.Length;
 
         public string Name => Info.Name;
-        public InfoCache parent;
-        public InfoCache Parent
+        public IInfoCache parent;
+        public IInfoCache Parent
         {
             get
             {

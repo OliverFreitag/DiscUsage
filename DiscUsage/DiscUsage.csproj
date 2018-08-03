@@ -103,7 +103,7 @@
     <Compile Include="Model\Cache\DirectoryCache.cs" />
     <Compile Include="Model\Cache\DiscCache.cs" />
     <Compile Include="Model\Cache\FileCache.cs" />
-    <Compile Include="Model\Cache\InfoCache.cs" />
+    <Compile Include="Model\Cache\IInfoCache.cs" />
     <Compile Include="Model\DiscSpace\DiscSpace.cs" />
     <Compile Include="Model\DiscSpace\DiscSpaceManager.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

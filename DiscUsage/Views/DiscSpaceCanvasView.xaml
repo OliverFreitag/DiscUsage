@@ -15,7 +15,7 @@
 
         <Style x:Key="PropertyTriggerExampleButtonStyle" TargetType="{x:Type Rectangle}">
 
-            <Setter Property="Opacity" Value="0.25" />
+            <!--<Setter Property="Opacity" Value="0.25" />-->
 
             <Style.Triggers>
                 <!--<Trigger Property="IsMouseOver" Value="True">-->

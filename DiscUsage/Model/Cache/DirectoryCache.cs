@@ -7,12 +7,12 @@ using System.IO;
 
 namespace DiscUsage.Model
 {
-    public class DirectoryCache : InfoCache
+    public class DirectoryCache : IInfoCache
     {
         public DirectoryInfo Info { get; private set; }
         public List<DirectoryCache> directories = new List<DirectoryCache>();
         public List<FileCache> files = new List<FileCache>();
-        private InfoCache parent;
+        private IInfoCache parent;
 
         public DirectoryCache(DirectoryInfo directoryInfo, DirectoryCache parent)
         {
@@ -30,7 +30,7 @@ namespace DiscUsage.Model
 
         public string Name => Info.Name;
 
-        public InfoCache Parent
+        public IInfoCache Parent
         {
             get
             {

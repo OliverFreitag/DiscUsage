@@ -71,7 +71,7 @@ namespace UnitTests
             }
 
             var cache = CreatedDiscSpaces.ConvertAll(x => discSpace.MapBack(x));
-            Assert.AreEqual(new HashSet<InfoCache>(cache).Count, cache.Count);
+            Assert.AreEqual(new HashSet<IInfoCache>(cache).Count, cache.Count);
             //Assert.AreEqual(CreatedDiscSpaces.Count, discSpace.OrderedByLevel.Count);
             var missing = discSpace.OrderedByLevel.Where(x => !CreatedDiscSpaces.Contains(x));
             Assert.AreEqual(missing.Count(), 0);

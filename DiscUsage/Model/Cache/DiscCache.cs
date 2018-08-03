@@ -9,7 +9,7 @@ using System.Timers;
 
 namespace DiscUsage.Model
 {
-    public delegate void DiscCacheDelegate(InfoCache element);
+    public delegate void DiscCacheDelegate(IInfoCache element);
     public class DiscCache
     {
         public List<DirectoryCache> drivesCache = new List<DirectoryCache>();
@@ -49,7 +49,7 @@ namespace DiscUsage.Model
             
         }
 
-        private void RaiseCreatedEvent(InfoCache cache)
+        private void RaiseCreatedEvent(IInfoCache cache)
         {
             if (_uiContext == null)
             {
@@ -61,7 +61,7 @@ namespace DiscUsage.Model
             }
         }
 
-        private void RaiseLoadedEvent(InfoCache cache)
+        private void RaiseLoadedEvent(IInfoCache cache)
         {
             if (_uiContext == null)
             {

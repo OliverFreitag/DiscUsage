@@ -17,7 +17,7 @@ namespace DiscUsage.Model
         public event DiscSpaceDelegate Loaded;
 
         public DiscSpace Root;
-        private Dictionary<InfoCache, DiscSpace> mapping = new Dictionary<InfoCache, DiscSpace>();
+        private Dictionary<IInfoCache, DiscSpace> mapping = new Dictionary<IInfoCache, DiscSpace>();
         public Int64 MinimalLimit = 1024 * 1024;
 
         private static DiscSpace CreateDiscSpace(DiscSpaceManager manager, DiscSpace parent, String name, String fullname)
@@ -25,7 +25,7 @@ namespace DiscUsage.Model
             return new DiscSpaceRectangle(manager, parent, name, fullname);
         }
 
-        public void Load(InfoCache info)
+        public void Load(IInfoCache info)
         {
             var space = Map(info);
             Update(info, space);
@@ -53,7 +53,7 @@ namespace DiscUsage.Model
             Update(MapBack(space),space);
         }
 
-        private void Update(InfoCache info, DiscSpace space)
+        private void Update(IInfoCache info, DiscSpace space)
         {
             space.Count = info.Count;          
         }
@@ -83,7 +83,7 @@ namespace DiscUsage.Model
         /// </summary>
         /// <param name="info"></param>
         /// <param name="forceCreation"> if this parameter is set to true, the mimimal limit is virtually set to 0.</param>
-        public void Create(InfoCache info)
+        public void Create(IInfoCache info)
         {
             var parentSpace = Map(info.Parent);
             var space = CreateDiscSpace(this, parentSpace, info.Name, info.FullName);
@@ -136,8 +136,8 @@ namespace DiscUsage.Model
            
         }
 
-        public Dictionary<InfoCache, DiscSpace> Mapping => mapping;
-        public DiscSpace Map(InfoCache info)
+        public Dictionary<IInfoCache, DiscSpace> Mapping => mapping;
+        public DiscSpace Map(IInfoCache info)
         {
             if (info == null||!mapping.ContainsKey(info))
             {
@@ -146,7 +146,7 @@ namespace DiscUsage.Model
             return mapping[info];
         }
 
-        public InfoCache MapBack(DiscSpace space)
+        public IInfoCache MapBack(DiscSpace space)
         {
             if (!mapping.ContainsValue(space))
             {

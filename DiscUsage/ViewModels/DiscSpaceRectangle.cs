@@ -62,7 +62,7 @@ namespace DiscUsage.ViewModels
             RaisePropertyChanged("IsLoaded");
         }
 
-        private void ReCalcProperties()
+        public void ReCalcProperties()
         {
             X = (Parent == null) ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
             Y = (Parent == null) ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
@@ -70,10 +70,10 @@ namespace DiscUsage.ViewModels
             Width = (Parent == null)? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
             Height = (Parent == null) ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
 
-            IsEnabled = Width > 6 && Height > 6;
+            //IsEnabled = Width > 6 && Height > 6;
     }
         
-        public bool IsEnabled { get; private set; }
+       // public bool IsEnabled { get; private set; }
 
         public double X { get; private set; }
         public double Y { get; private set; }
@@ -83,8 +83,8 @@ namespace DiscUsage.ViewModels
         public double Radius => Math.Min(_CornerRadius, Math.Min(Width,Height)/2);
 
         public Brush FillColor => brushes[Level%brushes.Count];
-        public double StrokeWidth => IsLoaded ? this._strokeWidth : 0.0;
-        public double Opacity =>  ((ManagerRectangle.FocusedRectangle == this) ? 0.6 : 0.3);
+        public double StrokeWidth =>  this._strokeWidth;
+        public double Opacity =>  (ManagerRectangle.FocusedRectangle == this) ? 0.6 : 0.3;
 
         private double Size => (Parent == null) ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.Size - Margin;
         private double Position => (Parent == null) ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.Size+Margin/2;

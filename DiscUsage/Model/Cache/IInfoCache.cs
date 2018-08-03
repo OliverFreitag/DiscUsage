@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DiscUsage.Model
 {
-    public interface InfoCache
+    public interface IInfoCache
     {
         Int64 Length { get; }
         int Count { get; }
         string Name { get; }
         string FullName { get; }
-        InfoCache Parent { get; }
+        IInfoCache Parent { get; }
         bool IsRoot { get; }
     }
 }

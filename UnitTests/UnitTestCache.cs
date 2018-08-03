@@ -67,7 +67,7 @@ namespace UnitTests
             Assert.AreEqual(CreatedEvents.FindAll(x => x is FileCache).Sum(x => x.Length), rootDriveCache.Length);
         }
 
-        private void DiscCache_Loaded(InfoCache element)
+        private void DiscCache_Loaded(IInfoCache element)
         {
             if (!element.IsRoot)
             {
@@ -83,9 +83,9 @@ namespace UnitTests
             }
         }
 
-        private List<InfoCache> CreatedEvents = new List<InfoCache>();
+        private List<IInfoCache> CreatedEvents = new List<IInfoCache>();
 
-        private void DiscCache_Created(InfoCache element)
+        private void DiscCache_Created(IInfoCache element)
         {
             CreatedEvents.Add(element);  
         }
