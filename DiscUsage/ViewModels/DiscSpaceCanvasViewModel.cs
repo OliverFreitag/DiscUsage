@@ -98,7 +98,7 @@ namespace DiscUsage.ViewModels
                 {
                     if (_Timer == null)
                     {
-                        _Timer = new Timer(10000);
+                        _Timer = new Timer(1000);
                         _Timer.Elapsed += _Timer_Elapsed;
                         _Timer.Start();
                     }
@@ -114,10 +114,17 @@ namespace DiscUsage.ViewModels
                 }
             }
         }
+        private bool timerHackRunning = false;
 
         private void _Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            if (timerHackRunning)
+            {
+                return;
+            }
+            timerHackRunning = true;
             _uiContext.Send(x => RaiseAllEvents(),null);
+            timerHackRunning = false;
             
         }
     }

@@ -55,7 +55,7 @@ namespace DiscUsage.Model
 
         public List<DiscSpace> ChildrenRecursive => Flatten(Children).Where(x=>x.Length>= Manager.MinimalLimit).ToList();
 
-        public List<DiscSpace> OrderedChildren => Children.OrderByDescending( x=> x.Length).Where(x=>x.Length>= Manager.MinimalLimit).ToList();
+        public List<DiscSpace> OrderedChildren { get; internal set; }
 
         public int Level => (Parent == null) ? 0 : Parent.Level + 1;
         public int IndexInParentOrderedCollection => (Parent == null) ? 0 : Parent.OrderedChildren.IndexOf(this);

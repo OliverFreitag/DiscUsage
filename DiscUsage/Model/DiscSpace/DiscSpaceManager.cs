@@ -112,6 +112,7 @@ namespace DiscUsage.Model
             {
                 return;
             }
+            space.OrderedChildren= space.Children.OrderByDescending(x => x.Length).Where(x => x.Length >= space.Manager.MinimalLimit).ToList();
             space.Length += length;
             AddLengthToAllParents(space.Parent,length);
         }

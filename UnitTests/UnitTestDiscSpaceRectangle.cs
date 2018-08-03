@@ -44,9 +44,9 @@ namespace UnitTests
 
             //Assert.AreEqual(discSpaceCanvasViewModel.Root.Children[2].Width + discSpaceCanvasViewModel.Root.Children[2].X, 600 - 6);
 
-            //Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].X, 3);
-            //Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].X, 3);
-            //Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[2].X, 3);
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].X, 3);
+            Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].X, 3);
+            Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[2].X, 3);
 
             Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].Y, 3);
             Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].Y, 3);
