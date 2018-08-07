@@ -17,7 +17,7 @@ namespace DiscUsage.ViewModels
         private double CanvasWidth => 600;
         private double CanvasHeight => 600;
         private double Margin = 6;
-        private double _strokeWidth = 1;
+        private double _strokeWidth = 2;
         private double _CornerRadius=8;
 
         public DiscSpaceRectangle ParentRectangle => (DiscSpaceRectangle)Parent;
@@ -62,6 +62,7 @@ namespace DiscUsage.ViewModels
             RaisePropertyChanged("Opacity");
             RaisePropertyChanged("IsLoaded");
             RaisePropertyChanged("IsCurrentlyLoading");
+            RaisePropertyChanged("FillColor");
         }
 
         public void ReCalcProperties(DiscSpaceCanvasViewModel model)
@@ -82,7 +83,7 @@ namespace DiscUsage.ViewModels
         public double Height { get; private set; }
         public double Radius => Math.Min(_CornerRadius, Math.Min(Width,Height)/2);
 
-        public Brush FillColor => brushes[Level%brushes.Count];
+        public Brush FillColor => IsCurrentlyLoading ? Brushes.LightBlue:Brushes.Transparent;
         public double StrokeWidth =>  this._strokeWidth;
         public double Opacity =>  IsLoaded ? 0.6 : 0.3;
 

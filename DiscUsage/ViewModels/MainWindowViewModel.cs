@@ -15,6 +15,27 @@ namespace DiscUsage.ViewModels
         public MainWindowViewModel()
         {
             LoadCommand = new DelegateCommand(Load).ObservesCanExecute(()=>CanLoad);
+            DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged1;
+        }
+
+        private void DiscSpaceCanvasViewModel_PropertyChanged1(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName== "FocusedRectangle")
+            {
+                UpdateCurrentDirectory(DiscSpaceCanvasViewModel.FocusedRectangle);
+            }
+        }
+
+        private void UpdateCurrentDirectory(DiscSpaceRectangle rectangle)
+        {
+            DiscSpaceCanvasViewModel.SourceDiscSpaces.Clear();
+            var current = rectangle;
+            while (current != null)
+            {
+                DiscSpaceCanvasViewModel.SourceDiscSpaces.Insert(0,current);
+                current = (DiscSpaceRectangle)current.Parent;
+              
+            }
         }
 
         private DiscCache discCache = new DiscCache();
@@ -46,6 +67,7 @@ namespace DiscUsage.ViewModels
 
         private void Load()
         {
+            RootDirectory = @"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples";
             IsLoading = true;
             discCache.Created += DiscSpaceCanvasViewModel.Manager.Create;
             discCache.Loaded += DiscSpaceCanvasViewModel.Manager.Load;
@@ -54,7 +76,8 @@ namespace DiscUsage.ViewModels
             //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
             DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
             DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
-            var task=discCache.LoadAsync(@"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples");
+            var task=discCache.LoadAsync(RootDirectory);
+
             //var task = discCache.LoadAsync(@"C:\");
             IsLoaded = true;
         }
@@ -70,7 +93,6 @@ namespace DiscUsage.ViewModels
                     Copy(parentAndChildren).ForEach(x => DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
                     DiscSpaceCanvasViewModel2.RaiseAllEvents();
                 }
-                
             }
         }
 
@@ -107,6 +129,14 @@ namespace DiscUsage.ViewModels
         }
 
         public DelegateCommand LoadCommand { get; set; }
+
+        private String _RootDirectory;
+        public String RootDirectory {
+            get { return _RootDirectory; }
+            set {
+                SetProperty(ref _RootDirectory, value);
+            }
+        }
 
     }
 }

@@ -23,8 +23,15 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <StackPanel >
-        <StackPanel Orientation="Horizontal">
+    <DockPanel >
+        <ToolBarTray DockPanel.Dock="Top" >
+            <ToolBar>
+                <Button Content="Delete" Command="{Binding DeleteCommand}" ToolTip="deleted all the directory ..." />
+                <Button Content="Hide"  Command="{Binding HideCommand}" ToolTip="hides the directory ..." />
+                <Button Content="Archive"  Command="{Binding BackupCommand}" ToolTip="archives the directory ..." />
+            </ToolBar>
+        </ToolBarTray>
+        <!--<StackPanel Orientation="Horizontal">
         <Button  Content = "Delete" 
             Command = "{Binding DeleteCommand}"
             HorizontalAlignment = "Left" 
@@ -40,7 +47,7 @@
             HorizontalAlignment = "Left" 
             VerticalAlignment = "Top" 
             Width = "75" />
-        </StackPanel>
+        </StackPanel>-->
         <ListBox ItemsSource="{Binding SourceDiscSpaces}" SelectedItem = "{Binding SelectedDiscSpace}"/>
-    </StackPanel>
+    </DockPanel>
 </UserControl>

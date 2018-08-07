@@ -6,14 +6,61 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="Disc Usage" Height="800" Width="800">
 
-    <StackPanel Orientation="Vertical">
-        <Button Content="Load" Width="100" HorizontalAlignment="Left" Command="{Binding LoadCommand}"/>
-        <views:DiscSpaceView x:Name="DiscSpaceControl"/>
-        <StackPanel Orientation="Horizontal">
-            <views:DiscSpaceCanvasView x:Name="DiscSpaceCanvasControl" />
-            <StackPanel Width="20"></StackPanel>
-            <views:DiscSpaceCanvasView x:Name="DiscSpaceCanvasControl2" />
-        </StackPanel>
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+        <ToolBar>
+                <Button Content="Scan" Command="{Binding LoadCommand}" ToolTip="scans the directory ..." />
+                <!--<Button Content="Delete" Command="{Binding }" ToolTip="deleted all the directory ..." />
+                <Button Content="Hide" ToolTip="hides the directory ..." />
+                <Button Content="Archive" ToolTip="archives the directory ..." />-->
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <TextBlock Text="test test" Grid.Column="0"/>
+            </StatusBarItem>
+            <Separator Grid.Column="1"/>
+            <StatusBarItem Grid.Column="2">
+                <TextBlock Text="{Binding RootDirectory}"/>
+            </StatusBarItem>
+            
+            <Separator Grid.Column="3"/>
+            <StatusBarItem Grid.Column="4">
+                <ProgressBar Value="50" Width="90"/>
+            </StatusBarItem>
+            
+        </StatusBar>
+
+       
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
         
-    </StackPanel>
+        <!--<StackPanel Orientation="Horizontal" >-->
+            <views:DiscSpaceView  Grid.Column="0" x:Name="DiscSpaceControl"/>
+            <views:DiscSpaceCanvasView Grid.Column="2" x:Name="DiscSpaceCanvasControl" />
+            <StackPanel Grid.Column="1" ></StackPanel>
+
+
+                <!--<views:DiscSpaceCanvasView Grid.Column="2" x:Name="DiscSpaceCanvasControl2" />-->
+        <!--</StackPanel>-->
+        </Grid>
+    </DockPanel>
 </Window>

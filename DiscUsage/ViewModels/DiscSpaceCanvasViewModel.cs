@@ -20,14 +20,14 @@ namespace DiscUsage.ViewModels
         {
         }
 
-        private double _Width = 600;
+        private double _Width = 100;
         public double Width
         {
             get { return _Width; }
             set { SetProperty(ref _Width, value); }
         }
 
-        private double _Height=600;
+        private double _Height=100;
         public double Height
         {
             get { return _Height; }
@@ -50,8 +50,10 @@ namespace DiscUsage.ViewModels
             get { return _FocusedRectangle; }
             set { SetProperty(ref _FocusedRectangle, value); }
         }
+
         private System.Threading.SynchronizationContext _uiContext;
-        public void Create(DiscSpace space)
+
+        public override void Create(DiscSpace space)
         {
             base.Create(space);
             if (_uiContext == null)
@@ -66,7 +68,7 @@ namespace DiscUsage.ViewModels
             //RaiseAllEvents();
         }
 
-        public void Loaded(DiscSpace space)
+        public override void Loaded(DiscSpace space)
         {
             base.Loaded(space);
             if (space == Root)

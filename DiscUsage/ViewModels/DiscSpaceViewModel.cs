@@ -62,7 +62,7 @@ namespace DiscUsage.ViewModels
             set { SetProperty(ref _SourceDiscSpaces, value); }
         }
 
-        internal void Create(DiscSpace space)
+        public virtual void Create(DiscSpace space)
         {
             if (space.Parent == Manager.Root)
             {
@@ -81,7 +81,7 @@ namespace DiscUsage.ViewModels
             SourceDiscSpaces = spacesCollection;
         }
 
-        internal void Loaded(DiscSpace space)
+        public virtual void Loaded(DiscSpace space)
         {
            
         }

@@ -41,18 +41,25 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical" Width="{Binding Width}">
-        <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}" Height="{Binding Height}" Width="{Binding Width}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Viewbox Stretch="Uniform">
+            <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}" Height="600" Width="600" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <Canvas Background="WhiteSmoke"/>
+
+                    <Canvas Background="WhiteSmoke" />
+
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Rectangle Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding FillColor}" 
                            RadiusX="{Binding Radius}" RadiusY="{Binding Radius}" 
-                           Stroke="White" StrokeThickness="{Binding StrokeWidth}" Opacity="{Binding Opacity}"
+                           Stroke="Blue" StrokeThickness="{Binding StrokeWidth}" Opacity="{Binding Opacity}"
                            Style="{StaticResource PropertyTriggerExampleButtonStyle}"  >
                         <Rectangle.RenderTransform>
                             <TranslateTransform X="{Binding X, Mode=OneWay}" Y="{Binding Y, Mode=OneWay}"/>
@@ -81,6 +88,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <TextBox Text="{Binding FocusedRectangle.FullName, Mode=OneWay}"/>
-    </StackPanel>
+            </Viewbox>
+            <TextBox Grid.Row="1" Text="{Binding FocusedRectangle.FullName, Mode=OneWay}"/>
+    </Grid>
 </UserControl>

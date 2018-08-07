@@ -31,7 +31,7 @@ namespace DiscUsage.Views
             _vm = (MainWindowViewModel)this.DataContext;
             this.DiscSpaceControl.DataContext = _vm.DiscSpaceCanvasViewModel;
             this.DiscSpaceCanvasControl.DataContext = _vm.DiscSpaceCanvasViewModel;
-            this.DiscSpaceCanvasControl2.DataContext = _vm.DiscSpaceCanvasViewModel2;
+            //this.DiscSpaceCanvasControl2.DataContext = _vm.DiscSpaceCanvasViewModel2;
         }
 
         //public ObservableCollection<DiscSpace> DiscSpaces
