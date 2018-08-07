@@ -49,14 +49,16 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400"/>
-                <ColumnDefinition Width="20"/>
+                <!--<ColumnDefinition Width="20"/>-->
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
             </Grid.ColumnDefinitions>
         
         <!--<StackPanel Orientation="Horizontal" >-->
             <views:DiscSpaceView  Grid.Column="0" x:Name="DiscSpaceControl"/>
-            <views:DiscSpaceCanvasView Grid.Column="2" x:Name="DiscSpaceCanvasControl" />
-            <StackPanel Grid.Column="1" ></StackPanel>
+            <views:DiscSpaceCanvasView Margin="10" Grid.Column="1" x:Name="DiscSpaceCanvasControl" />
+            <views:DiscSpaceListView Margin="10" Grid.Column="2" x:Name="DiscSpaceListControl" />
+            <!--<StackPanel Grid.Column="1" ></StackPanel>-->
 
 
                 <!--<views:DiscSpaceCanvasView Grid.Column="2" x:Name="DiscSpaceCanvasControl2" />-->

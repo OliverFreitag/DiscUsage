@@ -28,13 +28,22 @@ namespace DiscUsage.ViewModels
 
         private void UpdateCurrentDirectory(DiscSpaceRectangle rectangle)
         {
-            DiscSpaceCanvasViewModel.SourceDiscSpaces.Clear();
+            DiscSpaceListViewModel.SourceDiscSpaces.Clear();
             var current = rectangle;
             while (current != null)
             {
-                DiscSpaceCanvasViewModel.SourceDiscSpaces.Insert(0,current);
+                DiscSpaceListViewModel.SourceDiscSpaces.Insert(0,current);
                 current = (DiscSpaceRectangle)current.Parent;
               
+            }
+
+            DiscSpaceCanvasViewModel.SourceDiscSpaces.Clear();
+            var current1 = rectangle;
+            while (current1 != null)
+            {
+                DiscSpaceCanvasViewModel.SourceDiscSpaces.Insert(0, current1);
+                current1 = (DiscSpaceRectangle)current1.Parent;
+
             }
         }
 
@@ -42,7 +51,8 @@ namespace DiscUsage.ViewModels
 
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel2 = new DiscSpaceCanvasViewModel();
-       // public DiscSpaceViewModel DiscSpaceViewModel = new DiscSpaceViewModel();
+        // public DiscSpaceViewModel DiscSpaceViewModel = new DiscSpaceViewModel();
+        public DiscSpaceListViewModel DiscSpaceListViewModel =new DiscSpaceListViewModel();
 
         private bool _IsLoaded;
         public bool IsLoaded {
@@ -138,5 +148,6 @@ namespace DiscUsage.ViewModels
             }
         }
 
+    
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace DiscUsage.ViewModels
@@ -83,12 +84,48 @@ namespace DiscUsage.ViewModels
         public double Height { get; private set; }
         public double Radius => Math.Min(_CornerRadius, Math.Min(Width,Height)/2);
 
-        public Brush FillColor => IsCurrentlyLoading ? Brushes.LightBlue:Brushes.Transparent;
-        public double StrokeWidth =>  this._strokeWidth;
+        public Brush FillColor => IsCurrentlyLoading ?Brushes.LightBlue : (Brush)Brush;
+        public double StrokeWidth => 0;//this._strokeWidth;
         public double Opacity =>  IsLoaded ? 0.6 : 0.3;
 
         private double Size => (Parent == null) ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.Size - Margin;
         private double Position => (Parent == null) ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.Size+Margin/2;
 
+        private RadialGradientBrush _Brush = null;
+        private RadialGradientBrush Brush
+        {
+            get
+            {
+                if (_Brush == null)
+                {
+                    RadialGradientBrush radialGradient = new RadialGradientBrush
+                    {
+
+                        // Set the GradientOrigin to the center of the area being painted.
+                        GradientOrigin = new Point(0.5, 0.5),
+
+                        // Set the gradient center to the center of the area being painted.
+                        Center = new Point(0.5, 0.5),
+
+                        // Set the radius of the gradient circle so that it extends to
+                        // the edges of the area being painted.
+                        RadiusX = 0.7,
+                        RadiusY = 0.7
+                    };
+
+                    // Create four gradient stops.
+                    radialGradient.GradientStops.Add(new GradientStop(Colors.White, 0.0));
+                    //radialGradient.GradientStops.Add(new GradientStop(Colors.Red, 0.25));
+                    //radialGradient.GradientStops.Add(new GradientStop(Colors.Blue, 0.75));
+                    radialGradient.GradientStops.Add(new GradientStop(Colors.Blue, 1.0));
+
+                    // Freeze the brush (make it unmodifiable) for performance benefits.
+                    radialGradient.Freeze();
+                    _Brush = radialGradient;
+                }
+                return _Brush;
+                
+            }
+        }
     }
 }
