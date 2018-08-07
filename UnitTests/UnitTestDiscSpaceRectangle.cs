@@ -87,5 +87,25 @@ namespace UnitTests
         {
             CreatedEvents.Add((DiscSpaceRectangle)space);
         }
-    }
+        [TestMethod]
+        public void TestOtherRoot()
+        {
+            var discCache = new DiscCache();
+            var discSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
+
+            discCache.Created += discSpaceCanvasViewModel.Manager.Create;
+            discCache.Loaded += discSpaceCanvasViewModel.Manager.Load;
+
+            //discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Add;
+            //discSpaceCanvasViewModel.Manager.Updated += discSpaceCanvasViewModel.Update;
+            discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
+            discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Create;
+            discSpaceCanvasViewModel.Manager.Created += Manager_Created;
+
+            discCache.LoadAsync(testDir).Wait();
+
+            discSpaceCanvasViewModel.Root = discSpaceCanvasViewModel.Root.Children[0];
+
+        }
+     }
 }

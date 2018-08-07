@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DiscUsage.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,21 @@ namespace DiscUsage.Views
         public DiscSpaceListView()
         {
             InitializeComponent();
+        }
+
+        public ObservableCollection<DiscSpace> DiscSpaces
+        {
+            get { return (ObservableCollection<DiscSpace>)GetValue(DiscSpacesProperty); }
+            set { SetValue(DiscSpacesProperty, value); }
+        }
+
+        public static readonly DependencyProperty DiscSpacesProperty =
+            DependencyProperty.Register("DiscSpaces", typeof(ObservableCollection<DiscSpace>),
+                typeof(DiscSpaceListView), new PropertyMetadata(null, OnDiscSpacesSet));
+
+        private static void OnDiscSpacesSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            //((DiscSpaceListView)d).._vm.DiscSpaces = e.NewValue as ObservableCollection<DiscSpace>;
         }
     }
 }

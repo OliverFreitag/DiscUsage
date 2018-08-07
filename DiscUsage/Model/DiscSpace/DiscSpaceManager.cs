@@ -120,6 +120,11 @@ namespace DiscUsage.Model
 
         private List<DiscSpace> CreatedAlreadyRaised = new List<DiscSpace>();
 
+        public bool IsRoot(DiscSpace space)
+        {
+            return space.Parent == null;
+        }
+
         private void RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(DiscSpace space)
         {
             var parent = space.Parent;

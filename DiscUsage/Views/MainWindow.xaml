@@ -48,16 +48,17 @@
        
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="400"/>
-                <!--<ColumnDefinition Width="20"/>-->
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="400"/>
+                <!--<ColumnDefinition Width="20"/>-->
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
         
         <!--<StackPanel Orientation="Horizontal" >-->
-            <views:DiscSpaceView  Grid.Column="0" x:Name="DiscSpaceControl"/>
+            <!--<views:DiscSpaceView  Grid.Column="0" x:Name="DiscSpaceControl"/>-->
             <views:DiscSpaceCanvasView Margin="10" Grid.Column="1" x:Name="DiscSpaceCanvasControl" />
-            <views:DiscSpaceListView Margin="10" Grid.Column="2" x:Name="DiscSpaceListControl" />
+            <views:DiscSpaceListView Margin="10" Grid.Column="0" x:Name="DiscSpaceListControl" />
+            <views:DiscSpaceListView Margin="10" Grid.Column="2" x:Name="SelectedSpacesControl" DataContext="DiscSpaceCanvasViewModel" />
             <!--<StackPanel Grid.Column="1" ></StackPanel>-->
 
 

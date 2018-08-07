@@ -20,13 +20,25 @@ namespace DiscUsage.ViewModels
 
         private void DiscSpaceCanvasViewModel_PropertyChanged1(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName== "FocusedRectangle")
+            //if (e.PropertyName== "FocusedRectangle")
+            //{
+            //    UpdateCurrentDirectory(DiscSpaceCanvasViewModel.FocusedRectangle);
+            //}
+
+            if (e.PropertyName == "SelectedRectangle")
             {
-                UpdateCurrentDirectory(DiscSpaceCanvasViewModel.FocusedRectangle);
+                UpdateCurrentDirectory(DiscSpaceCanvasViewModel.SelectedRectangle);
+            }
+
+            if (e.PropertyName == "SelectedDiscSpace")
+            {
+                // select this disc space
+                UpdateCurrentDirectory(DiscSpaceCanvasViewModel.SelectedDiscSpace);
+
             }
         }
 
-        private void UpdateCurrentDirectory(DiscSpaceRectangle rectangle)
+        private void UpdateCurrentDirectory(DiscSpace rectangle)
         {
             DiscSpaceListViewModel.SourceDiscSpaces.Clear();
             var current = rectangle;

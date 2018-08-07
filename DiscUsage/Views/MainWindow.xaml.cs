@@ -29,25 +29,13 @@ namespace DiscUsage.Views
         {
             InitializeComponent();
             _vm = (MainWindowViewModel)this.DataContext;
-            this.DiscSpaceControl.DataContext = _vm.DiscSpaceCanvasViewModel;
+            //this.DiscSpaceControl.DataContext = _vm.DiscSpaceCanvasViewModel;
             this.DiscSpaceCanvasControl.DataContext = _vm.DiscSpaceCanvasViewModel;
             this.DiscSpaceListControl.DataContext = _vm.DiscSpaceListViewModel;
+            this.SelectedSpacesControl.DataContext = _vm.DiscSpaceCanvasViewModel;
             //this.DiscSpaceCanvasControl2.DataContext = _vm.DiscSpaceCanvasViewModel2;
         }
 
-        //public ObservableCollection<DiscSpace> DiscSpaces
-        //{
-        //    get { return (ObservableCollection<DiscSpace>)GetValue(DiscSpacesProperty); }
-        //    set { SetValue(DiscSpacesProperty, value); }
-        //}
 
-        //public static readonly DependencyProperty DiscSpacesProperty =
-        //    DependencyProperty.Register("DiscSpaces", typeof(ObservableCollection<DiscSpace>),
-        //        typeof(MainWindow), new PropertyMetadata(null, OnDiscSpacesSet));
-
-        //private static void OnDiscSpacesSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //  //  ((MainWindow)d)._vm.DiscSpaces = e.NewValue as ObservableCollection<DiscSpace>;
-        //}
     }
 }

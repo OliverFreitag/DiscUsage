@@ -51,6 +51,13 @@ namespace DiscUsage.ViewModels
             set { SetProperty(ref _FocusedRectangle, value); }
         }
 
+        private DiscSpaceRectangle _SelectedRectangle;
+        public DiscSpaceRectangle SelectedRectangle
+        {
+            get { return _SelectedRectangle; }
+            set { SetProperty(ref _SelectedRectangle, value); }
+        }
+
         private System.Threading.SynchronizationContext _uiContext;
 
         public override void Create(DiscSpace space)

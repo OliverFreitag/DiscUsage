@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using DiscUsage.Model;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,15 @@ namespace DiscUsage.ViewModels
 {
     public class DiscSpaceListViewModel: DiscSpaceViewModel
     {
+        private DiscSpace _selectedDiscSpaceRecursive;
+
+        public DiscSpace SelectedDiscSpaceRecursive
+        {
+            get { return _selectedDiscSpaceRecursive; }
+            set
+            {
+                SetProperty(ref _selectedDiscSpaceRecursive, value);
+            }
+        }
     }
 }
