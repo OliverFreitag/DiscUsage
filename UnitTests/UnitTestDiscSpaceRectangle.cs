@@ -21,8 +21,6 @@ namespace UnitTests
             discCache.Created += discSpaceCanvasViewModel.Manager.Create;
             discCache.Loaded += discSpaceCanvasViewModel.Manager.Load;
 
-            //discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Add;
-            //discSpaceCanvasViewModel.Manager.Updated += discSpaceCanvasViewModel.Update;
             discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
             discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Create;
             discSpaceCanvasViewModel.Manager.Created += Manager_Created;
@@ -37,11 +35,6 @@ namespace UnitTests
             }
 
             Assert.IsNotNull(discSpaceCanvasViewModel.VisibleRoot);
-
-            //discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Clear();
-            //discSpaceCanvasViewModel.VisibleRoot.ChildrenRecursive.ForEach(x => discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
-            //discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Add(discSpaceCanvasViewModel.VisibleRoot);
-            //discSpaceCanvasViewModel.RaiseAllEvents();
 
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.Height, 600 );
             Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
@@ -124,12 +117,6 @@ namespace UnitTests
             Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
 
             discSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.Children[0];
-
-            //discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Clear();
-            //discSpaceCanvasViewModel.VisibleRoot.ChildrenRecursive.ForEach(x=> discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
-            //discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Add(discSpaceCanvasViewModel.VisibleRoot);
-
-            //discSpaceCanvasViewModel.RaiseAllEvents();
 
             Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 16);
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.Height, 600);

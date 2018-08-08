@@ -64,21 +64,6 @@ namespace DiscUsage.ViewModels
             }
         }
 
-
-        //public DiscSpaceRectangle Root
-        //{
-        //    get { return (DiscSpaceRectangle)Manager.Root; }
-        //    set {
-        //        Manager.Root = value;
-        //        DiscSpaceRectanglesInternal.Clear();
-
-        //        Root.ChildrenRecursive.ForEach(x => DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
-        //        DiscSpaceRectanglesInternal.Add(Root);
-
-        //        RaiseAllEvents();
-        //    }
-        //}
-
         private DiscSpaceRectangle _FocusedRectangle;
         public DiscSpaceRectangle FocusedRectangle
         {
@@ -138,8 +123,7 @@ namespace DiscUsage.ViewModels
 
         public void RaiseAllEvents()
         {
-            //DiscSpaceRectangles.Clear();
-            //var childrenOfRoot = Root.ChildrenRecursive.Select(x => (DiscSpaceRectangle)x);
+
             foreach (var rectangle in DiscSpaceRectanglesInternal)
             {
                 rectangle.ReCalcProperties(this);
@@ -158,10 +142,6 @@ namespace DiscUsage.ViewModels
             foreach (var rectangle in DiscSpaceRectangles)
             {
                 rectangle.IsCurrentlyLoading = !rectangle.IsLoaded && rectangle.Children.Where(x => !x.IsLoaded && DiscSpaceRectangles.Contains(x)).Count() == 0;
-                if (rectangle.IsCurrentlyLoading)
-                {
-                    var i = 0;
-                }
                 rectangle.RaisePropertiesChanged(this);
             }
             var loading = DiscSpaceRectangles.Where(x => x.IsCurrentlyLoading).ToList();

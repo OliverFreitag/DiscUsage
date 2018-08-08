@@ -30,7 +30,6 @@ namespace DiscUsage.ViewModels
             ManagerRectangle = model;
             FocusChangedCommand = new DelegateCommand<string>(OnFocus);
             SelectedCommand = new DelegateCommand<string>(OnSelection);
-            //parent?.Children.Add(this);
         }
         public DelegateCommand<string> FocusChangedCommand { get; set; }
         public DelegateCommand<string> SelectedCommand { get; set; }
