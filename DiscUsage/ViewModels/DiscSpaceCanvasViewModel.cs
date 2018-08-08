@@ -99,10 +99,10 @@ namespace DiscUsage.ViewModels
                 }
                 
             }
-            //if (space.Parent == null)
-            //{
-            //    VisibleRoot = rectangle;
-            //}
+            if (space.Parent == null)
+            {
+                _VisibleRoot = rectangle;
+            }
             Debug.Assert(rectangle.ManagerRectangle!=null);
             //RaiseAllEvents();
         }

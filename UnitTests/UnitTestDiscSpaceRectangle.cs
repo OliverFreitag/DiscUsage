@@ -27,8 +27,6 @@ namespace UnitTests
 
             discCache.LoadAsync(testDir).Wait();
 
-            discSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)discSpaceCanvasViewModel.Manager.Root;
-
             foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
             {
                 Assert.IsNotNull(rectangle.ManagerRectangle);
@@ -99,14 +97,11 @@ namespace UnitTests
             discCache.Created += discSpaceCanvasViewModel.Manager.Create;
             discCache.Loaded += discSpaceCanvasViewModel.Manager.Load;
 
-            //discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Add;
-            //discSpaceCanvasViewModel.Manager.Updated += discSpaceCanvasViewModel.Update;
             discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
             discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Create;
             discSpaceCanvasViewModel.Manager.Created += Manager_Created;
 
             discCache.LoadAsync(testDir).Wait();
-            discSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)discSpaceCanvasViewModel.Manager.Root;
 
             foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
             {
