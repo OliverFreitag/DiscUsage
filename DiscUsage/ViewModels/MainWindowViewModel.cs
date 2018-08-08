@@ -17,6 +17,15 @@ namespace DiscUsage.ViewModels
             LoadCommand = new DelegateCommand(Load).ObservesCanExecute(()=>CanLoad);
             PathDiscSpace.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
             DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
+            DiscSpaceCanvasViewModel.DiscSpaceRectangles.CollectionChanged += DiscSpaceRectangles_CollectionChanged;
+        }
+
+        private void DiscSpaceRectangles_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+                UpdatePathList(DiscSpaceCanvasViewModel.VisibleRoot);
+            }
         }
 
         private void DiscSpaceCanvasViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -37,7 +46,6 @@ namespace DiscUsage.ViewModels
                 // select this disc space
                 UpdatePathList(PathDiscSpace.SelectedDiscSpace);
                 DiscSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)PathDiscSpace.SelectedDiscSpace;
-
             }
         }
 
@@ -49,7 +57,6 @@ namespace DiscUsage.ViewModels
             {
                 PathDiscSpace.SourceDiscSpaces.Insert(0,current);
                 current = (DiscSpaceRectangle)current.Parent;
-              
             }
         }
 
@@ -90,7 +97,6 @@ namespace DiscUsage.ViewModels
             DiscSpaceCanvasViewModel.Manager.Loaded += DiscSpaceCanvasViewModel.Loaded;
             //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
             DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
-
             var task=discCache.LoadAsync(RootDirectory);
 
             IsLoaded = true;
