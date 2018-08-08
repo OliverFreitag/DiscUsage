@@ -73,13 +73,26 @@ namespace DiscUsage.ViewModels
             RaisePropertyChanged("FillColor");
         }
 
+        internal bool IsParentRecursive(DiscSpaceRectangle rectangle)
+        {
+            if (this == rectangle)
+            {
+                return true;
+            }
+            if (rectangle.IsRoot)
+            {
+                return false;
+            }
+            return IsParentRecursive(rectangle.ParentRectangle);
+        }
+
         public void ReCalcProperties(DiscSpaceCanvasViewModel model)
         {
-            X = (Parent == null) ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
-            Y = (Parent == null) ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
+            X = IsRoot ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
+            Y = IsRoot ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
 
-            Width = (Parent == null)? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
-            Height = (Parent == null) ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
+            Width = IsRoot ? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
+            Height = IsRoot ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
         }
         
         public bool IsCurrentlyLoading { get; internal set; }
@@ -91,12 +104,12 @@ namespace DiscUsage.ViewModels
         public double Height { get; private set; }
         public double Radius => Math.Min(_CornerRadius, Math.Min(Width,Height)/2);
 
-        public Brush FillColor => IsCurrentlyLoading ?Brushes.LightBlue : (Brush)Brush;
+        public Brush FillColor => IsCurrentlyLoading ? Brushes.LightBlue : (Brush)Brush;
         public double StrokeWidth => 0;//this._strokeWidth;
         public double Opacity =>  IsLoaded ? 0.6 : 0.3;
 
-        private double Size => (Parent == null) ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.Size - Margin;
-        private double Position => (Parent == null) ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.Size+Margin/2;
+        private double Size => IsRoot ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.Size - Margin;
+        private double Position => IsRoot ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.Size+Margin/2;
 
         private RadialGradientBrush _Brush = null;
         private RadialGradientBrush Brush

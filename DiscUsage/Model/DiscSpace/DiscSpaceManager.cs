@@ -115,20 +115,24 @@ namespace DiscUsage.Model
             }
             space.OrderedChildren= space.Children.OrderByDescending(x => x.Length).Where(x => x.Length >= space.Manager.MinimalLimit).ToList();
             space.Length += length;
-            AddLengthToAllParents(space.Parent,length);
+            if (!IsRoot(space))
+            {
+                AddLengthToAllParents(space.Parent, length);
+            }
+            
         }
 
         private List<DiscSpace> CreatedAlreadyRaised = new List<DiscSpace>();
 
         public bool IsRoot(DiscSpace space)
         {
-            return space.Parent == null;
+            return space.Parent==null || space==Root;
         }
 
         private void RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(DiscSpace space)
         {
             var parent = space.Parent;
-            if (parent != null)
+            if (!IsRoot(space))
             {
                 RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(parent); ;
             }

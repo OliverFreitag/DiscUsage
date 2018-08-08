@@ -25,15 +25,23 @@ namespace DiscUsage.ViewModels
             //    UpdateCurrentDirectory(DiscSpaceCanvasViewModel.FocusedRectangle);
             //}
 
+            // rectangle in the canvas has been selected
             if (e.PropertyName == "SelectedRectangle")
             {
                 UpdateCurrentDirectory(DiscSpaceCanvasViewModel.SelectedRectangle);
+                DiscSpaceCanvasViewModel.Root = DiscSpaceCanvasViewModel.SelectedRectangle;
             }
-
+            // disc space in list view has been selected
             if (e.PropertyName == "SelectedDiscSpace")
             {
+                if (DiscSpaceCanvasViewModel.SelectedDiscSpace == null)
+                {
+                    var i = 0;
+                    return;
+                }
                 // select this disc space
                 UpdateCurrentDirectory(DiscSpaceCanvasViewModel.SelectedDiscSpace);
+                DiscSpaceCanvasViewModel.Root = (DiscSpaceRectangle)DiscSpaceCanvasViewModel.SelectedDiscSpace;
 
             }
         }
@@ -89,7 +97,7 @@ namespace DiscUsage.ViewModels
 
         private void Load()
         {
-            RootDirectory = @"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples";
+            RootDirectory = @"C:\";
             IsLoading = true;
             discCache.Created += DiscSpaceCanvasViewModel.Manager.Create;
             discCache.Loaded += DiscSpaceCanvasViewModel.Manager.Load;
@@ -106,16 +114,16 @@ namespace DiscUsage.ViewModels
 
         private void DiscSpaceCanvasViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName== "FocusedRectangle")
-            {
-                DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Clear();
-                if (DiscSpaceCanvasViewModel.FocusedRectangle != null)
-                {
-                    var parentAndChildren = DiscSpaceCanvasViewModel.Manager.Mapping.Values.Where(x => DiscSpaceCanvasViewModel.FocusedRectangle.ChildrenRecursive.Contains(x) || x == DiscSpaceCanvasViewModel.FocusedRectangle).ToList();
-                    Copy(parentAndChildren).ForEach(x => DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
-                    DiscSpaceCanvasViewModel2.RaiseAllEvents();
-                }
-            }
+            //if (e.PropertyName== "FocusedRectangle")
+            //{
+            //    DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Clear();
+            //    if (DiscSpaceCanvasViewModel.FocusedRectangle != null)
+            //    {
+            //        var parentAndChildren = DiscSpaceCanvasViewModel.Manager.Mapping.Values.Where(x => DiscSpaceCanvasViewModel.FocusedRectangle.ChildrenRecursive.Contains(x) || x == DiscSpaceCanvasViewModel.FocusedRectangle).ToList();
+            //        Copy(parentAndChildren).ForEach(x => DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+            //        DiscSpaceCanvasViewModel2.RaiseAllEvents();
+            //    }
+            //}
         }
 
         private List<DiscSpaceRectangle> Copy(List<DiscSpace> spaces)

@@ -39,13 +39,15 @@ namespace DiscUsage.Model
 
         public bool IsLoaded { get; internal set; }
 
+        public bool IsRoot => Parent==null || Manager.IsRoot(this);
+
         /// <summary>
         /// Length of this disc space, which is the sum of length of all files in all sub directories.
         /// </summary>
         public Int64 LengthSlow => IsLoaded ? OwnLength+ChildrenLength :  OwnLength + Children.Sum(x => x.Length);
         public Int64 LengthOfAllPreviousChildren => Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection < IndexInParentOrderedCollection).Sum(x => x.Length);
 
-        public Int64 ParentLength => Parent==null ? 0 : Parent.Length;
+        public Int64 ParentLength => IsRoot ? 0 : Parent.Length;
         public int Count { get; internal set; }
 
         List<DiscSpace> Flatten(List<DiscSpace> e)
@@ -57,8 +59,8 @@ namespace DiscUsage.Model
 
         public List<DiscSpace> OrderedChildren { get; internal set; }
 
-        public int Level => (Parent == null) ? 0 : Parent.Level + 1;
-        public int IndexInParentOrderedCollection => (Parent == null) ? 0 : Parent.OrderedChildren.IndexOf(this);
+        public int Level => IsRoot ? 0 : Parent.Level + 1;
+        public int IndexInParentOrderedCollection => IsRoot ? 0 : Parent.OrderedChildren.IndexOf(this);
         
     }
 }

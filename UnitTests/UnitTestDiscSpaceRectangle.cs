@@ -36,6 +36,14 @@ namespace UnitTests
 
             Assert.IsNotNull(discSpaceCanvasViewModel.Root);
 
+            //discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Clear();
+            //discSpaceCanvasViewModel.Root.ChildrenRecursive.ForEach(x => discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+            //discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Add(discSpaceCanvasViewModel.Root);
+            //discSpaceCanvasViewModel.RaiseAllEvents();
+
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.Height, 600 );
+            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
+
             Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Where(x => x.Parent == discSpaceCanvasViewModel.Root).Count(), 3);
 
             Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle.Count, 3);
@@ -104,8 +112,36 @@ namespace UnitTests
 
             discCache.LoadAsync(testDir).Wait();
 
-            discSpaceCanvasViewModel.Root = discSpaceCanvasViewModel.Root.Children[0];
+            foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
+            {
+                Assert.IsNotNull(rectangle.ManagerRectangle);
+            }
+
+            Assert.IsNotNull(discSpaceCanvasViewModel.Root);
+            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
+
+            discSpaceCanvasViewModel.Root = (DiscSpaceRectangle)discSpaceCanvasViewModel.Root.Children[0];
+
+            //discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Clear();
+            //discSpaceCanvasViewModel.Root.ChildrenRecursive.ForEach(x=> discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+            //discSpaceCanvasViewModel.DiscSpaceRectanglesInternal.Add(discSpaceCanvasViewModel.Root);
+
+            //discSpaceCanvasViewModel.RaiseAllEvents();
+
+            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 16);
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.Height, 600);
+
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle.Count, 2);
+            
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].Height, 600 - 6);
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].Height, 600 - 6);
+
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].X, 3);
+            Assert.AreNotEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].X, 3);
+
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[0].Y, 3);
+            Assert.AreEqual(discSpaceCanvasViewModel.Root.ChildrenRectangle[1].Y, 3);
 
         }
-     }
+    }
 }

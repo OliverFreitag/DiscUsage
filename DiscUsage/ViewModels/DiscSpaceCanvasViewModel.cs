@@ -42,7 +42,19 @@ namespace DiscUsage.ViewModels
         }
         public ObservableCollection<DiscSpaceRectangle> DiscSpaceRectanglesInternal = new ObservableCollection<DiscSpaceRectangle>();
 
-        public DiscSpaceRectangle Root => (DiscSpaceRectangle)Manager.Root;
+        public DiscSpaceRectangle Root
+        {
+            get { return (DiscSpaceRectangle)Manager.Root; }
+            set {
+                Manager.Root = value;
+                DiscSpaceRectanglesInternal.Clear();
+
+                Root.ChildrenRecursive.ForEach(x => DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+                DiscSpaceRectanglesInternal.Add(Root);
+
+                RaiseAllEvents();
+            }
+        }
 
         private DiscSpaceRectangle _FocusedRectangle;
         public DiscSpaceRectangle FocusedRectangle
@@ -70,7 +82,11 @@ namespace DiscUsage.ViewModels
 
             var rectangle = (DiscSpaceRectangle)space;
             rectangle.ManagerRectangle = this;
-            DiscSpaceRectanglesInternal.Add(rectangle);
+            if (Root==null|| Root.IsParentRecursive(rectangle))
+            {
+                DiscSpaceRectanglesInternal.Add(rectangle);
+            }
+            
             Debug.Assert(rectangle.ManagerRectangle!=null);
             //RaiseAllEvents();
         }
@@ -92,6 +108,7 @@ namespace DiscUsage.ViewModels
         public void RaiseAllEvents()
         {
             //DiscSpaceRectangles.Clear();
+            //var childrenOfRoot = Root.ChildrenRecursive.Select(x => (DiscSpaceRectangle)x);
             foreach (var rectangle in DiscSpaceRectanglesInternal)
             {
                 rectangle.ReCalcProperties(this);
