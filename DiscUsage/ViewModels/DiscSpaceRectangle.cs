@@ -47,8 +47,7 @@ namespace DiscUsage.ViewModels
                 {
                     ManagerRectangle.FocusedRectangle = null;
                     RaisePropertyChanged("Opacity");
-                }
-                
+                }               
             }
         }
 
@@ -130,7 +129,6 @@ namespace DiscUsage.ViewModels
                 {
                     RadialGradientBrush radialGradient = new RadialGradientBrush
                     {
-
                         // Set the GradientOrigin to the center of the area being painted.
                         GradientOrigin = new Point(0.5, 0.5),
 
