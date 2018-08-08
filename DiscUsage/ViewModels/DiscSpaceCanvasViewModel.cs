@@ -56,10 +56,10 @@ namespace DiscUsage.ViewModels
             {
                 SetProperty(ref _VisibleRoot, value);
                 DiscSpaceRectanglesInternal.Clear();
-
-                VisibleRoot.ChildrenRecursive.ForEach(x => DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+                DiscSpaceRectangles.Clear();
                 DiscSpaceRectanglesInternal.Add(VisibleRoot);
-
+                VisibleRoot.ChildrenRecursive.OrderBy(x=>x.Level).ToList().ForEach(x => DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+      
                 RaiseAllEvents();
             }
         }

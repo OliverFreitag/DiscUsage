@@ -42,8 +42,12 @@ namespace DiscUsage.ViewModels
             // rectangle in the canvas has been selected
             if (e.PropertyName == "SelectedRectangle")
             {
-                UpdatePathList(DiscSpaceCanvasViewModel.SelectedRectangle);
-                DiscSpaceCanvasViewModel.VisibleRoot = DiscSpaceCanvasViewModel.SelectedRectangle;
+                if (DiscSpaceCanvasViewModel.SelectedRectangle != null)
+                {
+                    UpdatePathList(DiscSpaceCanvasViewModel.SelectedRectangle);
+                    DiscSpaceCanvasViewModel.VisibleRoot = DiscSpaceCanvasViewModel.SelectedRectangle;
+                }
+
             }
             // disc space in list view has been selected
             if (e.PropertyName == "SelectedDiscSpace")

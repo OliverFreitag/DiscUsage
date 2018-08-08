@@ -88,6 +88,7 @@ namespace UnitTests
         {
             CreatedEvents.Add((DiscSpaceRectangle)space);
         }
+
         [TestMethod]
         public void TestOtherVisibleRoot()
         {
