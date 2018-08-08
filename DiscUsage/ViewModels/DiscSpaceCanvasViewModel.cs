@@ -19,6 +19,7 @@ namespace DiscUsage.ViewModels
         public DiscSpaceCanvasViewModel()
         {
             Manager.CreateNewDiscSpace += Manager_CreateNewDiscSpace;
+            UseAdvancedAlgoForLayout = false;
         }
 
         private DiscSpace Manager_CreateNewDiscSpace(DiscSpaceManager manager, DiscSpace parent, string name, string fullname)
@@ -126,7 +127,7 @@ namespace DiscUsage.ViewModels
 
             foreach (var rectangle in DiscSpaceRectanglesInternal)
             {
-                rectangle.ReCalcProperties(this);
+                rectangle.ReCalcProperties();
 
             }
             var bigRectangles = DiscSpaceRectanglesInternal.Where(x => x.Width >= 6 && x.Height >= 6).ToList();
@@ -142,7 +143,7 @@ namespace DiscUsage.ViewModels
             foreach (var rectangle in DiscSpaceRectangles)
             {
                 rectangle.IsCurrentlyLoading = !rectangle.IsLoaded && rectangle.Children.Where(x => !x.IsLoaded && DiscSpaceRectangles.Contains(x)).Count() == 0;
-                rectangle.RaisePropertiesChanged(this);
+                rectangle.RaisePropertiesChanged();
             }
             var loading = DiscSpaceRectangles.Where(x => x.IsCurrentlyLoading).ToList();
             //Debug.Assert(loading.Count== 1);
@@ -182,6 +183,9 @@ namespace DiscUsage.ViewModels
                 }
             }
         }
+
+        public bool UseAdvancedAlgoForLayout { get; set; }
+
         /// <summary>
         /// hack to avoid multiple timer waiting for update
         /// </summary>

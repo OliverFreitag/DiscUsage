@@ -142,6 +142,7 @@ namespace UnitTests
             discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
             discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Create;
             discSpaceCanvasViewModel.Manager.Created += Manager_Created;
+            discSpaceCanvasViewModel.UseAdvancedAlgoForLayout = true;
 
             discCache.LoadAsync(testDir).Wait();
 
@@ -161,6 +162,9 @@ namespace UnitTests
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[0].Height, 600 - 6);
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[1].Height, 600 - 6);
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[2].Height, 600 - 6);
-         }
+
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[0].ChildrenRectangle.Count, 18);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[1].ChildrenRectangle.Count, 16);
+        }
     }
 }

@@ -56,9 +56,9 @@ namespace DiscUsage.ViewModels
             ManagerRectangle.SelectedRectangle = this;
         }
 
-        public void RaisePropertiesChanged(DiscSpaceCanvasViewModel model)
+        public void RaisePropertiesChanged()
         {
-            ReCalcProperties(model);
+            ReCalcProperties();
             RaisePropertyChanged("X");
             RaisePropertyChanged("Y");
             RaisePropertyChanged("Width");
@@ -90,13 +90,25 @@ namespace DiscUsage.ViewModels
             return IsParentRecursive(rectangle.ParentRectangle);
         }
 
-        public void ReCalcProperties(DiscSpaceCanvasViewModel model)
+        public void ReCalcProperties()
         {
-            X = IsVisibleRoot ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
-            Y = IsVisibleRoot ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
+            if (!ManagerRectangle.UseAdvancedAlgoForLayout)
+            {
+                X = IsVisibleRoot ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X : ParentRectangle.X + Margin / 2;
+                Y = IsVisibleRoot ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y : ParentRectangle.Y + Margin / 2;
 
-            Width = IsVisibleRoot ? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
-            Height = IsVisibleRoot ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
+                Width = IsVisibleRoot ? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width - Margin;
+                Height = IsVisibleRoot ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height - Margin;
+            }
+            else
+            {
+                X = IsVisibleRoot ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X : ParentRectangle.X + Margin / 2;
+                Y = IsVisibleRoot ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y : ParentRectangle.Y + Margin / 2;
+
+                Width = IsVisibleRoot ? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width - Margin;
+                Height = IsVisibleRoot ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height - Margin;
+            }
+
         }
         
         public bool IsCurrentlyLoading { get; internal set; }
