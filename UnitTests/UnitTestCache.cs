@@ -13,7 +13,7 @@ namespace UnitTests
         private string testDir = @"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples";
 
         [TestMethod]
-        public void TestDirectoriesCached()
+            public void TestDirectoriesCached()
         {
             var discCache = new DiscCache();
             discCache.LoadAsync(testDir).Wait();

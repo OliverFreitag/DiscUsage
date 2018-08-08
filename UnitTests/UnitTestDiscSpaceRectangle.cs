@@ -129,5 +129,38 @@ namespace UnitTests
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[1].Y, 3);
 
         }
+
+        [TestMethod]
+        public void TestMethodBetterLayoutAlgo()
+        {
+            var discCache = new DiscCache();
+            var discSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
+
+            discCache.Created += discSpaceCanvasViewModel.Manager.Create;
+            discCache.Loaded += discSpaceCanvasViewModel.Manager.Load;
+
+            discSpaceCanvasViewModel.Manager.Loaded += discSpaceCanvasViewModel.Loaded;
+            discSpaceCanvasViewModel.Manager.Created += discSpaceCanvasViewModel.Create;
+            discSpaceCanvasViewModel.Manager.Created += Manager_Created;
+
+            discCache.LoadAsync(testDir).Wait();
+
+            foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
+            {
+                Assert.IsNotNull(rectangle.ManagerRectangle);
+            }
+
+            Assert.IsNotNull(discSpaceCanvasViewModel.VisibleRoot);
+
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.Height, 600 );
+            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
+
+            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Where(x => x.Parent == discSpaceCanvasViewModel.VisibleRoot).Count(), 3);
+
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle.Count, 3);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[0].Height, 600 - 6);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[1].Height, 600 - 6);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[2].Height, 600 - 6);
+         }
     }
 }
