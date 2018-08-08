@@ -102,6 +102,7 @@ namespace DiscUsage.ViewModels
             IsLoading = true;
             loadTask = discCache.LoadAsync(RootDirectory);
             IsLoaded = true;
+            IsLoading = false;
         }
 
         public void Wait()
