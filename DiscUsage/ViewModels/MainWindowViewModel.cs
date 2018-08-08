@@ -18,6 +18,15 @@ namespace DiscUsage.ViewModels
             PathDiscSpace.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
             DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
             DiscSpaceCanvasViewModel.DiscSpaceRectangles.CollectionChanged += DiscSpaceRectangles_CollectionChanged;
+
+            RootDirectory = @"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples";
+            
+            discCache.Created += DiscSpaceCanvasViewModel.Manager.Create;
+            discCache.Loaded += DiscSpaceCanvasViewModel.Manager.Load;
+
+            DiscSpaceCanvasViewModel.Manager.Loaded += DiscSpaceCanvasViewModel.Loaded;
+            //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
+            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
         }
 
         private void DiscSpaceRectangles_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -87,19 +96,17 @@ namespace DiscUsage.ViewModels
 
         public ObservableCollection<DiscSpace> DiscSpaces => DiscSpaceCanvasViewModel.SourceDiscSpaces;
 
+        private Task loadTask;
         private void Load()
         {
-            RootDirectory = @"C:\";
             IsLoading = true;
-            discCache.Created += DiscSpaceCanvasViewModel.Manager.Create;
-            discCache.Loaded += DiscSpaceCanvasViewModel.Manager.Load;
-
-            DiscSpaceCanvasViewModel.Manager.Loaded += DiscSpaceCanvasViewModel.Loaded;
-            //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
-            DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
-            var task=discCache.LoadAsync(RootDirectory);
-
+            loadTask = discCache.LoadAsync(RootDirectory);
             IsLoaded = true;
+        }
+
+        public void Wait()
+        {
+            loadTask.Wait();
         }
 
         public DelegateCommand LoadCommand { get; set; }

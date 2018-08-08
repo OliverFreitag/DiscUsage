@@ -21,6 +21,7 @@ namespace DiscUsage.Model
 
         public DiscSpace Root;
         private Dictionary<IInfoCache, DiscSpace> mapping = new Dictionary<IInfoCache, DiscSpace>();
+
         public Int64 MinimalLimit = 1024 * 1024;
 
         private DiscSpace CreateDiscSpace(DiscSpaceManager manager, DiscSpace parent, String name, String fullname)
