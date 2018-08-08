@@ -18,6 +18,12 @@ namespace DiscUsage.ViewModels
 
         public DiscSpaceCanvasViewModel()
         {
+            Manager.CreateNewDiscSpace += Manager_CreateNewDiscSpace;
+        }
+
+        private DiscSpace Manager_CreateNewDiscSpace(DiscSpaceManager manager, DiscSpace parent, string name, string fullname)
+        {
+            return new DiscSpaceRectangle(this,manager, parent, name, fullname);
         }
 
         private double _Width = 100;
@@ -42,19 +48,36 @@ namespace DiscUsage.ViewModels
         }
         public ObservableCollection<DiscSpaceRectangle> DiscSpaceRectanglesInternal = new ObservableCollection<DiscSpaceRectangle>();
 
-        public DiscSpaceRectangle Root
+        private DiscSpaceRectangle _VisibleRoot;
+        public DiscSpaceRectangle VisibleRoot
         {
-            get { return (DiscSpaceRectangle)Manager.Root; }
-            set {
-                Manager.Root = value;
+            get { return _VisibleRoot; }
+            set
+            {
+                SetProperty(ref _VisibleRoot, value);
                 DiscSpaceRectanglesInternal.Clear();
 
-                Root.ChildrenRecursive.ForEach(x => DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
-                DiscSpaceRectanglesInternal.Add(Root);
+                VisibleRoot.ChildrenRecursive.ForEach(x => DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+                DiscSpaceRectanglesInternal.Add(VisibleRoot);
 
                 RaiseAllEvents();
             }
         }
+
+
+        //public DiscSpaceRectangle Root
+        //{
+        //    get { return (DiscSpaceRectangle)Manager.Root; }
+        //    set {
+        //        Manager.Root = value;
+        //        DiscSpaceRectanglesInternal.Clear();
+
+        //        Root.ChildrenRecursive.ForEach(x => DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+        //        DiscSpaceRectanglesInternal.Add(Root);
+
+        //        RaiseAllEvents();
+        //    }
+        //}
 
         private DiscSpaceRectangle _FocusedRectangle;
         public DiscSpaceRectangle FocusedRectangle
@@ -81,12 +104,20 @@ namespace DiscUsage.ViewModels
             }
 
             var rectangle = (DiscSpaceRectangle)space;
-            rectangle.ManagerRectangle = this;
-            if (Root==null|| Root.IsParentRecursive(rectangle))
+            //rectangle.ManagerRectangle = this;
+
+            if (VisibleRoot == null || VisibleRoot.IsParentRecursive(rectangle))
             {
-                DiscSpaceRectanglesInternal.Add(rectangle);
+                if (!DiscSpaceRectanglesInternal.Contains(rectangle))
+                {
+                    DiscSpaceRectanglesInternal.Add(rectangle);
+                }
+                
             }
-            
+            //if (space.Parent == null)
+            //{
+            //    VisibleRoot = rectangle;
+            //}
             Debug.Assert(rectangle.ManagerRectangle!=null);
             //RaiseAllEvents();
         }
@@ -94,7 +125,7 @@ namespace DiscUsage.ViewModels
         public override void Loaded(DiscSpace space)
         {
             base.Loaded(space);
-            if (space == Root)
+            if (space == Manager.Root)
             {
                 int i = 0;
                 IsTimerEnabled = false;

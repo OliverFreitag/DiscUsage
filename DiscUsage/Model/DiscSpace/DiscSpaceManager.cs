@@ -9,6 +9,7 @@ using System.Windows.Threading;
 namespace DiscUsage.Model
 {
     public delegate void DiscSpaceDelegate(DiscSpace space);
+    public delegate DiscSpace DiscSpaceCreateDelegate(DiscSpaceManager manager, DiscSpace parent, String name, String fullname);
 
     public class DiscSpaceManager
     {
@@ -16,13 +17,19 @@ namespace DiscUsage.Model
         public event DiscSpaceDelegate Updated;
         public event DiscSpaceDelegate Loaded;
 
+        public event DiscSpaceCreateDelegate CreateNewDiscSpace;
+
         public DiscSpace Root;
         private Dictionary<IInfoCache, DiscSpace> mapping = new Dictionary<IInfoCache, DiscSpace>();
         public Int64 MinimalLimit = 1024 * 1024;
 
-        private static DiscSpace CreateDiscSpace(DiscSpaceManager manager, DiscSpace parent, String name, String fullname)
+        private DiscSpace CreateDiscSpace(DiscSpaceManager manager, DiscSpace parent, String name, String fullname)
         {
-            return new DiscSpaceRectangle(manager, parent, name, fullname);
+            if (CreateNewDiscSpace != null)
+            {
+                return CreateNewDiscSpace.Invoke(manager, parent, name, fullname);
+            }
+            return new DiscSpace(manager, parent, name, fullname);
         }
 
         public void Load(IInfoCache info)
@@ -126,7 +133,7 @@ namespace DiscUsage.Model
 
         public bool IsRoot(DiscSpace space)
         {
-            return space.Parent==null || space==Root;
+            return space.Parent==null;
         }
 
         private void RaiseCreatedForArgumentAndAllParentsIfNotAlreadyRaised(DiscSpace space)

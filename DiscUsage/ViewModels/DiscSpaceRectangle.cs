@@ -23,11 +23,11 @@ namespace DiscUsage.ViewModels
 
         public DiscSpaceRectangle ParentRectangle => (DiscSpaceRectangle)Parent;
         public List<DiscSpaceRectangle> ChildrenRectangle => OrderedChildren.ConvertAll(x => (DiscSpaceRectangle)x);
-        public DiscSpaceCanvasViewModel ManagerRectangle { get; set; }
+        public DiscSpaceCanvasViewModel ManagerRectangle { get; private set; }
 
-        public DiscSpaceRectangle(DiscSpaceManager manager, DiscSpace parent,  String name, String fullname) : base(manager,parent,name,fullname)
+        public DiscSpaceRectangle(DiscSpaceCanvasViewModel model, DiscSpaceManager manager, DiscSpace parent,  String name, String fullname) : base(manager,parent,name,fullname)
         {
-          //  ManagerRectangle = model;
+            ManagerRectangle = model;
             FocusChangedCommand = new DelegateCommand<string>(OnFocus);
             SelectedCommand = new DelegateCommand<string>(OnSelection);
             //parent?.Children.Add(this);
@@ -73,13 +73,19 @@ namespace DiscUsage.ViewModels
             RaisePropertyChanged("FillColor");
         }
 
+        public bool IsVisibleRoot => ManagerRectangle.VisibleRoot == this||IsRoot;
+
         internal bool IsParentRecursive(DiscSpaceRectangle rectangle)
         {
+            if (rectangle == null)
+            {
+                return false;
+            }
             if (this == rectangle)
             {
                 return true;
             }
-            if (rectangle.IsRoot)
+            if (rectangle.IsVisibleRoot)
             {
                 return false;
             }
@@ -88,11 +94,11 @@ namespace DiscUsage.ViewModels
 
         public void ReCalcProperties(DiscSpaceCanvasViewModel model)
         {
-            X = IsRoot ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
-            Y = IsRoot ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
+            X = IsVisibleRoot ? 0 : (Level % 2 == 1) ? Position + ParentRectangle.X: ParentRectangle.X+Margin/2;
+            Y = IsVisibleRoot ? 0 : (Level % 2 == 0) ? Position + ParentRectangle.Y: ParentRectangle.Y+Margin/2;
 
-            Width = IsRoot ? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
-            Height = IsRoot ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
+            Width = IsVisibleRoot ? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width-Margin;
+            Height = IsVisibleRoot ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height-Margin;
         }
         
         public bool IsCurrentlyLoading { get; internal set; }
@@ -108,8 +114,13 @@ namespace DiscUsage.ViewModels
         public double StrokeWidth => 0;//this._strokeWidth;
         public double Opacity =>  IsLoaded ? 0.6 : 0.3;
 
-        private double Size => IsRoot ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.Size - Margin;
-        private double Position => IsRoot ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.Size+Margin/2;
+        private double Size => IsVisibleRoot ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.Size - Margin;
+        private double Position => IsVisibleRoot ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.Size+Margin/2;
+
+
+        public override long ParentLength => IsVisibleRoot ? 0 : Parent.Length;
+        public override int Level => IsVisibleRoot? 0 : Parent.Level + 1;
+        public override int IndexInParentOrderedCollection => IsVisibleRoot ? 0 : Parent.OrderedChildren.IndexOf(this);
 
         private RadialGradientBrush _Brush = null;
         private RadialGradientBrush Brush

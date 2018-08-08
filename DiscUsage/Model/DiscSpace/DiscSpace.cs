@@ -47,7 +47,7 @@ namespace DiscUsage.Model
         public Int64 LengthSlow => IsLoaded ? OwnLength+ChildrenLength :  OwnLength + Children.Sum(x => x.Length);
         public Int64 LengthOfAllPreviousChildren => Parent.OrderedChildren.Where(x => x.IndexInParentOrderedCollection < IndexInParentOrderedCollection).Sum(x => x.Length);
 
-        public Int64 ParentLength => IsRoot ? 0 : Parent.Length;
+        public virtual Int64 ParentLength => IsRoot ? 0 : Parent.Length;
         public int Count { get; internal set; }
 
         List<DiscSpace> Flatten(List<DiscSpace> e)
@@ -59,8 +59,8 @@ namespace DiscUsage.Model
 
         public List<DiscSpace> OrderedChildren { get; internal set; }
 
-        public int Level => IsRoot ? 0 : Parent.Level + 1;
-        public int IndexInParentOrderedCollection => IsRoot ? 0 : Parent.OrderedChildren.IndexOf(this);
+        public virtual int Level => IsRoot ? 0 : Parent.Level + 1;
+        public virtual int IndexInParentOrderedCollection => IsRoot ? 0 : Parent.OrderedChildren.IndexOf(this);
         
     }
 }

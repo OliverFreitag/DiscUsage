@@ -29,7 +29,7 @@ namespace DiscUsage.ViewModels
             if (e.PropertyName == "SelectedRectangle")
             {
                 UpdateCurrentDirectory(DiscSpaceCanvasViewModel.SelectedRectangle);
-                DiscSpaceCanvasViewModel.Root = DiscSpaceCanvasViewModel.SelectedRectangle;
+                DiscSpaceCanvasViewModel.VisibleRoot = DiscSpaceCanvasViewModel.SelectedRectangle;
             }
             // disc space in list view has been selected
             if (e.PropertyName == "SelectedDiscSpace")
@@ -41,7 +41,7 @@ namespace DiscUsage.ViewModels
                 }
                 // select this disc space
                 UpdateCurrentDirectory(DiscSpaceCanvasViewModel.SelectedDiscSpace);
-                DiscSpaceCanvasViewModel.Root = (DiscSpaceRectangle)DiscSpaceCanvasViewModel.SelectedDiscSpace;
+                DiscSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)DiscSpaceCanvasViewModel.SelectedDiscSpace;
 
             }
         }
@@ -126,37 +126,37 @@ namespace DiscUsage.ViewModels
             //}
         }
 
-        private List<DiscSpaceRectangle> Copy(List<DiscSpace> spaces)
-        {
-            var manager = DiscSpaceCanvasViewModel2.Manager;
-            List<DiscSpaceRectangle> rectangles = new List<DiscSpaceRectangle>();
-            var mapping = new Dictionary<DiscSpace, DiscSpaceRectangle>();
-            foreach(var space in spaces.OrderBy(x=>x.Level))
-            {
-                var parent =space.Parent == null ? null : mapping.ContainsKey(space.Parent)?mapping[space.Parent]:null;
-                var rectangle = new DiscSpaceRectangle(manager, parent, space.Name, space.FullName)
-                {
-                    Length = space.Length,
-                    Count = space.Count,
-                    IsLoaded = space.IsLoaded,
-                    ManagerRectangle= DiscSpaceCanvasViewModel2
-                    //OrderedChildren = space.OrderedChildren.Select(x => (DiscSpace)mapping[x]).ToList()
+        //private List<DiscSpaceRectangle> Copy(List<DiscSpace> spaces)
+        //{
+        //    var manager = DiscSpaceCanvasViewModel2.Manager;
+        //    List<DiscSpaceRectangle> rectangles = new List<DiscSpaceRectangle>();
+        //    var mapping = new Dictionary<DiscSpace, DiscSpaceRectangle>();
+        //    foreach(var space in spaces.OrderBy(x=>x.Level))
+        //    {
+        //        var parent =space.Parent == null ? null : mapping.ContainsKey(space.Parent)?mapping[space.Parent]:null;
+        //        var rectangle = new DiscSpaceRectangle(manager, parent, space.Name, space.FullName)
+        //        {
+        //            Length = space.Length,
+        //            Count = space.Count,
+        //            IsLoaded = space.IsLoaded,
+        //            ManagerRectangle= DiscSpaceCanvasViewModel2
+        //            //OrderedChildren = space.OrderedChildren.Select(x => (DiscSpace)mapping[x]).ToList()
 
-                };
-                mapping[space] = rectangle;
-                rectangles.Add(rectangle);
-            }
-            foreach (var space in spaces)
-            {
-                var rectangle = mapping[space];
-                if (space.OrderedChildren != null)
-                {
-                    rectangle.OrderedChildren = space.OrderedChildren.Select(x => (DiscSpace)mapping[x]).ToList();
-                }
+        //        };
+        //        mapping[space] = rectangle;
+        //        rectangles.Add(rectangle);
+        //    }
+        //    foreach (var space in spaces)
+        //    {
+        //        var rectangle = mapping[space];
+        //        if (space.OrderedChildren != null)
+        //        {
+        //            rectangle.OrderedChildren = space.OrderedChildren.Select(x => (DiscSpace)mapping[x]).ToList();
+        //        }
                 
-            }
-            return rectangles;
-        }
+        //    }
+        //    return rectangles;
+        //}
 
         public DelegateCommand LoadCommand { get; set; }
 
