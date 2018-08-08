@@ -163,8 +163,25 @@ namespace UnitTests
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[1].Height, 600 - 6);
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[2].Height, 600 - 6);
 
-            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[0].ChildrenRectangle.Count, 18);
-            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[1].ChildrenRectangle.Count, 16);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[0].ChildrenRectangle.Count, 2);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[1].ChildrenRectangle.Count, 2);
+
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.GetFirstLineForAlgo().Count, 1);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.GetSecondLineForAlgo().Count, 1);
+
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.GetLinesForAlgo().Count, 3);
+
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0]).GetLinesForAlgo().Count, 2);
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0]).GetLinesForAlgo()[0].Count, 1);
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0]).GetLinesForAlgo()[1].Count, 1);
+
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0].OrderedChildren[0]).GetLinesForAlgo().Count, 2);
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0].OrderedChildren[0]).GetLinesForAlgo()[0].Count, 1);
+
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0].OrderedChildren[0].OrderedChildren[0]).GetLinesForAlgo().Count, 3);
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0].OrderedChildren[0].OrderedChildren[0]).GetLinesForAlgo()[0].Count, 1);
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0].OrderedChildren[0].OrderedChildren[0]).GetLinesForAlgo()[1].Count, 2);
+            Assert.AreEqual(((DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0].OrderedChildren[0].OrderedChildren[0]).GetLinesForAlgo()[2].Count, 1);
         }
     }
 }

@@ -108,9 +108,76 @@ namespace DiscUsage.ViewModels
                 Width = IsVisibleRoot ? CanvasWidth : (Level % 2 == 1) ? Size : ParentRectangle.Width - Margin;
                 Height = IsVisibleRoot ? CanvasHeight : (Level % 2 == 0) ? Size : ParentRectangle.Height - Margin;
             }
-
         }
-        
+        private List<DiscSpaceRectangle> GetLine(int counter)
+        {
+            var line = new List<DiscSpaceRectangle>();
+            if (OrderedChildren.Count < counter)
+            {
+                return line;
+            }
+
+            var next = (DiscSpaceRectangle)OrderedChildren[counter++];
+            line.Add(next);
+            while (CheckLast(line) && counter < OrderedChildren.Count)
+            {
+                next = (DiscSpaceRectangle)OrderedChildren[counter++];
+                line.Add(next);
+            }
+            if (line.Count > 1 && !CheckLast(line))
+            {
+                line.Remove(line.Last());
+            }
+
+            return line;
+        }
+
+        public List<List<DiscSpaceRectangle>> GetLinesForAlgo()
+        {
+            var lines = new List<List<DiscSpaceRectangle>>();
+            var counter = 0;
+            while (counter < OrderedChildren.Count)
+            {
+                var line = GetLine(counter);
+                lines.Add(line);
+                counter += line.Count;
+            }
+            return lines;
+        }
+
+        public List<DiscSpaceRectangle> GetSecondLineForAlgo()
+        {
+            var firstLine = GetFirstLineForAlgo();
+            var secondLine = GetLine(firstLine.Count);
+            return secondLine;
+        }
+
+        public List<DiscSpaceRectangle> GetFirstLineForAlgo()
+        {
+            return GetLine(0);
+        }
+
+        private bool CheckLast(List<DiscSpaceRectangle> line)
+        {
+            var thicknessOfLine = line.Sum(x => x.Size) + (line.Count - 1) * Margin;
+            var lengthOfLine = ((Level % 2 == 0) ? Width : Height) - Margin;
+
+            var lengthOfLastElementInLine = (double)line.Last().Length / (double)Length * (double)lengthOfLine;
+            var aspectRatio = thicknessOfLine / (double)lengthOfLastElementInLine;
+
+            // test if we have a line element or if this element is to short 
+            if (aspectRatio > 1)
+            {
+                //to short
+                return false;
+            }
+            else
+            {
+                //okay
+                return true;
+            }
+        }
+
         public bool IsCurrentlyLoading { get; internal set; }
 
         public double X { get; private set; }
@@ -124,9 +191,11 @@ namespace DiscUsage.ViewModels
         public double StrokeWidth => 0;//this._strokeWidth;
         public double Opacity =>  IsLoaded ? 0.6 : 0.3;
 
+        private double SizeWithoutMargin => IsVisibleRoot ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.SizeWithoutMargin;
+        private double PositionWithoutMargin => IsVisibleRoot ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.SizeWithoutMargin;
+
         private double Size => IsVisibleRoot ? CanvasHeight : (double)Length / (double)Parent.Length * ParentRectangle.Size - Margin;
         private double Position => IsVisibleRoot ? 0 : (double)LengthOfAllPreviousChildren / (double)Parent.Length * ParentRectangle.Size+Margin/2;
-
 
         public override long ParentLength => IsVisibleRoot ? 0 : Parent.Length;
         public override int Level => IsVisibleRoot? 0 : Parent.Level + 1;
