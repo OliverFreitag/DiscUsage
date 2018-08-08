@@ -15,10 +15,11 @@ namespace DiscUsage.ViewModels
         public MainWindowViewModel()
         {
             LoadCommand = new DelegateCommand(Load).ObservesCanExecute(()=>CanLoad);
-            DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged1;
+            PathDiscSpace.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
+            DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
         }
 
-        private void DiscSpaceCanvasViewModel_PropertyChanged1(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void DiscSpaceCanvasViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             //if (e.PropertyName== "FocusedRectangle")
             //{
@@ -34,45 +35,56 @@ namespace DiscUsage.ViewModels
             // disc space in list view has been selected
             if (e.PropertyName == "SelectedDiscSpace")
             {
-                if (DiscSpaceCanvasViewModel.SelectedDiscSpace == null)
+                if (PathDiscSpace.SelectedDiscSpace == null)
                 {
                     var i = 0;
                     return;
                 }
                 // select this disc space
-                UpdateCurrentDirectory(DiscSpaceCanvasViewModel.SelectedDiscSpace);
-                DiscSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)DiscSpaceCanvasViewModel.SelectedDiscSpace;
+                UpdateCurrentDirectory(PathDiscSpace.SelectedDiscSpace);
+                DiscSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)PathDiscSpace.SelectedDiscSpace;
 
             }
+            //if (e.PropertyName== "FocusedRectangle")
+            //{
+            //    DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Clear();
+            //    if (DiscSpaceCanvasViewModel.FocusedRectangle != null)
+            //    {
+            //        var parentAndChildren = DiscSpaceCanvasViewModel.Manager.Mapping.Values.Where(x => DiscSpaceCanvasViewModel.FocusedRectangle.ChildrenRecursive.Contains(x) || x == DiscSpaceCanvasViewModel.FocusedRectangle).ToList();
+            //        Copy(parentAndChildren).ForEach(x => DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+            //        DiscSpaceCanvasViewModel2.RaiseAllEvents();
+            //    }
+            //}
         }
 
         private void UpdateCurrentDirectory(DiscSpace rectangle)
         {
-            DiscSpaceListViewModel.SourceDiscSpaces.Clear();
+            PathDiscSpace.SourceDiscSpaces.Clear();
             var current = rectangle;
             while (current != null)
             {
-                DiscSpaceListViewModel.SourceDiscSpaces.Insert(0,current);
+                PathDiscSpace.SourceDiscSpaces.Insert(0,current);
                 current = (DiscSpaceRectangle)current.Parent;
               
             }
 
-            DiscSpaceCanvasViewModel.SourceDiscSpaces.Clear();
-            var current1 = rectangle;
-            while (current1 != null)
-            {
-                DiscSpaceCanvasViewModel.SourceDiscSpaces.Insert(0, current1);
-                current1 = (DiscSpaceRectangle)current1.Parent;
+            //SelectedDiscSpace.SourceDiscSpaces.Clear();
+            //var current1 = rectangle;
+            //while (current1 != null)
+            //{
+            //    SelectedDiscSpace.SourceDiscSpaces.Insert(0, current1);
+            //    current1 = (DiscSpaceRectangle)current1.Parent;
 
-            }
+            //}
         }
 
         private DiscCache discCache = new DiscCache();
 
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
-        public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel2 = new DiscSpaceCanvasViewModel();
+       // public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel2 = new DiscSpaceCanvasViewModel();
         // public DiscSpaceViewModel DiscSpaceViewModel = new DiscSpaceViewModel();
-        public DiscSpaceListViewModel DiscSpaceListViewModel =new DiscSpaceListViewModel();
+        public DiscSpaceListViewModel PathDiscSpace =new DiscSpaceListViewModel();
+        public DiscSpaceListViewModel SelectedDiscSpace = new DiscSpaceListViewModel();
 
         private bool _IsLoaded;
         public bool IsLoaded {
@@ -105,26 +117,17 @@ namespace DiscUsage.ViewModels
             DiscSpaceCanvasViewModel.Manager.Loaded += DiscSpaceCanvasViewModel.Loaded;
             //DiscSpaceCanvasViewModel.Manager.Updated += DiscSpaceCanvasViewModel.Update;
             DiscSpaceCanvasViewModel.Manager.Created += DiscSpaceCanvasViewModel.Create;
-            DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
+            //DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
             var task=discCache.LoadAsync(RootDirectory);
 
             //var task = discCache.LoadAsync(@"C:\");
             IsLoaded = true;
         }
 
-        private void DiscSpaceCanvasViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            //if (e.PropertyName== "FocusedRectangle")
-            //{
-            //    DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Clear();
-            //    if (DiscSpaceCanvasViewModel.FocusedRectangle != null)
-            //    {
-            //        var parentAndChildren = DiscSpaceCanvasViewModel.Manager.Mapping.Values.Where(x => DiscSpaceCanvasViewModel.FocusedRectangle.ChildrenRecursive.Contains(x) || x == DiscSpaceCanvasViewModel.FocusedRectangle).ToList();
-            //        Copy(parentAndChildren).ForEach(x => DiscSpaceCanvasViewModel2.DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
-            //        DiscSpaceCanvasViewModel2.RaiseAllEvents();
-            //    }
-            //}
-        }
+        //private void DiscSpaceCanvasViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        //{
+
+        //}
 
         //private List<DiscSpaceRectangle> Copy(List<DiscSpace> spaces)
         //{

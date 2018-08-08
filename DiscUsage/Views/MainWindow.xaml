@@ -8,7 +8,7 @@
 
     <DockPanel>
         <ToolBarTray DockPanel.Dock="Top">
-        <ToolBar>
+            <ToolBar>
                 <Button Content="Scan" Command="{Binding LoadCommand}" ToolTip="scans the directory ..." />
                 <!--<Button Content="Delete" Command="{Binding }" ToolTip="deleted all the directory ..." />
                 <Button Content="Hide" ToolTip="hides the directory ..." />
@@ -37,33 +37,24 @@
             <StatusBarItem Grid.Column="2">
                 <TextBlock Text="{Binding RootDirectory}"/>
             </StatusBarItem>
-            
+
             <Separator Grid.Column="3"/>
             <StatusBarItem Grid.Column="4">
                 <ProgressBar Value="50" Width="90"/>
             </StatusBarItem>
-            
         </StatusBar>
 
-       
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <!--<ColumnDefinition Width="20"/>-->
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-        
-        <!--<StackPanel Orientation="Horizontal" >-->
-            <!--<views:DiscSpaceView  Grid.Column="0" x:Name="DiscSpaceControl"/>-->
+
+            <views:DiscSpaceListView Margin="10" Grid.Column="0" x:Name="PathListControl" />
             <views:DiscSpaceCanvasView Margin="10" Grid.Column="1" x:Name="DiscSpaceCanvasControl" />
-            <views:DiscSpaceListView Margin="10" Grid.Column="0" x:Name="DiscSpaceListControl" />
-            <views:DiscSpaceListView Margin="10" Grid.Column="2" x:Name="SelectedSpacesControl" DataContext="DiscSpaceCanvasViewModel" />
-            <!--<StackPanel Grid.Column="1" ></StackPanel>-->
+            <views:DiscSpaceListView Margin="10" Grid.Column="2" x:Name="SelectedSpacesListControl" />
 
-
-                <!--<views:DiscSpaceCanvasView Grid.Column="2" x:Name="DiscSpaceCanvasControl2" />-->
-        <!--</StackPanel>-->
         </Grid>
     </DockPanel>
 </Window>

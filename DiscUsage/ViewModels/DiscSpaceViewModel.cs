@@ -64,17 +64,18 @@ namespace DiscUsage.ViewModels
 
         public virtual void Create(DiscSpace space)
         {
-            if (space.Parent == Manager.Root)
-            {
-                SourceDiscSpaces.Add(space);
-            }
+            //if (space.Parent == Manager.Root)
+            //{
+            //    SourceDiscSpaces.Add(space);
+            //}
             
         }
 
         public void Add(List<DiscSpace> spaces)
-        {            
+        {
+
             var spacesCollection = new ObservableCollection<DiscSpace>();
-            foreach(var space in spaces)
+            foreach (var space in spaces)
             {
                 spacesCollection.Add(space);
             }
