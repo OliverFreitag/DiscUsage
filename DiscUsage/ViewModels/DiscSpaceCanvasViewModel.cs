@@ -41,13 +41,13 @@ namespace DiscUsage.ViewModels
             set { SetProperty(ref _Height, value); }
         }
 
-        private ObservableCollection<DiscSpaceRectangle> _DiscSpaceRectangles=new ObservableCollection<DiscSpaceRectangle>();
-        public ObservableCollection<DiscSpaceRectangle> DiscSpaceRectangles
+        private ObservableCollection<DiscSpaceRectangle> _VisibleRectangles=new ObservableCollection<DiscSpaceRectangle>();
+        public ObservableCollection<DiscSpaceRectangle> VisibleRectangles
         {
-            get { return _DiscSpaceRectangles; }
-            set { SetProperty(ref _DiscSpaceRectangles,value); }
+            get { return _VisibleRectangles; }
+            set { SetProperty(ref _VisibleRectangles,value); }
         }
-        public ObservableCollection<DiscSpaceRectangle> DiscSpaceRectanglesInternal = new ObservableCollection<DiscSpaceRectangle>();
+        public ObservableCollection<DiscSpaceRectangle> Rectangles = new ObservableCollection<DiscSpaceRectangle>();
 
         private DiscSpaceRectangle _VisibleRoot;
         public DiscSpaceRectangle VisibleRoot
@@ -56,10 +56,10 @@ namespace DiscUsage.ViewModels
             set
             {
                 SetProperty(ref _VisibleRoot, value);
-                DiscSpaceRectanglesInternal.Clear();
-                DiscSpaceRectangles.Clear();
-                DiscSpaceRectanglesInternal.Add(VisibleRoot);
-                VisibleRoot.ChildrenRecursive.OrderBy(x=>x.Level).ToList().ForEach(x => DiscSpaceRectanglesInternal.Add((DiscSpaceRectangle)x));
+                Rectangles.Clear();
+                VisibleRectangles.Clear();
+                Rectangles.Add(VisibleRoot);
+                VisibleRoot.ChildrenRecursive.OrderBy(x=>x.Level).ToList().ForEach(x => Rectangles.Add((DiscSpaceRectangle)x));
       
                 RaiseAllEvents();
             }
@@ -90,13 +90,12 @@ namespace DiscUsage.ViewModels
             }
 
             var rectangle = (DiscSpaceRectangle)space;
-            //rectangle.ManagerRectangle = this;
 
             if (VisibleRoot == null || VisibleRoot.IsParentRecursive(rectangle))
             {
-                if (!DiscSpaceRectanglesInternal.Contains(rectangle))
+                if (!Rectangles.Contains(rectangle))
                 {
-                    DiscSpaceRectanglesInternal.Add(rectangle);
+                    Rectangles.Add(rectangle);
                 }
                 
             }
@@ -105,7 +104,6 @@ namespace DiscUsage.ViewModels
                 _VisibleRoot = rectangle;
             }
             Debug.Assert(rectangle.ManagerRectangle!=null);
-            //RaiseAllEvents();
         }
 
         public override void Loaded(DiscSpace space)
@@ -125,27 +123,27 @@ namespace DiscUsage.ViewModels
         public void RaiseAllEvents()
         {
 
-            foreach (var rectangle in DiscSpaceRectanglesInternal)
+            foreach (var rectangle in Rectangles)
             {
                 rectangle.ReCalcProperties();
 
             }
-            var bigRectangles = DiscSpaceRectanglesInternal.Where(x => x.Width >= 6 && x.Height >= 6).ToList();
+            var bigRectangles = Rectangles.Where(x => x.Width >= 6 && x.Height >= 6).ToList();
 
             // add
-            var notInRectangles=bigRectangles.Where(x => !DiscSpaceRectangles.Contains(x)).ToList();
-            notInRectangles.ForEach(x => DiscSpaceRectangles.Add(x));
+            var notInRectangles=bigRectangles.Where(x => !VisibleRectangles.Contains(x)).ToList();
+            notInRectangles.ForEach(x => VisibleRectangles.Add(x));
 
             //remove
-            var notInBigRectangles = DiscSpaceRectangles.Where(x => !bigRectangles.Contains(x)).ToList();
-            notInBigRectangles.ForEach(x => DiscSpaceRectangles.Remove(x));
+            var notInBigRectangles = VisibleRectangles.Where(x => !bigRectangles.Contains(x)).ToList();
+            notInBigRectangles.ForEach(x => VisibleRectangles.Remove(x));
 
-            foreach (var rectangle in DiscSpaceRectangles)
+            foreach (var rectangle in VisibleRectangles)
             {
-                rectangle.IsCurrentlyLoading = !rectangle.IsLoaded && rectangle.Children.Where(x => !x.IsLoaded && DiscSpaceRectangles.Contains(x)).Count() == 0;
+                rectangle.IsCurrentlyLoading = !rectangle.IsLoaded && rectangle.Children.Where(x => !x.IsLoaded && VisibleRectangles.Contains(x)).Count() == 0;
                 rectangle.RaisePropertiesChanged();
             }
-            var loading = DiscSpaceRectangles.Where(x => x.IsCurrentlyLoading).ToList();
+            var loading = VisibleRectangles.Where(x => x.IsCurrentlyLoading).ToList();
             //Debug.Assert(loading.Count== 1);
             if (loading.Count>1)
             {

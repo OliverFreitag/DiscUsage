@@ -33,14 +33,14 @@ namespace UnitTests
             Assert.AreEqual(mainWindowViewModel.IsLoading, false);
 
             Assert.AreEqual(mainWindowViewModel.DiscSpaces.Count, 0);
-            Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
-            Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot, mainWindowViewModel.DiscSpaceCanvasViewModel.DiscSpaceRectangles[0]);
+            Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRectangles.Count, 31);
+            Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot, mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRectangles[0]);
 
             mainWindowViewModel.DiscSpaceCanvasViewModel.SelectedRectangle = (DiscSpaceRectangle)mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0];
             Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot,mainWindowViewModel.DiscSpaceCanvasViewModel.SelectedRectangle);
 
             mainWindowViewModel.DiscSpaceCanvasViewModel.SelectedRectangle = (DiscSpaceRectangle)mainWindowViewModel.DiscSpaceCanvasViewModel.Manager.Root;
-            Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot, mainWindowViewModel.DiscSpaceCanvasViewModel.DiscSpaceRectangles[0]);
+            Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot, mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRectangles[0]);
 
             mainWindowViewModel.DiscSpaceCanvasViewModel.SelectedRectangle = (DiscSpaceRectangle)mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot.OrderedChildren[0];
             Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot, mainWindowViewModel.DiscSpaceCanvasViewModel.SelectedRectangle);

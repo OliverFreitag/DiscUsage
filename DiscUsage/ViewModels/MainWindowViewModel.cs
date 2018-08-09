@@ -17,7 +17,7 @@ namespace DiscUsage.ViewModels
             LoadCommand = new DelegateCommand(Load).ObservesCanExecute(()=>CanLoad);
             PathDiscSpace.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
             DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
-            DiscSpaceCanvasViewModel.DiscSpaceRectangles.CollectionChanged += DiscSpaceRectangles_CollectionChanged;
+            DiscSpaceCanvasViewModel.VisibleRectangles.CollectionChanged += DiscSpaceRectangles_CollectionChanged;
 
             RootDirectory = @"C:\Users\Oliver\source\repos\DiscUsage\UnitTests\Samples";
             
@@ -52,23 +52,33 @@ namespace DiscUsage.ViewModels
             // disc space in list view has been selected
             if (e.PropertyName == "SelectedDiscSpace")
             {
-                if (PathDiscSpace.SelectedDiscSpace == null)
+                if (PathDiscSpace.Selected == null)
                 {
                     return;
                 }
                 // select this disc space
-                UpdatePathList(PathDiscSpace.SelectedDiscSpace);
-                DiscSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)PathDiscSpace.SelectedDiscSpace;
+                UpdatePathList(PathDiscSpace.Selected);
+                DiscSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)PathDiscSpace.Selected;
+            }
+            // rectangle in the canvas has been focused
+            if (e.PropertyName == "FocusedRectangle")
+            {
+                if (DiscSpaceCanvasViewModel.FocusedRectangle != null)
+                {
+                    SelectedDiscSpace.DiscSpaces.Clear();
+                    DiscSpaceCanvasViewModel.FocusedRectangle.Children.ForEach(x => SelectedDiscSpace.DiscSpaces.Add(x));
+                }
+
             }
         }
 
         private void UpdatePathList(DiscSpace rectangle)
         {
-            PathDiscSpace.SourceDiscSpaces.Clear();
+            PathDiscSpace.DiscSpaces.Clear();
             var current = rectangle;
             while (current != null)
             {
-                PathDiscSpace.SourceDiscSpaces.Insert(0,current);
+                PathDiscSpace.DiscSpaces.Insert(0,current);
                 current = (DiscSpaceRectangle)current.Parent;
             }
         }
@@ -98,7 +108,7 @@ namespace DiscUsage.ViewModels
         }
         public bool CanLoad => !IsLoaded || !IsLoading;
 
-        public ObservableCollection<DiscSpace> DiscSpaces => DiscSpaceCanvasViewModel.SourceDiscSpaces;
+        public ObservableCollection<DiscSpace> DiscSpaces => DiscSpaceCanvasViewModel.DiscSpaces;
 
         private Task loadTask;
         private void Load()

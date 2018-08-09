@@ -27,7 +27,7 @@ namespace UnitTests
 
             discCache.LoadAsync(testDir).Wait();
 
-            foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
+            foreach (var rectangle in discSpaceCanvasViewModel.VisibleRectangles)
             {
                 Assert.IsNotNull(rectangle.ManagerRectangle);
             }
@@ -35,9 +35,9 @@ namespace UnitTests
             Assert.IsNotNull(discSpaceCanvasViewModel.VisibleRoot);
 
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.Height, 600 );
-            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRectangles.Count, 31);
 
-            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Where(x => x.Parent == discSpaceCanvasViewModel.VisibleRoot).Count(), 3);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRectangles.Where(x => x.Parent == discSpaceCanvasViewModel.VisibleRoot).Count(), 3);
 
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle.Count, 3);
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[0].Height, 600 - 6);
@@ -79,7 +79,7 @@ namespace UnitTests
             Assert.AreEqual(second.ChildrenRectangle[0].Y, second.Y+3);
             Assert.AreNotEqual(second.ChildrenRectangle[1].Y, second.Y+3);
 
-            Assert.AreEqual(CreatedEvents.Where(x=>x.Height>=6&&x.Width>=6).Count(), discSpaceCanvasViewModel.DiscSpaceRectangles.Count);
+            Assert.AreEqual(CreatedEvents.Where(x=>x.Height>=6&&x.Width>=6).Count(), discSpaceCanvasViewModel.VisibleRectangles.Count);
         }
 
         private List<DiscSpaceRectangle> CreatedEvents = new List<DiscSpaceRectangle>();
@@ -104,17 +104,17 @@ namespace UnitTests
 
             discCache.LoadAsync(testDir).Wait();
 
-            foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
+            foreach (var rectangle in discSpaceCanvasViewModel.VisibleRectangles)
             {
                 Assert.IsNotNull(rectangle.ManagerRectangle);
             }
 
             Assert.IsNotNull(discSpaceCanvasViewModel.VisibleRoot);
-            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRectangles.Count, 31);
 
             discSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)discSpaceCanvasViewModel.VisibleRoot.Children[0];
 
-            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 16);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRectangles.Count, 16);
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.Height, 600);
 
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle.Count, 2);
@@ -146,7 +146,7 @@ namespace UnitTests
 
             discCache.LoadAsync(testDir).Wait();
 
-            foreach (var rectangle in discSpaceCanvasViewModel.DiscSpaceRectangles)
+            foreach (var rectangle in discSpaceCanvasViewModel.VisibleRectangles)
             {
                 Assert.IsNotNull(rectangle.ManagerRectangle);
             }
@@ -154,9 +154,9 @@ namespace UnitTests
             Assert.IsNotNull(discSpaceCanvasViewModel.VisibleRoot);
 
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.Height, 600 );
-            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Count, 31);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRectangles.Count, 31);
 
-            Assert.AreEqual(discSpaceCanvasViewModel.DiscSpaceRectangles.Where(x => x.Parent == discSpaceCanvasViewModel.VisibleRoot).Count(), 3);
+            Assert.AreEqual(discSpaceCanvasViewModel.VisibleRectangles.Where(x => x.Parent == discSpaceCanvasViewModel.VisibleRoot).Count(), 3);
 
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle.Count, 3);
             Assert.AreEqual(discSpaceCanvasViewModel.VisibleRoot.ChildrenRectangle[0].Height, 600 - 6);

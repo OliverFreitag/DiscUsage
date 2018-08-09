@@ -43,7 +43,7 @@ namespace DiscUsage.Views
 
         private static void OnDiscSpacesSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((DiscSpaceView)d)._vm.SourceDiscSpaces = e.NewValue as ObservableCollection<DiscSpace>;
+            ((DiscSpaceView)d)._vm.DiscSpaces = e.NewValue as ObservableCollection<DiscSpace>;
         }
 
     }

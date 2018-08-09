@@ -27,36 +27,36 @@ namespace DiscUsage.ViewModels
         }
 
 
-        public bool IsDiscSpaceSelected => SelectedDiscSpace != null;
-        private DiscSpace _selectedDiscSpace;
+        public bool IsDiscSpaceSelected => Selected != null;
+        private DiscSpace _selected;
 
-        public DiscSpace SelectedDiscSpace
+        public DiscSpace Selected
         {
-            get { return _selectedDiscSpace; }
+            get { return _selected; }
             set {
-                SetProperty(ref _selectedDiscSpace, value);
+                SetProperty(ref _selected, value);
                 RaisePropertyChanged("IsDiscSpaceSelected");
             }
         }
 
         private void OnDelete()
         {
-            SourceDiscSpaces.Remove(SelectedDiscSpace);
+            DiscSpaces.Remove(Selected);
         }
 
         private void OnBackup()
         {
-            SourceDiscSpaces.Remove(SelectedDiscSpace);
+            DiscSpaces.Remove(Selected);
         }
 
         private void OnHide()
         {
-            SourceDiscSpaces.Remove(SelectedDiscSpace);
+            DiscSpaces.Remove(Selected);
         }
 
         private ObservableCollection<DiscSpace> _SourceDiscSpaces = new ObservableCollection<DiscSpace>();
 
-        public ObservableCollection<DiscSpace> SourceDiscSpaces
+        public ObservableCollection<DiscSpace> DiscSpaces
         {
             get { return _SourceDiscSpaces; }
             set { SetProperty(ref _SourceDiscSpaces, value); }
@@ -79,7 +79,7 @@ namespace DiscUsage.ViewModels
             {
                 spacesCollection.Add(space);
             }
-            SourceDiscSpaces = spacesCollection;
+            DiscSpaces = spacesCollection;
         }
 
         public virtual void Loaded(DiscSpace space)
