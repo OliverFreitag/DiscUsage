@@ -47,7 +47,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Viewbox Stretch="Uniform">
-            <ItemsControl ItemsSource="{Binding Path=DiscSpaceRectangles}" Height="600" Width="600" >
+            <ItemsControl ItemsSource="{Binding Path=VisibleRectangles}" Height="600" Width="600" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
 

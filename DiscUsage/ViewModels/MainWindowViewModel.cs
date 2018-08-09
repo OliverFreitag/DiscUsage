@@ -50,7 +50,7 @@ namespace DiscUsage.ViewModels
 
             }
             // disc space in list view has been selected
-            if (e.PropertyName == "SelectedDiscSpace")
+            if (e.PropertyName == "Selected")
             {
                 if (PathDiscSpace.Selected == null)
                 {
