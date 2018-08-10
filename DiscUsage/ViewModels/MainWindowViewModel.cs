@@ -67,6 +67,7 @@ namespace DiscUsage.ViewModels
                 {
                     SelectedDiscSpace.DiscSpaces.Clear();
                     DiscSpaceCanvasViewModel.FocusedRectangle.Children.ForEach(x => SelectedDiscSpace.DiscSpaces.Add(x));
+                    RaisePropertyChanged("DiscSpaces");
                 }
 
             }
@@ -108,7 +109,7 @@ namespace DiscUsage.ViewModels
         }
         public bool CanLoad => !IsLoaded || !IsLoading;
 
-        public ObservableCollection<DiscSpace> DiscSpaces => DiscSpaceCanvasViewModel.DiscSpaces;
+        public ObservableCollection<DiscSpace> DiscSpaces => SelectedDiscSpace.DiscSpaces;
 
         private Task loadTask;
         private void Load()

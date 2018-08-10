@@ -32,7 +32,7 @@ namespace DiscUsage.Views
             //this.DiscSpaceControl.DataContext = _vm.DiscSpaceCanvasViewModel;
             this.DiscSpaceCanvasControl.DataContext = _vm.DiscSpaceCanvasViewModel;
             this.PathListControl.DataContext = _vm.PathDiscSpace;
-            this.SelectedSpacesListControl.DataContext = _vm.SelectedDiscSpace;
+           // this.SelectedSpacesListControl.DataContext = _vm.SelectedDiscSpace;
             //this.DiscSpaceCanvasControl2.DataContext = _vm.DiscSpaceCanvasViewModel2;
         }
 

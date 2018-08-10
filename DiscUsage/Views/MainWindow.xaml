@@ -53,7 +53,7 @@
 
             <views:DiscSpaceListView Margin="10" Grid.Column="0" x:Name="PathListControl" />
             <views:DiscSpaceCanvasView Margin="10" Grid.Column="1" x:Name="DiscSpaceCanvasControl" />
-            <views:DiscSpaceListView Margin="10" Grid.Column="2" x:Name="SelectedSpacesListControl" />
+            <views:DiscSpaceListView Margin="10" Grid.Column="2"  DiscSpacesAtControl="{Binding DiscSpaces}" />
 
         </Grid>
     </DockPanel>

@@ -27,14 +27,14 @@ namespace DiscUsage.Views
             InitializeComponent();
         }
 
-        public ObservableCollection<DiscSpace> DiscSpaces
+        public ObservableCollection<DiscSpace> DiscSpacesAtControl
         {
             get { return (ObservableCollection<DiscSpace>)GetValue(DiscSpacesProperty); }
             set { SetValue(DiscSpacesProperty, value); }
         }
 
         public static readonly DependencyProperty DiscSpacesProperty =
-            DependencyProperty.Register("DiscSpaces", typeof(ObservableCollection<DiscSpace>),
+            DependencyProperty.Register("DiscSpacesAtControl", typeof(ObservableCollection<DiscSpace>),
                 typeof(DiscSpaceListView), new PropertyMetadata(null, OnDiscSpacesSet));
 
         private static void OnDiscSpacesSet(DependencyObject d, DependencyPropertyChangedEventArgs e)

@@ -54,12 +54,12 @@ namespace DiscUsage.ViewModels
             DiscSpaces.Remove(Selected);
         }
 
-        private ObservableCollection<DiscSpace> _SourceDiscSpaces = new ObservableCollection<DiscSpace>();
+        private ObservableCollection<DiscSpace> _DiscSpaces = new ObservableCollection<DiscSpace>();
 
         public ObservableCollection<DiscSpace> DiscSpaces
         {
-            get { return _SourceDiscSpaces; }
-            set { SetProperty(ref _SourceDiscSpaces, value); }
+            get { return _DiscSpaces; }
+            set { SetProperty(ref _DiscSpaces, value); }
         }
 
         public virtual void Create(DiscSpace space)
