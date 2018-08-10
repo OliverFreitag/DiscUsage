@@ -16,7 +16,6 @@ namespace DiscUsage.ViewModels
         public MainWindowViewModel()
         {
             LoadCommand = new DelegateCommand(Load).ObservesCanExecute(()=>CanLoad);
-            //PathDiscSpace.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
             DiscSpaceCanvasViewModel.PropertyChanged += DiscSpaceCanvasViewModel_PropertyChanged;
             DiscSpaceCanvasViewModel.VisibleRectangles.CollectionChanged += DiscSpaceRectangles_CollectionChanged;
 

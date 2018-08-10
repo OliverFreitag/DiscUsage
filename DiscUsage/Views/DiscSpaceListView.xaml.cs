@@ -27,7 +27,7 @@ namespace DiscUsage.Views
             InitializeComponent();
         }
 
-        public ObservableCollection<DiscSpace> DiscSpacesAtControl
+        public ObservableCollection<DiscSpace> DiscSpaces
         {
             get {
                 return (ObservableCollection<DiscSpace>)GetValue(DiscSpacesProperty); }
@@ -36,7 +36,7 @@ namespace DiscUsage.Views
         }
 
         public static readonly DependencyProperty DiscSpacesProperty = DependencyProperty.Register(
-            "DiscSpacesAtControl", 
+            "DiscSpaces", 
             typeof(ObservableCollection<DiscSpace>),
             typeof(DiscSpaceListView),
             new PropertyMetadata(null, OnDiscSpacesSet));

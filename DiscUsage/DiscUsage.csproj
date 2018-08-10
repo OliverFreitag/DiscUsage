@@ -91,9 +91,6 @@
     <Compile Include="Views\DiscSpaceListView.xaml.cs">
       <DependentUpon>DiscSpaceListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DiscSpaceView.xaml.cs">
-      <DependentUpon>DiscSpaceView.xaml</DependentUpon>
-    </Compile>
     <Page Include="Views\DiscSpaceListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,10 +115,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\DiscSpaceCanvasView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DiscSpaceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -52,10 +52,11 @@
             </Grid.ColumnDefinitions>
 
             <views:DiscSpaceListView Margin="10" Grid.Column="0" 
-                                     DiscSpacesAtControl="{Binding PathDiscSpaces}" 
+                                     DiscSpaces="{Binding PathDiscSpaces}" 
                                      SelectedDiscSpace="{Binding SelectedPath}" />
             <views:DiscSpaceCanvasView Margin="10" Grid.Column="1" x:Name="DiscSpaceCanvasControl" />
-            <views:DiscSpaceListView Margin="10" Grid.Column="2"  DiscSpacesAtControl="{Binding SelectedDiscSpaces}" />
+            <views:DiscSpaceListView Margin="10" Grid.Column="2"  
+                                     DiscSpaces="{Binding SelectedDiscSpaces}" />
 
         </Grid>
     </DockPanel>
