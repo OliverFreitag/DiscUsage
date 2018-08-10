@@ -82,7 +82,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\DiscSpaceCanvasViewModel.cs" />
-    <Compile Include="ViewModels\DiscSpaceListViewModel.cs" />
     <Compile Include="ViewModels\DiscSpaceRectangle.cs" />
     <Compile Include="ViewModels\DiscSpaceViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

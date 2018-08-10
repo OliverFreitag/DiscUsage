@@ -50,17 +50,7 @@ namespace DiscUsage.ViewModels
                 }
 
             }
-            // disc space in list view has been selected
-            //if (e.PropertyName == "Selected")
-            //{
-            //    if (PathDiscSpace.Selected == null)
-            //    {
-            //        return;
-            //    }
-            //    // select this disc space
-            //    UpdatePathList(PathDiscSpace.Selected);
-            //    DiscSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)PathDiscSpace.Selected;
-            //}
+            
             // rectangle in the canvas has been focused
             if (e.PropertyName == "FocusedRectangle")
             {
@@ -88,8 +78,6 @@ namespace DiscUsage.ViewModels
         private DiscCache discCache = new DiscCache();
 
         public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
-        //public DiscSpaceListViewModel PathDiscSpace =new DiscSpaceListViewModel();
-        //public DiscSpaceListViewModel SelectedDiscSpace = new DiscSpaceListViewModel();
 
         private bool _IsLoaded;
         public bool IsLoaded {
@@ -110,7 +98,7 @@ namespace DiscUsage.ViewModels
         }
         public bool CanLoad => !IsLoaded || !IsLoading;
 
-
+        // disc space in list view has been selected
         private ObservableCollection<DiscSpace> _SelectedDiscSpaces = new ObservableCollection<DiscSpace>();
 
         public ObservableCollection<DiscSpace> SelectedDiscSpaces
