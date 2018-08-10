@@ -32,7 +32,7 @@ namespace UnitTests
             Assert.AreEqual(mainWindowViewModel.IsLoaded, true);
             Assert.AreEqual(mainWindowViewModel.IsLoading, false);
 
-            Assert.AreEqual(mainWindowViewModel.DiscSpaces.Count, 0);
+            Assert.AreEqual(mainWindowViewModel.SelectedDiscSpaces.Count, 0);
             Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRectangles.Count, 31);
             Assert.AreEqual(mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRoot, mainWindowViewModel.DiscSpaceCanvasViewModel.VisibleRectangles[0]);
 

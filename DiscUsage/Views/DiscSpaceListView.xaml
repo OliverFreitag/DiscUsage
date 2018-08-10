@@ -7,7 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListView Margin="10" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DiscSpacesAtControl}" SelectedItem="{Binding Selected}" SelectionMode="Single">
+        <ListView Margin="10" 
+                  ItemsSource= "{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DiscSpacesAtControl}" 
+                  SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=SelectedDiscSpace, Mode=TwoWay}" SelectionMode="Single">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="120"  DisplayMemberBinding="{Binding Name}" />

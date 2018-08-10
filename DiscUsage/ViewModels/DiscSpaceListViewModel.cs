@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace DiscUsage.ViewModels
 {
-    public class DiscSpaceListViewModel: DiscSpaceViewModel
-    {
-        private DiscSpace _selectedDiscSpaceRecursive;
+    //public class DiscSpaceListViewModel: DiscSpaceViewModel
+    //{
+    //    private DiscSpace _selectedDiscSpaceRecursive;
 
-        public DiscSpace SelectedDiscSpaceRecursive
-        {
-            get { return _selectedDiscSpaceRecursive; }
-            set
-            {
-                SetProperty(ref _selectedDiscSpaceRecursive, value);
-            }
-        }
-    }
+    //    public DiscSpace SelectedDiscSpaceRecursive
+    //    {
+    //        get { return _selectedDiscSpaceRecursive; }
+    //        set
+    //        {
+    //            SetProperty(ref _selectedDiscSpaceRecursive, value);
+    //        }
+    //    }
+    //}
 }
