@@ -47,6 +47,7 @@ namespace DiscUsage.ViewModels
             get { return _VisibleRectangles; }
             set { SetProperty(ref _VisibleRectangles,value); }
         }
+
         public ObservableCollection<DiscSpaceRectangle> Rectangles = new ObservableCollection<DiscSpaceRectangle>();
 
         private DiscSpaceRectangle _VisibleRoot;
@@ -126,7 +127,6 @@ namespace DiscUsage.ViewModels
             foreach (var rectangle in Rectangles)
             {
                 rectangle.ReCalcProperties();
-
             }
             var bigRectangles = Rectangles.Where(x => x.Width >= 6 && x.Height >= 6).ToList();
 
@@ -149,6 +149,7 @@ namespace DiscUsage.ViewModels
             {
                 var i = 0;
             }
+            RaisePropertyChanged("VisibleRectangles");
         }
 
         private Timer _Timer;

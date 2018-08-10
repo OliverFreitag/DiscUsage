@@ -54,7 +54,7 @@
             <views:DiscSpaceListView Margin="10" Grid.Column="0" 
                                      DiscSpaces="{Binding PathDiscSpaces}" 
                                      SelectedDiscSpace="{Binding SelectedPath}" />
-            <views:DiscSpaceCanvasView Margin="10" Grid.Column="1" x:Name="DiscSpaceCanvasControl" />
+            <views:DiscSpaceCanvasView Margin="10" Grid.Column="1" Rectangles="{Binding VisibleRectangles}" />
             <views:DiscSpaceListView Margin="10" Grid.Column="2"  
                                      DiscSpaces="{Binding SelectedDiscSpaces}" />
 

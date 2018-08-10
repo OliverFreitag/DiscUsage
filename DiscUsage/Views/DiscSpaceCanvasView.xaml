@@ -7,8 +7,6 @@
              xmlns:local="clr-namespace:DiscUsage.Views"
              xmlns:data="clr-namespace:DiscUsage.Model"
              xmlns:viewModel="clr-namespace:DiscUsage.ViewModels"
-             xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -47,7 +45,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Viewbox Stretch="Uniform">
-            <ItemsControl ItemsSource="{Binding Path=VisibleRectangles}" Height="600" Width="600" >
+            <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=Rectangles}" Height="600" Width="600" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
 

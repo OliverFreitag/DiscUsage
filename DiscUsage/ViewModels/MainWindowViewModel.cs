@@ -76,7 +76,10 @@ namespace DiscUsage.ViewModels
 
         private DiscCache discCache = new DiscCache();
 
-        public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
+        private DiscSpaceCanvasViewModel _DiscSpaceCanvasViewModel = new DiscSpaceCanvasViewModel();
+        public DiscSpaceCanvasViewModel DiscSpaceCanvasViewModel => _DiscSpaceCanvasViewModel;
+
+        public ObservableCollection<DiscSpaceRectangle> VisibleRectangles => DiscSpaceCanvasViewModel.VisibleRectangles;
 
         private bool _IsLoaded;
         public bool IsLoaded {
@@ -122,11 +125,23 @@ namespace DiscUsage.ViewModels
             get { return _SelectedPath; }
             set {
                 SetProperty(ref _SelectedPath, value);
-                UpdatePathList(_SelectedPath);
-                DiscSpaceCanvasViewModel.VisibleRoot = (DiscSpaceRectangle)_SelectedPath;
             }
         }
 
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName== "SelectedPath")
+            {
+                
+                UpdatePathList(_SelectedPath);
+                DiscSpaceCanvasViewModel.VisibleRoot = _SelectedPath!=null?(DiscSpaceRectangle)_SelectedPath: (DiscSpaceRectangle)DiscSpaceCanvasViewModel.Manager.Root;
+            }
+
+        }
+
+        //public DiscSpaceRectangle SelectedRectangle => DiscSpaceCanvasViewModel.SelectedRectangle;
+        //public DiscSpaceRectangle FocusedRectangle => DiscSpaceCanvasViewModel.FocusedRectangle;
 
         private Task loadTask;
         private void Load()

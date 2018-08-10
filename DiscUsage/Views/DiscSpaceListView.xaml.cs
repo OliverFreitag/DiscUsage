@@ -29,10 +29,8 @@ namespace DiscUsage.Views
 
         public ObservableCollection<DiscSpace> DiscSpaces
         {
-            get {
-                return (ObservableCollection<DiscSpace>)GetValue(DiscSpacesProperty); }
-            set {
-                SetValue(DiscSpacesProperty, value); }
+            get { return (ObservableCollection<DiscSpace>)GetValue(DiscSpacesProperty); }
+            set { SetValue(DiscSpacesProperty, value); }
         }
 
         public static readonly DependencyProperty DiscSpacesProperty = DependencyProperty.Register(
@@ -58,10 +56,5 @@ namespace DiscUsage.Views
             typeof(DiscSpaceListView), 
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault)
             );
-
-        private static void OnSelected(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            //((DiscSpaceListView)d).._vm.DiscSpaces = e.NewValue as ObservableCollection<DiscSpace>;
-        }
     }
 }

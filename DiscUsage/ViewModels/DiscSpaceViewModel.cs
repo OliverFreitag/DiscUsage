@@ -26,7 +26,6 @@ namespace DiscUsage.ViewModels
             HideCommand = new DelegateCommand(OnHide).ObservesCanExecute(() => IsDiscSpaceSelected);
         }
 
-
         public bool IsDiscSpaceSelected => Selected != null;
         private DiscSpace _selected;
 
